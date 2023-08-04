@@ -1,0 +1,73 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Company {
+  id              Int          @id @default(autoincrement())
+  name            String
+  description     String
+  ticker          String
+  img             String
+  address         String
+  website         String
+  net_profit      BigInt
+  shares          BigInt
+  total_shares    BigInt
+  debt            BigInt
+  equity          BigInt
+  low_price       Int
+  high_price      Int
+  final_price     Int?
+  date_awal_start DateTime?
+  date_awal_end   DateTime?
+  date_umum_start DateTime?
+  date_umum_end   DateTime?
+  date_penjatahan DateTime?
+  date_distribusi DateTime?
+  date_ipo        DateTime?
+  subsector_id    Int?
+  underwriter_id  Int?
+  created_at      DateTime     @default(now())
+  updated_at      DateTime     @updatedAt
+  subsector       Subsector?   @relation(fields: [subsector_id], references: [id])
+  underwriter     Underwriter? @relation(fields: [underwriter_id], references: [id])
+
+  @@map("companies")
+}
+
+model Sector {
+  id         Int         @id @default(autoincrement())
+  name       String
+  created_at DateTime    @default(now())
+  updated_at DateTime    @updatedAt
+  subsectors Subsector[]
+
+  @@map("sectors")
+}
+
+model Subsector {
+  id         Int       @id @default(autoincrement())
+  name       String
+  sector_id  Int?
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  companies  Company[]
+  sectors    Sector?   @relation(fields: [sector_id], references: [id])
+
+  @@map("subsectors")
+}
+
+model Underwriter {
+  id         Int       @id @default(autoincrement())
+  name       String
+  created_at DateTime  @default(now())
+  updated_at DateTime  @updatedAt
+  companies  Company[]
+
+  @@map("underwriters")
+}
