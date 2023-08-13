@@ -30,6 +30,9 @@ model Company {
   date_penjatahan DateTime?
   date_distribusi DateTime?
   date_ipo        DateTime?
+  waran_numerator Float?
+  waran_denominator Float?
+  exercise_price Float?
   subsector_id    Int?
   underwriter_id  Int?
   created_at      DateTime     @default(now())
