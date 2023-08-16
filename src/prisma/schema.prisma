@@ -8,38 +8,32 @@ datasource db {
 }
 
 model Company {
-  id              Int          @id @default(autoincrement())
-  name            String
-  description     String
-  ticker          String
-  img             String
-  address         String
-  website         String
-  net_profit      BigInt
-  shares          BigInt
-  total_shares    BigInt
-  debt            BigInt
-  equity          BigInt
-  low_price       Int
-  high_price      Int
-  final_price     Int?
-  date_awal_start DateTime?
-  date_awal_end   DateTime?
-  date_umum_start DateTime?
-  date_umum_end   DateTime?
-  date_penjatahan DateTime?
-  date_distribusi DateTime?
-  date_ipo        DateTime?
-  waran_numerator Float?
+  id                Int          @id @default(autoincrement())
+  name              String
+  description       String
+  ticker            String
+  img               String
+  address           String
+  website           String
+  low_price         Int
+  high_price        Int
+  final_price       Int?
+  date_awal_start   DateTime?
+  date_awal_end     DateTime?
+  date_umum_start   DateTime?
+  date_umum_end     DateTime?
+  date_penjatahan   DateTime?
+  date_distribusi   DateTime?
+  date_ipo          DateTime?
+  waran_numerator   Float?
   waran_denominator Float?
-  exercise_price Float?
-  subsector_id    Int?
-  underwriter_id  Int?
-  created_at      DateTime     @default(now())
-  updated_at      DateTime     @updatedAt
-  subsector       Subsector?   @relation(fields: [subsector_id], references: [id])
-  underwriter     Underwriter? @relation(fields: [underwriter_id], references: [id])
-  financials  Financial[]
+  exercise_price    Float?
+  subsector_id      Int?
+  created_at        DateTime     @default(now())
+  updated_at        DateTime     @updatedAt
+  subsector         Subsector?   @relation(fields: [subsector_id], references: [id])
+  underwriters CompanyUnderwriter[]
+  financials        Financial[]
 
   @@map("companies")
 }
@@ -71,19 +65,37 @@ model Underwriter {
   name       String
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
-  companies  Company[]
+  companies CompanyUnderwriter[]
 
   @@map("underwriters")
 }
 
-model Financial {
+model CompanyUnderwriter {
   id         Int       @id @default(autoincrement())
-  name       String
+  company_id Int
+  underwriter_id Int
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
-  company_id    Int?
-  company     Company? @relation(fields: [company_id], references: [id])
+  company    Company?   @relation(fields: [company_id], references: [id])
+  underwriter    Underwriter?   @relation(fields: [underwriter_id], references: [id])
+
+  @@map("company_underwriters")
+}
+
+model Financial {
+  id           Int      @id @default(autoincrement())
+  interval     BigInt
+  main     Boolean
+  date_end     DateTime
+  net_profit    BigInt
+  shares       BigInt
+  total_shares BigInt
+  debt         BigInt
+  equity       BigInt
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  company_id   Int?
+  company      Company? @relation(fields: [company_id], references: [id])
 
   @@map("financials")
 }
-
