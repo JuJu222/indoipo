@@ -18,8 +18,8 @@ model Company {
   low_price         Int
   high_price        Int
   final_price       Int?
-  offered_shares       BigInt
-  total_shares BigInt
+  offered_shares       Float
+  total_shares Float
   date_awal_start   DateTime?
   date_awal_end     DateTime?
   date_umum_start   DateTime?
@@ -86,15 +86,15 @@ model CompanyUnderwriter {
 
 model Financial {
   id           Int      @id @default(autoincrement())
-  interval     BigInt
+  interval     Float
   main     Boolean
   date_end     DateTime
-  net_profit    BigInt
-  debt         BigInt
-  equity       BigInt
+  net_profit    Float
+  debt         Float
+  equity       Float
+  company_id   Int?
   created_at   DateTime @default(now())
   updated_at   DateTime @updatedAt
-  company_id   Int?
   company      Company? @relation(fields: [company_id], references: [id])
 
   @@map("financials")

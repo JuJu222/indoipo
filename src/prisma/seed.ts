@@ -79,9 +79,13 @@ async function seedFinancials() {
         where: { id: 1 },
         update: {},
         create: {
-            net_profit: 1485562728,
-            debt: 37456058142,
-            equity: 51794969507,
+            net_profit: 504535000,
+            debt: 4.106.897,
+            equity: 2652649,
+            interval: ,
+            main: ,
+            date_end: ,
+            company_id: 1,
         },
     })
 }
@@ -91,6 +95,7 @@ async function main() {
     await seedSubSectors()
     await seedUnderwriters()
     await seedCompanies()
+    await seedFinancials()
 }
 
 main()
