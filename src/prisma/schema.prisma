@@ -18,6 +18,8 @@ model Company {
   low_price         Int
   high_price        Int
   final_price       Int?
+  offered_shares       BigInt
+  total_shares BigInt
   date_awal_start   DateTime?
   date_awal_end     DateTime?
   date_umum_start   DateTime?
@@ -88,8 +90,6 @@ model Financial {
   main     Boolean
   date_end     DateTime
   net_profit    BigInt
-  shares       BigInt
-  total_shares BigInt
   debt         BigInt
   equity       BigInt
   created_at   DateTime @default(now())

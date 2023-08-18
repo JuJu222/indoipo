@@ -58,13 +58,10 @@ async function seedCompanies() {
             img: 'CNMA.png',
             address: 'Jl. KH Wahid Hasyim No.96-A Jakarta Pusat 10340 ',
             website: 'https://www.cinema21.co.id',
-            net_profit: 1485562728,
-            shares: 2500000000,
-            total_shares: 2500000000,
-            debt: 37456058142,
-            equity: 51794969507,
             low_price: 100,
             high_price: 110,
+            offered_shares: 2500000000,
+            total_shares: 2500000000,
             date_awal_start: new Date("2023-07-16"),
             date_awal_end: new Date("2023-07-18"),
             date_umum_start: new Date("2023-07-19"),
@@ -73,7 +70,6 @@ async function seedCompanies() {
             date_distribusi: new Date("2023-07-22"),
             date_ipo: new Date("2023-07-23"),
             subsector_id: 1,
-            underwriter_id: 1,
         },
     })
 }
@@ -84,8 +80,6 @@ async function seedFinancials() {
         update: {},
         create: {
             net_profit: 1485562728,
-            shares: 2500000000,
-            total_shares: 2500000000,
             debt: 37456058142,
             equity: 51794969507,
         },
