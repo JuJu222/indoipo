@@ -1,12 +1,15 @@
 import Head from "next/head";
 import prisma from "@/lib/prisma";
-import CompanyComponent from "@/app/companies/[id]/Company";
+import CompanyComponent from "@/app/companies/[ticker]/Company";
 
 export async function Company({params}) {
-    let company = await prisma.company.findUnique({
+    let company = await prisma.company.findFirst({
         where: {
-            id: parseInt(params.id),
+            ticker: params.ticker,
         },
+        include: {
+            financials: true
+        }
     });
     company = JSON.parse(JSON.stringify(company, (key, value) =>
         typeof value === 'bigint'

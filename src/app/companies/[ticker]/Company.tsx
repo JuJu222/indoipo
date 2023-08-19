@@ -47,6 +47,19 @@ function CompanyComponent({company}) {
     let dateOption1 = { year: 'numeric', month: 'long', day: 'numeric' };
     let dateOption2 = { month: 'long', day: 'numeric' };
 
+    const groupedFinancials = Object.values(
+        company.financials.reduce((result, financial) => {
+            const { interval } = financial;
+            if (!result[interval]) {
+                result[interval] = [];
+            }
+            result[interval].push(financial);
+            return result;
+        }, {})
+    );
+
+    console.log(groupedFinancials)
+
     return (
         <section className="bg-white dark:bg-gray-900">
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12">
@@ -195,7 +208,53 @@ function CompanyComponent({company}) {
                             <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{eps}</dd>
                         </div>
                     </dl>
+                    {company.financials.map((financial) => (
 
+                        <div className="relative overflow-x-auto">
+                            <table className="text-sm text-left text-gray-500 dark:text-gray-400">
+                                <thead
+                                    className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" className="px-6 py-3">
+                                        Product name
+                                    </th>
+                                    <th scope="col" className="px-6 py-3">
+                                        Color
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        Apple MacBook Pro 17"
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        Silver
+                                    </td>
+                                </tr>
+                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        Microsoft Surface Pro
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        White
+                                    </td>
+                                </tr>
+                                <tr className="bg-white dark:bg-gray-800">
+                                    <th scope="row"
+                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        Magic Mouse 2
+                                    </th>
+                                    <td className="px-6 py-4">
+                                        Black
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    ))}
                     <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
                         <li className="mr-2">
                             <a href="#" className="inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"

@@ -11,7 +11,7 @@ model Company {
   id                Int                  @id @default(autoincrement())
   name              String
   description       String
-  ticker            String
+  ticker            String               @unique
   img               String
   address           String
   website           String
@@ -93,7 +93,7 @@ model Financial {
   asset               Float
   is_audited          Boolean  @default(true)
   is_operating_income Boolean  @default(false)
-  factor               Float @default(1000000)
+  factor              Float    @default(1000000)
   company_id          Int?
   created_at          DateTime @default(now())
   updated_at          DateTime @updatedAt

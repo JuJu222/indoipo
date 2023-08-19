@@ -52,7 +52,7 @@ function CompanyCard({company}) {
     });
 
     return (
-        <Link href={'/companies/' + company.id}
+        <Link href={'/companies/' + company.ticker}
             className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:shadow-lg transition overflow-clip">
             <div className={"text-sm font-medium w-full py-1.5 text-white " + statusClass}>{statusName}</div>
 
@@ -71,16 +71,16 @@ function CompanyCard({company}) {
                         </div>
                     ) : (
                         <div>
-                            <h5 className="font-bold">Rentang Harga</h5>
+                            <h5 className="font-bold">Harga Penawaran</h5>
                             <p>Rp224 - Rp250</p>
                         </div>
                     )}
                     <div>
-                        <h5 className="font-bold">Rentang Harga</h5>
+                        <h5 className="font-bold">PER</h5>
                         <p>Rp224 - Rp250</p>
                     </div>
                     <div>
-                        <h5 className="font-bold">Rentang Harga</h5>
+                        <h5 className="font-bold">PBV</h5>
                         <p>Rp224 - Rp250</p>
                     </div>
                 </div>
