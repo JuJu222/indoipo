@@ -19,9 +19,9 @@ function CompanyComponent({company}) {
         }
     });
     const bv = Math.round((company.equity / company.shares + Number.EPSILON) * 100) / 100
-    const eps = Math.round((company.net_profit / company.shares * 100 + Number.EPSILON) * 100) / 100;
-    const der = Math.round((company.debt / company.equity * 100 + Number.EPSILON) * 100) / 100;
-    const roe = Math.round((company.net_profit / company.equity * 100 + Number.EPSILON) * 100) / 100;
+    const eps = Math.round((company.net_income / company.shares * 100 + Number.EPSILON) * 100) / 100;
+    const der = Math.round((company.liability / company.equity * 100 + Number.EPSILON) * 100) / 100;
+    const roe = Math.round((company.net_income / company.equity * 100 + Number.EPSILON) * 100) / 100;
     const [pbv, setPbv] = useState(Math.round((price / bv + Number.EPSILON) * 100) / 100);
     const [per, setPer] = useState(Math.round((price / eps + Number.EPSILON) * 100) / 100);
 

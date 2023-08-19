@@ -3,7 +3,7 @@
 
   - You are about to drop the column `debt` on the `companies` table. All the data in the column will be lost.
   - You are about to drop the column `equity` on the `companies` table. All the data in the column will be lost.
-  - You are about to drop the column `net_profit` on the `companies` table. All the data in the column will be lost.
+  - You are about to drop the column `net_income` on the `companies` table. All the data in the column will be lost.
   - You are about to drop the column `shares` on the `companies` table. All the data in the column will be lost.
   - You are about to drop the column `total_shares` on the `companies` table. All the data in the column will be lost.
   - You are about to drop the column `underwriter_id` on the `companies` table. All the data in the column will be lost.
@@ -12,7 +12,7 @@
   - Added the required column `debt` to the `financials` table without a default value. This is not possible if the table is not empty.
   - Added the required column `equity` to the `financials` table without a default value. This is not possible if the table is not empty.
   - Added the required column `interval` to the `financials` table without a default value. This is not possible if the table is not empty.
-  - Added the required column `net_profit` to the `financials` table without a default value. This is not possible if the table is not empty.
+  - Added the required column `net_income` to the `financials` table without a default value. This is not possible if the table is not empty.
   - Added the required column `shares` to the `financials` table without a default value. This is not possible if the table is not empty.
   - Added the required column `total_shares` to the `financials` table without a default value. This is not possible if the table is not empty.
 
@@ -23,7 +23,7 @@ ALTER TABLE "companies" DROP CONSTRAINT "companies_underwriter_id_fkey";
 -- AlterTable
 ALTER TABLE "companies" DROP COLUMN "debt",
 DROP COLUMN "equity",
-DROP COLUMN "net_profit",
+DROP COLUMN "net_income",
 DROP COLUMN "shares",
 DROP COLUMN "total_shares",
 DROP COLUMN "underwriter_id";
@@ -34,7 +34,7 @@ ADD COLUMN     "date_end" TIMESTAMP(3) NOT NULL,
 ADD COLUMN     "debt" BIGINT NOT NULL,
 ADD COLUMN     "equity" BIGINT NOT NULL,
 ADD COLUMN     "interval" BIGINT NOT NULL,
-ADD COLUMN     "net_profit" BIGINT NOT NULL,
+ADD COLUMN     "net_income" BIGINT NOT NULL,
 ADD COLUMN     "shares" BIGINT NOT NULL,
 ADD COLUMN     "total_shares" BIGINT NOT NULL;
 

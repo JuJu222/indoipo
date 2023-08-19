@@ -7,7 +7,7 @@ CREATE TABLE "companies" (
     "img" TEXT NOT NULL,
     "address" TEXT NOT NULL,
     "website" TEXT NOT NULL,
-    "net_profit" BIGINT NOT NULL,
+    "net_income" BIGINT NOT NULL,
     "shares" BIGINT NOT NULL,
     "total_shares" BIGINT NOT NULL,
     "debt" BIGINT NOT NULL,
