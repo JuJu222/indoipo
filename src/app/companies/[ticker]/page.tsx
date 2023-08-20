@@ -1,6 +1,7 @@
 import Head from "next/head";
 import prisma from "@/lib/prisma";
 import CompanyComponent from "@/app/companies/[ticker]/Company";
+import {notFound} from "next/navigation";
 
 export async function Company({params}) {
     let company = await prisma.company.findFirst({
@@ -11,6 +12,11 @@ export async function Company({params}) {
             financials: true
         }
     });
+
+    if (!company) {
+        notFound()
+    }
+
     company = JSON.parse(JSON.stringify(company, (key, value) =>
         typeof value === 'bigint'
             ? value.toString()

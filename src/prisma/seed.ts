@@ -79,7 +79,7 @@ async function seedFinancials() {
         where: { id: 1 },
         update: {},
         create: {
-            net_income: 504535000,
+            net_income: 504535,
             liability: 4106897,
             asset: 6759546,
             interval: 12,

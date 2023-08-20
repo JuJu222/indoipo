@@ -2,6 +2,7 @@
 
 import React, {useEffect, useState} from 'react';
 import TimelineCircle from "@/components/TimelineCircle";
+import {Property} from "csstype";
 
 function CompanyComponent({company}) {
     const [price, setPrice] = useState(company.high_price);
@@ -40,16 +41,17 @@ function CompanyComponent({company}) {
 
         setPbv(Math.round((price / bv + Number.EPSILON) * 100) / 100)
         setPer(Math.round((price / eps + Number.EPSILON) * 100) / 100)
-    },[price])
+    }, [price])
 
     let currDate = new Date().toLocaleDateString();
     currDate = new Date(currDate)
-    let dateOption1 = { year: 'numeric', month: 'long', day: 'numeric' };
-    let dateOption2 = { month: 'long', day: 'numeric' };
+    let dateOption1 = {year: 'numeric', month: 'long', day: 'numeric'};
+    let dateOption2 = {month: 'long', day: 'numeric'};
+    let dateOption3 = {month: 'long', year: 'numeric'};
 
     const groupedFinancials = Object.values(
         company.financials.reduce((result, financial) => {
-            const { interval } = financial;
+            const {interval} = financial;
             if (!result[interval]) {
                 result[interval] = [];
             }
@@ -58,6 +60,13 @@ function CompanyComponent({company}) {
         }, {})
     );
 
+    function toRp(num: number) {
+        let currencyFormatter = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR",
+            maximumFractionDigits: 0 })
+
+        return currencyFormatter.format(num)
+    }
+
     console.log(groupedFinancials)
 
     return (
@@ -65,7 +74,8 @@ function CompanyComponent({company}) {
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12">
                 <div className='flex space-x-10'>
                     <div className='w-1/3'>
-                        <img className="rounded-t-lg mx-auto object-contain" src={"/img/companies/" + company.img} alt="product image"/>
+                        <img className="rounded-t-lg mx-auto object-contain" src={"/img/companies/" + company.img}
+                             alt="product image"/>
                     </div>
                     <div className='w-2/3'>
                         <h2 className="mb-2 text-xl font-bold leading-none text-gray-900 md:text-2xl dark:text-white">{company.name}</h2>
@@ -97,9 +107,11 @@ function CompanyComponent({company}) {
 
                     <ol className="items-center sm:flex">
                         <li className="w-full mb-6 sm:mb-0">
-                            <TimelineCircle currentDate={currDate} startDate={new Date(company.date_awal_start)} endDate={new Date(company.date_awal_end)}></TimelineCircle>
+                            <TimelineCircle currentDate={currDate} startDate={new Date(company.date_awal_start)}
+                                            endDate={new Date(company.date_awal_end)}></TimelineCircle>
                             <div className="mt-3 sm:px-4">
-                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penawaran Awal</h3>
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penawaran
+                                    Awal</h3>
                                 <time
                                     className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
                                     {new Date(company.date_awal_start).toLocaleDateString("id-ID", dateOption2)} - {new Date(company.date_awal_end).toLocaleDateString("id-ID", dateOption1)}
@@ -107,9 +119,11 @@ function CompanyComponent({company}) {
                             </div>
                         </li>
                         <li className="w-full mb-6 sm:mb-0">
-                            <TimelineCircle currentDate={currDate} startDate={new Date(company.date_umum_start)} endDate={new Date(company.date_umum_end)}></TimelineCircle>
+                            <TimelineCircle currentDate={currDate} startDate={new Date(company.date_umum_start)}
+                                            endDate={new Date(company.date_umum_end)}></TimelineCircle>
                             <div className="mt-3 sm:px-4">
-                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penawaran Umum</h3>
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penawaran
+                                    Umum</h3>
                                 <time
                                     className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
                                     {new Date(company.date_umum_start).toLocaleDateString("id-ID", dateOption2)} - {new Date(company.date_umum_end).toLocaleDateString("id-ID", dateOption1)}
@@ -117,9 +131,11 @@ function CompanyComponent({company}) {
                             </div>
                         </li>
                         <li className="w-full mb-6 sm:mb-0">
-                            <TimelineCircle currentDate={currDate} referenceDate={new Date(company.date_distribusi)}></TimelineCircle>
+                            <TimelineCircle currentDate={currDate}
+                                            referenceDate={new Date(company.date_distribusi)}></TimelineCircle>
                             <div className="mt-3 sm:px-4">
-                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Distribusi Saham</h3>
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Distribusi
+                                    Saham</h3>
                                 <time
                                     className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
                                     {new Date(company.date_distribusi).toLocaleDateString("id-ID", dateOption1)}
@@ -127,9 +143,11 @@ function CompanyComponent({company}) {
                             </div>
                         </li>
                         <li className="w-full mb-6 sm:mb-0">
-                            <TimelineCircle currentDate={currDate} referenceDate={new Date(company.date_penjatahan)}></TimelineCircle>
+                            <TimelineCircle currentDate={currDate}
+                                            referenceDate={new Date(company.date_penjatahan)}></TimelineCircle>
                             <div className="mt-3 sm:px-4">
-                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penjatahan Efek</h3>
+                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penjatahan
+                                    Efek</h3>
                                 <time
                                     className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
                                     {new Date(company.date_penjatahan).toLocaleDateString("id-ID", dateOption1)}
@@ -137,7 +155,8 @@ function CompanyComponent({company}) {
                             </div>
                         </li>
                         <li className="w-full mb-6 sm:mb-0">
-                            <TimelineCircle currentDate={currDate} referenceDate={new Date(company.date_ipo)}></TimelineCircle>
+                            <TimelineCircle currentDate={currDate}
+                                            referenceDate={new Date(company.date_ipo)}></TimelineCircle>
                             <div className="mt-3 sm:px-4">
                                 <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">IPO</h3>
                                 <time
@@ -151,8 +170,9 @@ function CompanyComponent({company}) {
                 <div>
                     <label htmlFor="minmax-range"
                            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{price}</label>
-                    <input id="minmax-range" type="range" value={price} step={step} min={company.low_price} max={company.high_price} onChange={(e) => setPrice(e.target.value)}
-                           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700" />
+                    <input id="minmax-range" type="range" value={price} step={step} min={company.low_price}
+                           max={company.high_price} onChange={(e) => setPrice(e.target.value)}
+                           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
 
                     <dl>
                         <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Details</dt>
@@ -208,35 +228,38 @@ function CompanyComponent({company}) {
                             <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{eps}</dd>
                         </div>
                     </dl>
-                    {company.financials.map((financial) => (
-
-                        <div className="relative overflow-x-auto">
-                            <table className="text-sm text-left text-gray-500 dark:text-gray-400">
+                    <div className="relative overflow-x-auto">
+                        {groupedFinancials.map((groupedFinancial) => (
+                            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                                 <thead
                                     className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" className="px-6 py-3">
-                                        Product name
+                                    <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                                        {groupedFinancial[0].interval} Bulan
                                     </th>
-                                    <th scope="col" className="px-6 py-3">
-                                        Color
-                                    </th>
+                                    {groupedFinancial.map((financial) => (
+                                        <th scope="col" className="px-6 py-3">
+                                            {new Date(financial.date_end).toLocaleDateString("id-ID", dateOption3)}
+                                        </th>
+                                    ))}
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Apple MacBook Pro 17"
+                                        Laba Bersih (Net Income)
                                     </th>
-                                    <td className="px-6 py-4">
-                                        Silver
-                                    </td>
+                                    {groupedFinancial.map((financial) => (
+                                        <td className="px-6 py-4">
+                                            {toRp(financial.net_income)}
+                                        </td>
+                                    ))}
                                 </tr>
                                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Microsoft Surface Pro
+                                        Total Aset
                                     </th>
                                     <td className="px-6 py-4">
                                         White
@@ -253,8 +276,8 @@ function CompanyComponent({company}) {
                                 </tr>
                                 </tbody>
                             </table>
-                        </div>
-                    ))}
+                        ))}
+                    </div>
                     <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
                         <li className="mr-2">
                             <a href="#" className="inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
