@@ -9,7 +9,11 @@ export async function Company({params}) {
             ticker: params.ticker,
         },
         include: {
-            financials: true
+            financials: {
+                orderBy:  {
+                    date_end: 'desc'
+                }
+            }
         }
     });
 

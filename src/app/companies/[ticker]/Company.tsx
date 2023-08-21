@@ -5,46 +5,24 @@ import TimelineCircle from "@/components/TimelineCircle";
 import {Property} from "csstype";
 
 function CompanyComponent({company}) {
+    const [activeFinancialId, setActiveFinancialId] = useState(company.financials[0].id);
     const [price, setPrice] = useState(company.high_price);
-    const [step, setStep] = useState(() => {
-        if (price < 200) {
-            return 1;
-        } else if (200 <= price && price <= 500) {
-            return 2;
-        } else if (500 <= price && price <= 2000) {
-            return 5;
-        } else if (2000 <= price && price <= 5000) {
-            return 10;
-        } else {
-            return 25;
-        }
-    });
-    const bv = Math.round((company.equity / company.shares + Number.EPSILON) * 100) / 100
-    const eps = Math.round((company.net_income / company.shares * 100 + Number.EPSILON) * 100) / 100;
-    const der = Math.round((company.liability / company.equity * 100 + Number.EPSILON) * 100) / 100;
-    const roe = Math.round((company.net_income / company.equity * 100 + Number.EPSILON) * 100) / 100;
+    // const bv = Math.round((company.equity / company.shares + Number.EPSILON) * 100) / 100
+    // const eps = Math.round((company.net_income / company.shares * 100 + Number.EPSILON) * 100) / 100;
+    // const der = Math.round((company.liability / company.equity * 100 + Number.EPSILON) * 100) / 100;
+    // const roe = Math.round((company.net_income / company.equity * 100 + Number.EPSILON) * 100) / 100;
+    // const [pbv, setPbv] = useState(Math.round((price / bv + Number.EPSILON) * 100) / 100);
+    // const [per, setPer] = useState(Math.round((price / eps + Number.EPSILON) * 100) / 100);
+
+    const bv = 1
+    const eps = 1;
+    const der = 1;
+    const roe = 1 / 100;
     const [pbv, setPbv] = useState(Math.round((price / bv + Number.EPSILON) * 100) / 100);
     const [per, setPer] = useState(Math.round((price / eps + Number.EPSILON) * 100) / 100);
 
-    useEffect(() => {
-        if (price < 200) {
-            setStep(1)
-        } else if (200 <= price && price <= 500) {
-            setStep(2)
-        } else if (500 <= price && price <= 2000) {
-            setStep(5)
-        } else if (2000 <= price && price <= 5000) {
-            setStep(10)
-        } else {
-            setStep(25)
-        }
-
-        setPbv(Math.round((price / bv + Number.EPSILON) * 100) / 100)
-        setPer(Math.round((price / eps + Number.EPSILON) * 100) / 100)
-    }, [price])
-
-    let currDate = new Date().toLocaleDateString();
-    currDate = new Date(currDate)
+    let currDateStr = new Date().toLocaleDateString();
+    let currDate = new Date(currDateStr)
     let dateOption1 = {year: 'numeric', month: 'long', day: 'numeric'};
     let dateOption2 = {month: 'long', day: 'numeric'};
     let dateOption3 = {month: 'long', year: 'numeric'};
@@ -60,14 +38,20 @@ function CompanyComponent({company}) {
         }, {})
     );
 
+    // groupedFinancials.forEach((financials) => {
+    //     financials.sort((a, b) => {
+    //         const dateA = new Date(a.date_end);
+    //         const dateB = new Date(b.date_end);
+    //         return dateA + dateB;
+    //     });
+    // });
+
     function toRp(num: number) {
         let currencyFormatter = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR",
             maximumFractionDigits: 0 })
 
         return currencyFormatter.format(num)
     }
-
-    console.log(groupedFinancials)
 
     return (
         <section className="bg-white dark:bg-gray-900">
@@ -168,12 +152,6 @@ function CompanyComponent({company}) {
                     </ol>
                 </div>
                 <div>
-                    <label htmlFor="minmax-range"
-                           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{price}</label>
-                    <input id="minmax-range" type="range" value={price} step={step} min={company.low_price}
-                           max={company.high_price} onChange={(e) => setPrice(e.target.value)}
-                           className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700"/>
-
                     <dl>
                         <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Details</dt>
                         <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">Standard glass ,3.8GHz
@@ -228,17 +206,21 @@ function CompanyComponent({company}) {
                             <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{eps}</dd>
                         </div>
                     </dl>
-                    <div className="relative overflow-x-auto">
-                        {groupedFinancials.map((groupedFinancial) => (
-                            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <div>
+                        <h3 className='text-lg font-semibold pb-4'>Informasi Keuangan </h3>
+                        {groupedFinancials.map((groupedFinancial, index) => (
+                            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400" key={index}>
+                                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" className="px-6 py-3 whitespace-nowrap">
                                         {groupedFinancial[0].interval} Bulan
                                     </th>
-                                    {groupedFinancial.map((financial) => (
-                                        <th scope="col" className="px-6 py-3">
+                                    {groupedFinancial.map((financial, index) => (
+                                        <th scope="col" className={'px-6 py-3 rounded-lg' + (activeFinancialId == financial.id  ?
+                                            ' bg-primary rounded-lg text-white' :
+                                            ' hover:bg-gray-100 transition cursor-pointer text-primary_hover')} key={index}
+                                        onClick={() => setActiveFinancialId(financial.id)} >
+                                        {/*<th scope="col" className="px-6 py-3" key={index}>*/}
                                             {new Date(financial.date_end).toLocaleDateString("id-ID", dateOption3)}
                                         </th>
                                     ))}
@@ -250,8 +232,8 @@ function CompanyComponent({company}) {
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         Laba Bersih (Net Income)
                                     </th>
-                                    {groupedFinancial.map((financial) => (
-                                        <td className="px-6 py-4">
+                                    {groupedFinancial.map((financial, index) => (
+                                        <td className="px-6 py-4" key={index}>
                                             {toRp(financial.net_income)}
                                         </td>
                                     ))}
@@ -261,48 +243,27 @@ function CompanyComponent({company}) {
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         Total Aset
                                     </th>
-                                    <td className="px-6 py-4">
-                                        White
-                                    </td>
+                                    {groupedFinancial.map((financial, index) => (
+                                        <td className="px-6 py-4" key={index}>
+                                            {toRp(financial.asset)}
+                                        </td>
+                                    ))}
                                 </tr>
                                 <tr className="bg-white dark:bg-gray-800">
                                     <th scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Magic Mouse 2
+                                        Total Liabilitas
                                     </th>
-                                    <td className="px-6 py-4">
-                                        Black
-                                    </td>
+                                    {groupedFinancial.map((financial, index) => (
+                                        <td className="px-6 py-4" key={index}>
+                                            {toRp(financial.liability)}
+                                        </td>
+                                    ))}
                                 </tr>
                                 </tbody>
                             </table>
                         ))}
                     </div>
-                    <ul className="flex flex-wrap text-sm font-medium text-center text-gray-500 dark:text-gray-400">
-                        <li className="mr-2">
-                            <a href="#" className="inline-block px-4 py-3 text-white bg-blue-600 rounded-lg active"
-                               aria-current="page">Tab 1</a>
-                        </li>
-                        <li className="mr-2">
-                            <a href="#"
-                               className="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Tab
-                                2</a>
-                        </li>
-                        <li className="mr-2">
-                            <a href="#"
-                               className="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Tab
-                                3</a>
-                        </li>
-                        <li className="mr-2">
-                            <a href="#"
-                               className="inline-block px-4 py-3 rounded-lg hover:text-gray-900 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white">Tab
-                                4</a>
-                        </li>
-                        <li>
-                            <a className="inline-block px-4 py-3 text-gray-400 cursor-not-allowed dark:text-gray-500">Tab
-                                5</a>
-                        </li>
-                    </ul>
                 </div>
             </div>
         </section>
