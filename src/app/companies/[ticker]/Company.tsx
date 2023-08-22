@@ -6,20 +6,81 @@ import {Property} from "csstype";
 
 function CompanyComponent({company}) {
     const [activeFinancialId, setActiveFinancialId] = useState(company.financials[0].id);
-    const [price, setPrice] = useState(company.high_price);
-    // const bv = Math.round((company.equity / company.shares + Number.EPSILON) * 100) / 100
-    // const eps = Math.round((company.net_income / company.shares * 100 + Number.EPSILON) * 100) / 100;
-    // const der = Math.round((company.liability / company.equity * 100 + Number.EPSILON) * 100) / 100;
-    // const roe = Math.round((company.net_income / company.equity * 100 + Number.EPSILON) * 100) / 100;
-    // const [pbv, setPbv] = useState(Math.round((price / bv + Number.EPSILON) * 100) / 100);
-    // const [per, setPer] = useState(Math.round((price / eps + Number.EPSILON) * 100) / 100);
+    const [metrics, setMetrics] = useState({});
 
-    const bv = 1
-    const eps = 1;
-    const der = 1;
-    const roe = 1 / 100;
-    const [pbv, setPbv] = useState(Math.round((price / bv + Number.EPSILON) * 100) / 100);
-    const [per, setPer] = useState(Math.round((price / eps + Number.EPSILON) * 100) / 100);
+    useEffect(() => {
+        if (company.final_price) {
+            const equity = company.financials[0].asset - company.financials[0].liability;
+            const bvps = equity / company.offered_shares;
+            const eps = company.net_income / company.offered_shares;
+
+            setMetrics({
+                equity: equity,
+                bvps: bvps,
+                pbv: company.final_price / bvps,
+                eps: eps,
+                per: company.final_price / eps,
+                der: company.financials[0].liability / equity,
+                roe: company.financials[0].net_income / equity,
+            })
+        } else {
+            const equity = company.financials[0].asset - company.financials[0].liability;
+            const bvps = equity / company.offered_shares;
+            const eps = company.net_income / company.offered_shares;
+
+            setMetrics({
+                equity: equity,
+                bvps: bvps,
+                low_pbv: company.low_price / bvps,
+                high_pbv: company.high_price / bvps,
+                eps: eps,
+                low_per: company.low_price / eps,
+                high_per: company.high_price / eps,
+                der: company.financials[0].liability / equity,
+                roe: company.financials[0].net_income / equity,
+            })
+        }
+    }, []);
+
+    useEffect(() => {
+        for (const financial of company.financials) {
+            if (financial.id == activeFinancialId) {
+                if (company.final_price) {
+                    const equity = financial.asset - financial.liability;
+                    const bvps = equity / company.offered_shares;
+                    const eps = company.net_income / company.offered_shares;
+
+                    setMetrics({
+                        equity: equity,
+                        bvps: bvps,
+                        pbv: company.final_price / bvps,
+                        eps: eps,
+                        per: company.final_price / eps,
+                        der: financial.liability / equity,
+                        roe: financial.net_income / equity,
+                    })
+                } else {
+                    const equity = financial.asset - financial.liability;
+                    const bvps = equity / company.offered_shares;
+                    const eps = company.net_income / company.offered_shares;
+
+                    setMetrics({
+                        equity: equity,
+                        bvps: bvps,
+                        low_pbv: company.low_price / bvps,
+                        high_pbv: company.high_price / bvps,
+                        eps: eps,
+                        low_per: company.low_price / eps,
+                        high_per: company.high_price / eps,
+                        der: financial.liability / equity,
+                        roe: financial.net_income / equity,
+                    })
+                }
+
+                break;
+            }
+        }
+    },[activeFinancialId])
 
     let currDateStr = new Date().toLocaleDateString();
     let currDate = new Date(currDateStr)
@@ -53,6 +114,8 @@ function CompanyComponent({company}) {
         return currencyFormatter.format(num)
     }
 
+    console.log(metrics)
+
     return (
         <section className="bg-white dark:bg-gray-900">
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12">
@@ -67,22 +130,28 @@ function CompanyComponent({company}) {
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">PER</p>
                                 <p className="mb-2 text-xs leading-none">Rasio Price to Earnings</p>
-                                <p className="text-2xl font-bold leading-none text-gray-900">28.82x</p>
+                                <p className="text-2xl font-bold leading-none text-gray-900">
+                                    {company.final_price ? (
+                                        metrics.per
+                                    ) : (
+                                        metrics.low_per
+                                    )}
+                                </p>
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">PBV</p>
                                 <p className="mb-2 text-xs leading-none">Nilai Price to Book</p>
-                                <p className="text-2xl font-bold leading-none text-gray-900">{per}</p>
+                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.per}</p>
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">DER</p>
                                 <p className="mb-2 text-xs leading-none">Rasio Debt to Equity</p>
-                                <p className="text-2xl font-bold leading-none text-gray-900">{per}</p>
+                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.per}</p>
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">ROE</p>
                                 <p className="mb-2 text-xs leading-none">Rasio Return on Equity</p>
-                                <p className="text-2xl font-bold leading-none text-gray-900">{per}</p>
+                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.per}</p>
                             </div>
                         </div>
                     </div>
@@ -183,27 +252,27 @@ function CompanyComponent({company}) {
                     <dl className="flex items-center space-x-6">
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">BV</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{bv}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.bvps}</dd>
                         </div>
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">PBV</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{pbv}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.pbv}</dd>
                         </div>
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">PER</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{per}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.per}</dd>
                         </div>
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">DER</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{der}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.der}</dd>
                         </div>
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">ROE</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{roe}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.roe}</dd>
                         </div>
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">EPS</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{eps}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.eps}</dd>
                         </div>
                     </dl>
                     <div>
