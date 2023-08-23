@@ -5,11 +5,19 @@ import TimelineCircle from "@/components/TimelineCircle";
 import {Property} from "csstype";
 
 function CompanyComponent({company}) {
-    const [activeFinancialId, setActiveFinancialId] = useState(company.financials[0].id);
+    const [activeFinancialId, setActiveFinancialId] = useState(-1);
     const [metrics, setMetrics] = useState(() => {
         if (company.final_price) {
-            const equity = company.financials[0].asset - company.financials[0].liability;
-            const bvps = equity / company.outstanding_shares;
+            const equity = {
+                date: company.financials[0].date,
+                interval: company.financials[0].interval,
+                value: company.financials[0].asset - company.financials[0].liability
+            };
+            const bvps = {
+                date: company.financials[0].date,
+                interval: company.financials[0].interval,
+                value: equity.value / company.outstanding_shares
+            };
             const eps = company.financials[0].net_income / company.outstanding_shares;
 
             return {
@@ -22,11 +30,31 @@ function CompanyComponent({company}) {
                 roe: company.financials[0].net_income / equity,
             }
         } else {
-            const equity = company.financials[0].asset - company.financials[0].liability;
-            const bvps = equity / company.outstanding_shares;
-            const eps = company.financials[0].net_income / company.outstanding_shares;
-            console.log(company.low_price)
-            console.log(eps)
+            const equity = {
+                date: company.financials[0].date,
+                interval: company.financials[0].interval,
+                value: company.financials[0].asset - company.financials[0].liability
+            };
+            const bvps = {
+                date: company.financials[0].date,
+                interval: company.financials[0].interval,
+                value: equity.value / company.outstanding_shares
+            };
+            const pbv = {
+                date: company.financials[0].date,
+                interval: company.financials[0].interval,
+                value: equity.value / company.outstanding_shares
+            }
+            let eps = {};
+            for (const financial of company.financials) {
+                if (financial.interval == 12) {
+                    eps = {
+                        date: financial.date,
+                        interval: financial.interval,
+                        value: financial.net_income / company.outstanding_shares
+                    };
+                }
+            }
 
             return {
                 equity: equity,
@@ -114,8 +142,6 @@ function CompanyComponent({company}) {
         return currencyFormatter.format(num)
     }
 
-    console.log(metrics)
-
     return (
         <section className="bg-white dark:bg-gray-900">
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12">
@@ -134,7 +160,11 @@ function CompanyComponent({company}) {
                                     {company.final_price ? (
                                         metrics.per
                                     ) : (
-                                        metrics.low_per.toFixed(2) + '-' + metrics.high_per.toFixed(2)
+                                        <>
+                                            <span>{metrics.low_per.toFixed(2)}</span>
+                                            <span className='font-thin px-1'>-</span>
+                                            <span>{metrics.high_per.toFixed(2)}</span>
+                                        </>
                                     )}
                                 </p>
                             </div>
@@ -145,7 +175,12 @@ function CompanyComponent({company}) {
                                     {company.final_price ? (
                                         metrics.pbv
                                     ) : (
-                                        metrics.low_pbv.toFixed(2) + '-' + metrics.high_pbv.toFixed(2)
+                                        <>
+                                            <span>{metrics.low_pbv.toFixed(2)}</span>
+                                            <span className='font-thin px-1'>-</span>
+                                            <span>{metrics.high_pbv.toFixed(2)}</span>
+
+                                        </>
                                     )}
                                 </p>
                             </div>
@@ -309,7 +344,7 @@ function CompanyComponent({company}) {
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
                                         <td className="px-6 py-4" key={index}>
-                                            {toRp(financial.net_income / 1000000)}
+                                            {toRp(financial.net_income)}
                                         </td>
                                     ))}
                                 </tr>
@@ -320,7 +355,7 @@ function CompanyComponent({company}) {
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
                                         <td className="px-6 py-4" key={index}>
-                                            {toRp(financial.asset / 1000000)}
+                                            {toRp(financial.asset)}
                                         </td>
                                     ))}
                                 </tr>
@@ -331,7 +366,7 @@ function CompanyComponent({company}) {
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
                                         <td className="px-6 py-4" key={index}>
-                                            {toRp(financial.liability / 1000000)}
+                                            {toRp(financial.liability)}
                                         </td>
                                     ))}
                                 </tr>
