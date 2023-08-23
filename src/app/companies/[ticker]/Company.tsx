@@ -6,15 +6,13 @@ import {Property} from "csstype";
 
 function CompanyComponent({company}) {
     const [activeFinancialId, setActiveFinancialId] = useState(company.financials[0].id);
-    const [metrics, setMetrics] = useState({});
-
-    useEffect(() => {
+    const [metrics, setMetrics] = useState(() => {
         if (company.final_price) {
             const equity = company.financials[0].asset - company.financials[0].liability;
-            const bvps = equity / company.offered_shares;
-            const eps = company.net_income / company.offered_shares;
+            const bvps = equity / company.outstanding_shares;
+            const eps = company.financials[0].net_income / company.outstanding_shares;
 
-            setMetrics({
+            return {
                 equity: equity,
                 bvps: bvps,
                 pbv: company.final_price / bvps,
@@ -22,13 +20,15 @@ function CompanyComponent({company}) {
                 per: company.final_price / eps,
                 der: company.financials[0].liability / equity,
                 roe: company.financials[0].net_income / equity,
-            })
+            }
         } else {
             const equity = company.financials[0].asset - company.financials[0].liability;
-            const bvps = equity / company.offered_shares;
-            const eps = company.net_income / company.offered_shares;
+            const bvps = equity / company.outstanding_shares;
+            const eps = company.financials[0].net_income / company.outstanding_shares;
+            console.log(company.low_price)
+            console.log(eps)
 
-            setMetrics({
+            return {
                 equity: equity,
                 bvps: bvps,
                 low_pbv: company.low_price / bvps,
@@ -38,17 +38,17 @@ function CompanyComponent({company}) {
                 high_per: company.high_price / eps,
                 der: company.financials[0].liability / equity,
                 roe: company.financials[0].net_income / equity,
-            })
+            }
         }
-    }, []);
+    });
 
     useEffect(() => {
         for (const financial of company.financials) {
             if (financial.id == activeFinancialId) {
                 if (company.final_price) {
                     const equity = financial.asset - financial.liability;
-                    const bvps = equity / company.offered_shares;
-                    const eps = company.net_income / company.offered_shares;
+                    const bvps = equity / company.outstanding_shares;
+                    const eps = financial.net_income / company.outstanding_shares;
 
                     setMetrics({
                         equity: equity,
@@ -61,8 +61,8 @@ function CompanyComponent({company}) {
                     })
                 } else {
                     const equity = financial.asset - financial.liability;
-                    const bvps = equity / company.offered_shares;
-                    const eps = company.net_income / company.offered_shares;
+                    const bvps = equity / company.outstanding_shares;
+                    const eps = financial.net_income / company.outstanding_shares;
 
                     setMetrics({
                         equity: equity,
@@ -134,24 +134,30 @@ function CompanyComponent({company}) {
                                     {company.final_price ? (
                                         metrics.per
                                     ) : (
-                                        metrics.low_per
+                                        metrics.low_per.toFixed(2) + '-' + metrics.high_per.toFixed(2)
                                     )}
                                 </p>
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">PBV</p>
                                 <p className="mb-2 text-xs leading-none">Nilai Price to Book</p>
-                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.per}</p>
+                                <p className="text-2xl font-bold leading-none text-gray-900">
+                                    {company.final_price ? (
+                                        metrics.pbv
+                                    ) : (
+                                        metrics.low_pbv.toFixed(2) + '-' + metrics.high_pbv.toFixed(2)
+                                    )}
+                                </p>
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">DER</p>
                                 <p className="mb-2 text-xs leading-none">Rasio Debt to Equity</p>
-                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.per}</p>
+                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.der.toFixed(2)}</p>
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">ROE</p>
                                 <p className="mb-2 text-xs leading-none">Rasio Return on Equity</p>
-                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.per}</p>
+                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.roe.toFixed(2)}</p>
                             </div>
                         </div>
                     </div>
@@ -303,7 +309,7 @@ function CompanyComponent({company}) {
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
                                         <td className="px-6 py-4" key={index}>
-                                            {toRp(financial.net_income)}
+                                            {toRp(financial.net_income / 1000000)}
                                         </td>
                                     ))}
                                 </tr>
@@ -314,7 +320,7 @@ function CompanyComponent({company}) {
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
                                         <td className="px-6 py-4" key={index}>
-                                            {toRp(financial.asset)}
+                                            {toRp(financial.asset / 1000000)}
                                         </td>
                                     ))}
                                 </tr>
@@ -325,7 +331,7 @@ function CompanyComponent({company}) {
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
                                         <td className="px-6 py-4" key={index}>
-                                            {toRp(financial.liability)}
+                                            {toRp(financial.liability / 1000000)}
                                         </td>
                                     ))}
                                 </tr>

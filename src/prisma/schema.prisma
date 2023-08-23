@@ -15,11 +15,11 @@ model Company {
   img               String
   address           String
   website           String
-  low_price         Int
-  high_price        Int
-  final_price       Int?
+  low_price         Float
+  high_price        Float
+  final_price        Float?
   offered_shares    Float
-  total_shares      Float
+  outstanding_shares Float
   date_awal_start   DateTime?
   date_awal_end     DateTime?
   date_umum_start   DateTime?
@@ -93,7 +93,6 @@ model Financial {
   asset               Float
   is_audited          Boolean  @default(true)
   is_operating_income Boolean  @default(false)
-  factor              Float    @default(1000000)
   company_id          Int?
   created_at          DateTime @default(now())
   updated_at          DateTime @updatedAt
