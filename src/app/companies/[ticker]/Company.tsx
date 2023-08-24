@@ -9,112 +9,164 @@ function CompanyComponent({company}) {
     const [metrics, setMetrics] = useState(() => {
         if (company.final_price) {
             const equity = {
-                date: company.financials[0].date,
+                date_end: company.financials[0].date_end,
                 interval: company.financials[0].interval,
                 value: company.financials[0].asset - company.financials[0].liability
             };
             const bvps = {
-                date: company.financials[0].date,
-                interval: company.financials[0].interval,
-                value: equity.value / company.outstanding_shares
-            };
-            const eps = company.financials[0].net_income / company.outstanding_shares;
-
-            return {
-                equity: equity,
-                bvps: bvps,
-                pbv: company.final_price / bvps,
-                eps: eps,
-                per: company.final_price / eps,
-                der: company.financials[0].liability / equity,
-                roe: company.financials[0].net_income / equity,
-            }
-        } else {
-            const equity = {
-                date: company.financials[0].date,
-                interval: company.financials[0].interval,
-                value: company.financials[0].asset - company.financials[0].liability
-            };
-            const bvps = {
-                date: company.financials[0].date,
+                date_end: company.financials[0].date_end,
                 interval: company.financials[0].interval,
                 value: equity.value / company.outstanding_shares
             };
             const pbv = {
-                date: company.financials[0].date,
+                date_end: company.financials[0].date_end,
                 interval: company.financials[0].interval,
-                value: equity.value / company.outstanding_shares
+                value: company.final_price / bvps.value
+            }
+            const der = {
+                date_end: company.financials[0].date_end,
+                interval: company.financials[0].interval,
+                value: company.financials[0].liability / equity.value
             }
             let eps = {};
+            let per = {};
+            let roe = {};
             for (const financial of company.financials) {
                 if (financial.interval == 12) {
                     eps = {
-                        date: financial.date,
+                        date_end: financial.date_end,
                         interval: financial.interval,
                         value: financial.net_income / company.outstanding_shares
                     };
+                    per = {
+                        date_end: financial.date_end,
+                        interval: financial.interval,
+                        value: company.final_price / eps.value
+                    };
+                    roe = {
+                        date_end: financial.date_end,
+                        interval: financial.interval,
+                        value: financial.net_income / equity.value
+                    };
+                    break;
                 }
             }
 
             return {
                 equity: equity,
                 bvps: bvps,
-                low_pbv: company.low_price / bvps,
-                high_pbv: company.high_price / bvps,
+                pbv: pbv,
                 eps: eps,
-                low_per: company.low_price / eps,
-                high_per: company.high_price / eps,
-                der: company.financials[0].liability / equity,
-                roe: company.financials[0].net_income / equity,
+                per: per,
+                der: der,
+                roe: roe,
+            }
+        } else {
+            const equity = {
+                date_end: company.financials[0].date_end,
+                interval: company.financials[0].interval,
+                value: company.financials[0].asset - company.financials[0].liability
+            };
+            const bvps = {
+                date_end: company.financials[0].date_end,
+                interval: company.financials[0].interval,
+                value: equity.value / company.outstanding_shares
+            };
+            const pbv = {
+                date_end: company.financials[0].date_end,
+                interval: company.financials[0].interval,
+                low_value: company.low_price / bvps.value,
+                high_value: company.high_price / bvps.value
+            }
+            const der = {
+                date_end: company.financials[0].date_end,
+                interval: company.financials[0].interval,
+                value: company.financials[0].liability / equity.value
+            }
+            let eps = {};
+            let per = {};
+            let roe = {};
+            for (const financial of company.financials) {
+                console.log(financial)
+                if (financial.interval == 12) {
+                    eps = {
+                        date_end: financial.date_end,
+                        interval: financial.interval,
+                        value: financial.net_income / company.outstanding_shares
+                    };
+                    per = {
+                        date_end: financial.date_end,
+                        interval: financial.interval,
+                        low_value: company.low_price / eps.value,
+                        high_value: company.high_price / eps.value
+                    };
+                    roe = {
+                        date_end: financial.date_end,
+                        interval: financial.interval,
+                        value: financial.net_income / equity.value
+                    };
+                    break;
+                }
+            }
+
+            return {
+                equity: equity,
+                bvps: bvps,
+                pbv: pbv,
+                eps: eps,
+                per: per,
+                der: der,
+                roe: roe,
             }
         }
     });
 
-    useEffect(() => {
-        for (const financial of company.financials) {
-            if (financial.id == activeFinancialId) {
-                if (company.final_price) {
-                    const equity = financial.asset - financial.liability;
-                    const bvps = equity / company.outstanding_shares;
-                    const eps = financial.net_income / company.outstanding_shares;
-
-                    setMetrics({
-                        equity: equity,
-                        bvps: bvps,
-                        pbv: company.final_price / bvps,
-                        eps: eps,
-                        per: company.final_price / eps,
-                        der: financial.liability / equity,
-                        roe: financial.net_income / equity,
-                    })
-                } else {
-                    const equity = financial.asset - financial.liability;
-                    const bvps = equity / company.outstanding_shares;
-                    const eps = financial.net_income / company.outstanding_shares;
-
-                    setMetrics({
-                        equity: equity,
-                        bvps: bvps,
-                        low_pbv: company.low_price / bvps,
-                        high_pbv: company.high_price / bvps,
-                        eps: eps,
-                        low_per: company.low_price / eps,
-                        high_per: company.high_price / eps,
-                        der: financial.liability / equity,
-                        roe: financial.net_income / equity,
-                    })
-                }
-
-                break;
-            }
-        }
-    },[activeFinancialId])
+    // useEffect(() => {
+    //     for (const financial of company.financials) {
+    //         if (financial.id == activeFinancialId) {
+    //             if (company.final_price) {
+    //                 const equity = financial.asset - financial.liability;
+    //                 const bvps = equity / company.outstanding_shares;
+    //                 const eps = financial.net_income / company.outstanding_shares;
+    //
+    //                 setMetrics({
+    //                     equity: equity,
+    //                     bvps: bvps,
+    //                     pbv: company.final_price / bvps,
+    //                     eps: eps,
+    //                     per: company.final_price / eps,
+    //                     der: financial.liability / equity,
+    //                     roe: financial.net_income / equity,
+    //                 })
+    //             } else {
+    //                 const equity = financial.asset - financial.liability;
+    //                 const bvps = equity / company.outstanding_shares;
+    //                 const eps = financial.net_income / company.outstanding_shares;
+    //
+    //                 setMetrics({
+    //                     equity: equity,
+    //                     bvps: bvps,
+    //                     low_pbv: company.low_price / bvps,
+    //                     high_pbv: company.high_price / bvps,
+    //                     eps: eps,
+    //                     low_per: company.low_price / eps,
+    //                     high_per: company.high_price / eps,
+    //                     der: financial.liability / equity,
+    //                     roe: financial.net_income / equity,
+    //                 })
+    //             }
+    //
+    //             break;
+    //         }
+    //     }
+    // },[activeFinancialId])
 
     let currDateStr = new Date().toLocaleDateString();
     let currDate = new Date(currDateStr)
     let dateOption1 = {year: 'numeric', month: 'long', day: 'numeric'};
     let dateOption2 = {month: 'long', day: 'numeric'};
     let dateOption3 = {month: 'long', year: 'numeric'};
+    let dateMYOnly = {month: 'short', year: 'numeric'};
 
     const groupedFinancials = Object.values(
         company.financials.reduce((result, financial) => {
@@ -158,41 +210,45 @@ function CompanyComponent({company}) {
                                 <p className="mb-2 text-xs leading-none">Rasio Price to Earnings</p>
                                 <p className="text-2xl font-bold leading-none text-gray-900">
                                     {company.final_price ? (
-                                        metrics.per
+                                        metrics.per.value
                                     ) : (
                                         <>
-                                            <span>{metrics.low_per.toFixed(2)}</span>
+                                            <span>{metrics.per.low_value.toFixed(2)}</span>
                                             <span className='font-thin px-1'>-</span>
-                                            <span>{metrics.high_per.toFixed(2)}</span>
+                                            <span>{metrics.per.high_value.toFixed(2)}</span>
                                         </>
                                     )}
                                 </p>
+                                <p className="mb-2 text-xs leading-none pt-1 text-gray-400">{metrics.per.interval}M - {new Date(metrics.per.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">PBV</p>
                                 <p className="mb-2 text-xs leading-none">Nilai Price to Book</p>
                                 <p className="text-2xl font-bold leading-none text-gray-900">
                                     {company.final_price ? (
-                                        metrics.pbv
+                                        metrics.pbv.value
                                     ) : (
                                         <>
-                                            <span>{metrics.low_pbv.toFixed(2)}</span>
+                                            <span>{metrics.pbv.low_value.toFixed(2)}</span>
                                             <span className='font-thin px-1'>-</span>
-                                            <span>{metrics.high_pbv.toFixed(2)}</span>
+                                            <span>{metrics.pbv.high_value.toFixed(2)}</span>
 
                                         </>
                                     )}
                                 </p>
+                                <p className="mb-2 text-xs leading-none pt-1 text-gray-400">{metrics.pbv.interval}M - {new Date(metrics.pbv.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">DER</p>
                                 <p className="mb-2 text-xs leading-none">Rasio Debt to Equity</p>
-                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.der.toFixed(2)}</p>
+                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.der.value.toFixed(2)}</p>
+                                <p className="mb-2 text-xs leading-none pt-1 text-gray-400">{metrics.der.interval}M - {new Date(metrics.der.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">ROE</p>
                                 <p className="mb-2 text-xs leading-none">Rasio Return on Equity</p>
-                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.roe.toFixed(2)}</p>
+                                <p className="text-2xl font-bold leading-none text-gray-900">{metrics.roe.value.toFixed(2)}</p>
+                                <p className="mb-2 text-xs leading-none pt-1 text-gray-400">{metrics.roe.interval}M - {new Date(metrics.roe.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                             </div>
                         </div>
                     </div>
@@ -293,27 +349,27 @@ function CompanyComponent({company}) {
                     <dl className="flex items-center space-x-6">
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">BV</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.bvps}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.bvps.value}</dd>
                         </div>
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">PBV</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.pbv}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.pbv.value}</dd>
                         </div>
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">PER</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.per}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.per.value}</dd>
                         </div>
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">DER</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.der}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.der.value}</dd>
                         </div>
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">ROE</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.roe}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.roe.value}</dd>
                         </div>
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">EPS</dt>
-                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.eps}</dd>
+                            <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{metrics.eps.value}</dd>
                         </div>
                     </dl>
                     <div>
