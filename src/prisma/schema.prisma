@@ -8,34 +8,37 @@ datasource db {
 }
 
 model Company {
-  id                Int                  @id @default(autoincrement())
-  name              String
-  description       String
-  ticker            String               @unique
-  img               String
-  address           String
-  website           String
-  low_price         Float
-  high_price        Float
-  final_price        Float?
-  offered_shares    Float
-  outstanding_shares Float
-  date_awal_start   DateTime?
-  date_awal_end     DateTime?
-  date_umum_start   DateTime?
-  date_umum_end     DateTime?
-  date_penjatahan   DateTime?
-  date_distribusi   DateTime?
-  date_ipo          DateTime?
-  waran_numerator   Float?
-  waran_denominator Float?
-  exercise_price    Float?
-  subsector_id      Int?
-  created_at        DateTime             @default(now())
-  updated_at        DateTime             @updatedAt
-  subsector         Subsector?           @relation(fields: [subsector_id], references: [id])
-  underwriters      CompanyUnderwriter[]
-  financials        Financial[]
+  id                         Int                  @id @default(autoincrement())
+  name                       String
+  description                String
+  ticker                     String               @unique
+  img                        String
+  address                    String
+  website                    String
+  prospectus_url             String
+  prospectus_summary_url     String
+  additional_information_url String
+  low_price                  Float
+  high_price                 Float
+  final_price                Float?
+  offered_shares             Float
+  outstanding_shares         Float
+  date_awal_start            DateTime?
+  date_awal_end              DateTime?
+  date_umum_start            DateTime?
+  date_umum_end              DateTime?
+  date_penjatahan            DateTime?
+  date_distribusi            DateTime?
+  date_ipo                   DateTime?
+  waran_numerator            Float?
+  waran_denominator          Float?
+  exercise_price             Float?
+  subsector_id               Int?
+  created_at                 DateTime             @default(now())
+  updated_at                 DateTime             @updatedAt
+  subsector                  Subsector?           @relation(fields: [subsector_id], references: [id])
+  underwriters               CompanyUnderwriter[]
+  financials                 Financial[]
 
   @@map("companies")
 }
