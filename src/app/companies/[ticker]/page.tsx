@@ -9,6 +9,11 @@ export async function Company({params}) {
             ticker: params.ticker,
         },
         include: {
+            subsector: {
+                include: {
+                    sector: true
+                }
+            },
             financials: {
                 orderBy:  {
                     date_end: 'desc'
@@ -16,6 +21,7 @@ export async function Company({params}) {
             }
         }
     });
+    console.log(company)
 
     if (!company) {
         notFound()

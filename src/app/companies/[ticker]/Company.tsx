@@ -87,7 +87,6 @@ function CompanyComponent({company}) {
             let per = {};
             let roe = {};
             for (const financial of company.financials) {
-                console.log(financial)
                 if (financial.interval == 12) {
                     eps = {
                         date_end: financial.date_end,
@@ -196,19 +195,41 @@ function CompanyComponent({company}) {
 
     return (
         <section className="bg-white dark:bg-gray-900">
-            <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12">
+            <div className="py-8 px-4 mx-auto max-w-screen-xl lg:px-12">
                 <div className='flex space-x-10'>
-                    <div className='w-1/3 relative'>
-                        <Image src={"/img/companies/" + company.img} className='m-auto object-contain p-4'
-                               alt={'Logo ' + company.ticker} fill={true} />
+                    <div className='w-1/3 flex flex-col items-center justify-center'>
+                        {/*<Image src={"/img/companies/" + company.img} className='m-auto object-contain p-4'*/}
+                        {/*       alt={'Logo ' + company.ticker} fill={true} />*/}
+                        <Image
+                            src={"/img/companies/" + company.img}
+                            width={0}
+                            height={0}
+                            sizes="100vw"
+                            alt='aaa'
+                            className='w-full h-auto object-contain p-4'
+                        />
+                        {company.waran_numerator ? (
+                            <p className='bg-secondary text-white px-4 py-1.5 rounded w-full text-center'>Tidak Ada Waran</p>
+                        ) : (
+                            <p className='bg-green-600 text-white px-4 py-1.5 rounded w-full text-center'>5 Waran untuk 1 Lembar Saham</p>
+                        )}
                     </div>
                     <div className='w-2/3'>
                         <h3 className="text-md mb-1 leading-none text-gray-900 dark:text-white">{company.ticker}</h3>
-                        <h1 className="mb-2 text-xl font-bold leading-none text-gray-900 md:text-2xl dark:text-white">{company.name}</h1>
-                        <div className='flex justify-between shadow-md rounded-lg p-5 mb-4'>
+                        <h1 className="text-xl mb-2 font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">{company.name}</h1>
+                        {company.final_price ? (
+                            <h3 className="mb-4 text-xl font-bold leading-none text-gray-900 md:text-4xl dark:text-white">{company.low_price}</h3>
+                        ) : (
+                            <h3 className="mb-4 text-xl font-bold leading-none text-gray-900 md:text-4xl dark:text-white">
+                                <span>{toRp(company.low_price)}</span>
+                                <span className='font-thin px-1'>-</span>
+                                <span>{toRp(company.high_price)}</span>
+                            </h3>
+                        )}
+                        <div className='flex justify-between shadow-md rounded-lg p-5 mb-4 gap-2'>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">PER</p>
-                                <p className="mb-2 text-xs leading-none">Rasio Price to Earnings</p>
+                                <p className="mb-2 text-xs leading-none">Rasio <i>Price to Earnings</i></p>
                                 <p className="text-2xl font-bold leading-none text-gray-900">
                                     {company.final_price ? (
                                         metrics.per.value
@@ -224,7 +245,7 @@ function CompanyComponent({company}) {
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">PBV</p>
-                                <p className="mb-2 text-xs leading-none">Nilai Price to Book</p>
+                                <p className="mb-2 text-xs leading-none">Nilai <i>Price to Book</i></p>
                                 <p className="text-2xl font-bold leading-none text-gray-900">
                                     {company.final_price ? (
                                         metrics.pbv.value
@@ -241,13 +262,13 @@ function CompanyComponent({company}) {
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">DER</p>
-                                <p className="mb-2 text-xs leading-none">Rasio Debt to Equity</p>
+                                <p className="mb-2 text-xs leading-none">Rasio <i>Debt to Equity</i></p>
                                 <p className="text-2xl font-bold leading-none text-gray-900">{metrics.der.value.toFixed(2)}</p>
                                 <p className="mb-2 text-xs leading-none pt-1 text-gray-400">{metrics.der.interval}M - {new Date(metrics.der.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                             </div>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">ROE</p>
-                                <p className="mb-2 text-xs leading-none">Rasio Return on Equity</p>
+                                <p className="mb-2 text-xs leading-none">Rasio <i>Return on Equity</i></p>
                                 <p className="text-2xl font-bold leading-none text-gray-900">{metrics.roe.value.toFixed(2)}</p>
                                 <p className="mb-2 text-xs leading-none pt-1 text-gray-400">{metrics.roe.interval}M - {new Date(metrics.roe.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                             </div>
@@ -398,7 +419,7 @@ function CompanyComponent({company}) {
                                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Laba Bersih (Net Income)
+                                        Nilai Buku (<i>Book Value</i>)
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
                                         <td className="px-6 py-4" key={index}>
@@ -409,7 +430,7 @@ function CompanyComponent({company}) {
                                 <tr className="bg-white border-b-2 dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Laba Bersih (Net Income)
+                                        Laba Bersih (<i>Net Income</i>)
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
                                         <td className="px-6 py-4" key={index}>
@@ -420,7 +441,7 @@ function CompanyComponent({company}) {
                                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Laba Bersih (Net Income)
+                                        Laba Bersih (<i>Net Income</i>)
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
                                         <td className="px-6 py-4" key={index}>
