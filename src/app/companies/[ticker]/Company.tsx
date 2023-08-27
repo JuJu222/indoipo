@@ -2,7 +2,7 @@
 
 import React, {useEffect, useState} from 'react';
 import TimelineCircle from "@/components/TimelineCircle";
-import {Property} from "csstype";
+import Image from 'next/image'
 
 function CompanyComponent({company}) {
     const [activeFinancialId, setActiveFinancialId] = useState(-1);
@@ -198,12 +198,13 @@ function CompanyComponent({company}) {
         <section className="bg-white dark:bg-gray-900">
             <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12">
                 <div className='flex space-x-10'>
-                    <div className='w-1/3'>
-                        <img className="rounded-t-lg mx-auto object-contain" src={"/img/companies/" + company.img}
-                             alt="product image"/>
+                    <div className='w-1/3 relative'>
+                        <Image src={"/img/companies/" + company.img} className='m-auto object-contain p-4'
+                               alt={'Logo ' + company.ticker} fill={true} />
                     </div>
                     <div className='w-2/3'>
-                        <h2 className="mb-2 text-xl font-bold leading-none text-gray-900 md:text-2xl dark:text-white">{company.name}</h2>
+                        <h3 className="text-md mb-1 leading-none text-gray-900 dark:text-white">{company.ticker}</h3>
+                        <h1 className="mb-2 text-xl font-bold leading-none text-gray-900 md:text-2xl dark:text-white">{company.name}</h1>
                         <div className='flex justify-between shadow-md rounded-lg p-5 mb-4'>
                             <div>
                                 <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">PER</p>
@@ -251,11 +252,40 @@ function CompanyComponent({company}) {
                                 <p className="mb-2 text-xs leading-none pt-1 text-gray-400">{metrics.roe.interval}M - {new Date(metrics.roe.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                             </div>
                         </div>
+                        <div className='grid grid-cols-3 rounded-md border bg-white shadow-sm w-full overflow-hidden'>
+                            <a href={company.prospectus_url} target='_blank' className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-white hover:bg-primary_hover focus:relative flex gap-2 items-center justify-center bg-primary transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                     className="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
+                                    <path
+                                        d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z"/>
+                                </svg>
+                                Prospektus
+                            </a>
+                            <a className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-primary_hover hover:bg-gray-50 focus:relative border-l border-r flex gap-2 items-center justify-center transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                     className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
+                                    <path
+                                        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                                </svg>
+                                Ringkasan Prospektus
+                            </a>
+                            <a className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-primary_hover hover:bg-gray-50 focus:relative flex gap-2 items-center justify-center transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                     className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
+                                    <path
+                                        d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                                </svg>
+                                Informasi Tambahan
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div>
-
-                    <ol className="items-center sm:flex">
+                <div className='py-8'>
+                    <ol className="items-start sm:flex">
                         <li className="w-full mb-6 sm:mb-0">
                             <TimelineCircle currentDate={currDate} startDate={new Date(company.date_awal_start)}
                                             endDate={new Date(company.date_awal_end)}></TimelineCircle>
@@ -318,34 +348,6 @@ function CompanyComponent({company}) {
                     </ol>
                 </div>
                 <div>
-                    <dl>
-                        <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Details</dt>
-                        <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">Standard glass ,3.8GHz
-                            8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4
-                            memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet,
-                            Magic Mouse 2, Magic Keyboard - US.
-                        </dd>
-                    </dl>
-                    <div className='mb-6'>
-                        <button type="button"
-                                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <svg aria-hidden="true" className="w-5 h-5 mr-2 -ml-1" fill="currentColor"
-                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
-                            </svg>
-                            Unduh Prospektus
-                        </button>
-                        <button type="button"
-                                className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            <svg aria-hidden="true" className="w-5 h-5 mr-2 -ml-1" fill="currentColor"
-                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path>
-                            </svg>
-                            Unduh Informasi Tambahan
-                        </button>
-                    </div>
                     <dl className="flex items-center space-x-6">
                         <div>
                             <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">BV</dt>
@@ -373,7 +375,7 @@ function CompanyComponent({company}) {
                         </div>
                     </dl>
                     <div>
-                        <h3 className='text-lg font-semibold pb-4'>Informasi Keuangan </h3>
+                        <h2 className='text-lg font-semibold pb-4'>Informasi Keuangan </h2>
                         {groupedFinancials.map((groupedFinancial, index) => (
                             <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400" key={index}>
                                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -393,6 +395,28 @@ function CompanyComponent({company}) {
                                 </tr>
                                 </thead>
                                 <tbody>
+                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        Laba Bersih (Net Income)
+                                    </th>
+                                    {groupedFinancial.map((financial, index) => (
+                                        <td className="px-6 py-4" key={index}>
+                                            {toRp(financial.net_income)}
+                                        </td>
+                                    ))}
+                                </tr>
+                                <tr className="bg-white border-b-2 dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        Laba Bersih (Net Income)
+                                    </th>
+                                    {groupedFinancial.map((financial, index) => (
+                                        <td className="px-6 py-4" key={index}>
+                                            {toRp(financial.net_income)}
+                                        </td>
+                                    ))}
+                                </tr>
                                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
