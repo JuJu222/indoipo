@@ -21,7 +21,6 @@ export async function Company({params}) {
             }
         }
     });
-    console.log(company)
 
     if (!company) {
         notFound()
