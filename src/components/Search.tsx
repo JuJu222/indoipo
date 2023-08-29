@@ -2,17 +2,28 @@
 
 import React, {useEffect, useState} from 'react';
 import prisma from "@/lib/prisma";
+import Image from "next/image";
 
 function Search(props) {
     const [searchQuery, setSearchQuery] = useState('')
-    const [searchData, setSearchData] = useState({})
+    const [searchData, setSearchData] = useState([])
+    const [showSearchData, setShowSearchData] = useState(false)
 
     useEffect(()=>{
-        const getSearch = async () => {
-            const data = await fetch('http://localhost:3000/api/search')
-            console.log(data.json())
+        if (searchQuery !== '') {
+            const getSearch = async () => {
+                const res = await fetch('http://localhost:3000/api/search?' + new URLSearchParams({
+                    query: searchQuery
+                }))
+                    .then((response) => response.json())
+                    .then((responseJSON) => {
+                        setSearchData(responseJSON)
+                    });
+            }
+            getSearch()
+        } else {
+            setSearchData([])
         }
-        getSearch()
     },[searchQuery]);
 
     return (
@@ -25,12 +36,28 @@ function Search(props) {
                 </svg>
                 <span className="sr-only">Search icon</span>
             </div>
-            <input type="text" id="search-navbar"
-                   className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            <input type="text" id="search-navbar" onChange={(e) => setSearchQuery(e.target.value)} onFocus={(e) => setShowSearchData(true)} onBlur={(e) => setShowSearchData(false)}
+                   className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                    placeholder="Search..."/>
             <div className='relative'>
                 <ul className='absolute bg-white shadow rounded-lg overflow-hidden w-full'>
-                    <li className='hover:bg-gray-50 px-4 py-2.5 border-b last:border-0 transition cursor-pointer'>aaa</li>
+                    {showSearchData && (
+                        searchData.map((company, index) => (
+                            <li key={index} className='hover:bg-gray-50 px-4 py-2.5 border-b last:border-0 transition cursor-pointer flex gap-2 items-center'>
+                                <Image
+                                    src={"/img/companies/" + company.img}
+                                    width={0}
+                                    height={0}
+                                    sizes="100vw"
+                                    alt='aaa'
+                                    className='w-8 h-8 object-contain'
+                                />
+                                <span className='font-semibold'>{company.ticker}</span>
+                                <span> - </span>
+                                <span>{company.name}</span>
+                            </li>
+                        ))
+                    )}
                 </ul>
             </div>
         </div>
