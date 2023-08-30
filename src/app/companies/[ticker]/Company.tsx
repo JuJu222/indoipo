@@ -469,10 +469,10 @@ function CompanyComponent({company}) {
                     <div>
                         <h2 className='text-lg font-semibold pb-4'>Informasi Keuangan </h2>
                         {groupedFinancials.map((groupedFinancial, index) => (
-                            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400" key={index}>
+                            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 block overflow-x-auto" key={index}>
                                 <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
-                                    <th scope="col" className="px-6 py-3 whitespace-nowrap">
+                                    <th scope="col" className="px-6 py-3 whitespace-nowrap w-[1%]">
                                         {groupedFinancial[0].interval} Bulan
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
@@ -491,10 +491,9 @@ function CompanyComponent({company}) {
                                     <th scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                         <p>BVPS <span className='font-light'>(<i>Book Value per Share</i>)</span></p>
-
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4" key={index}>
+                                        <td className="px-6 py-4 font-medium" key={index}>
                                             {toRp(financial.net_income)}
                                         </td>
                                     ))}
@@ -502,23 +501,71 @@ function CompanyComponent({company}) {
                                 <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <p>PBV (Rasio Harga terhadap Nilai Buku)</p>
-                                        <p className='text-gray-400 font-light'><i>Price to Book Value</i></p>
+                                        <p>PBV <span className='font-light'>(<i>Price to Book Value</i>)</span></p>
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4" key={index}>
-                                            {toRp(financial.net_income)}
+                                        <td className="px-6 py-4 font-medium" key={index}>
+                                            {company.final_price ? (
+                                                financial.pbv.value
+                                            ) : (
+                                                <>
+                                                    <span>{financial.low_pbv.toFixed(2)}</span>
+                                                    <span className='font-thin px-1'>-</span>
+                                                    <span>{financial.high_pbv.toFixed(2)}</span>
+                                                </>
+                                            )}
+                                        </td>
+                                    ))}
+                                </tr>
+                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <p>EPS <span className='font-light'>(<i>Earnings per Share</i>)</span></p>
+                                    </th>
+                                    {groupedFinancial.map((financial, index) => (
+                                        <td className="px-6 py-4 font-medium" key={index}>
+                                            {financial.eps.toFixed(2)}
+                                        </td>
+                                    ))}
+                                </tr>
+                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <p>PER <span className='font-light'>(<i>Price to Earnings Ratio</i>)</span></p>
+                                    </th>
+                                    {groupedFinancial.map((financial, index) => (
+                                        <td className="px-6 py-4 font-medium" key={index}>
+                                            {company.final_price ? (
+                                                financial.per.value
+                                            ) : (
+                                                <>
+                                                    <span>{financial.low_per.toFixed(2)}</span>
+                                                    <span className='font-thin px-1'>-</span>
+                                                    <span>{financial.high_per.toFixed(2)}</span>
+                                                </>
+                                            )}
+                                        </td>
+                                    ))}
+                                </tr>
+                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                    <th scope="row"
+                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        <p>DER <span className='font-light'>(<i>Debt to Equity Ratio</i>)</span></p>
+                                    </th>
+                                    {groupedFinancial.map((financial, index) => (
+                                        <td className="px-6 py-4 font-medium" key={index}>
+                                            {financial.der.toFixed(2)}
                                         </td>
                                     ))}
                                 </tr>
                                 <tr className="bg-white border-b-2 dark:bg-gray-800 dark:border-gray-700">
                                     <th scope="row"
                                         className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Laba Bersih (<i>Net Income</i>)
+                                        <p>ROE <span className='font-light'>(<i>Return on Equity</i>)</span></p>
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4" key={index}>
-                                            {toRp(financial.net_income)}
+                                        <td className="px-6 py-4 font-medium" key={index}>
+                                            {financial.roe.toFixed(2)}
                                         </td>
                                     ))}
                                 </tr>
@@ -528,7 +575,7 @@ function CompanyComponent({company}) {
                                         Laba Bersih (<i>Net Income</i>)
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4" key={index}>
+                                        <td className="px-6 py-4 font-medium" key={index}>
                                             {toRp(financial.net_income)}
                                         </td>
                                     ))}
@@ -539,7 +586,7 @@ function CompanyComponent({company}) {
                                         Total Ekuitas
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4" key={index}>
+                                        <td className="px-6 py-4 font-medium" key={index}>
                                             {toRp(financial.equity)}
                                         </td>
                                     ))}
@@ -550,7 +597,7 @@ function CompanyComponent({company}) {
                                         Total Aset
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4" key={index}>
+                                        <td className="px-6 py-4 font-medium" key={index}>
                                             {toRp(financial.asset)}
                                         </td>
                                     ))}
@@ -561,7 +608,7 @@ function CompanyComponent({company}) {
                                         Total Liabilitas
                                     </th>
                                     {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4" key={index}>
+                                        <td className="px-6 py-4 font-medium" key={index}>
                                             {toRp(financial.liability)}
                                         </td>
                                     ))}
