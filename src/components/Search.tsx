@@ -38,7 +38,7 @@ function Search(props) {
             </div>
             <input type="text" id="search-navbar" onChange={(e) => setSearchQuery(e.target.value)} onFocus={(e) => setShowSearchData(true)} onBlur={(e) => setShowSearchData(false)}
                    className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
-                   placeholder="Search..."/>
+                   placeholder="Cari IPO..."/>
             <div className='relative'>
                 <ul className='absolute bg-white shadow rounded-lg overflow-hidden w-full'>
                     {showSearchData && (
