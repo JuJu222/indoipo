@@ -5,120 +5,6 @@ import TimelineCircle from "@/components/TimelineCircle";
 import Image from 'next/image'
 
 function CompanyComponent({company}) {
-    const [activeFinancialId, setActiveFinancialId] = useState(-1);
-    // const [metrics, setMetrics] = useState(() => {
-    //     if (company.final_price) {
-    //         const equity = {
-    //             date_end: company.financials[0].date_end,
-    //             interval: company.financials[0].interval,
-    //             value: company.financials[0].asset - company.financials[0].liability
-    //         };
-    //         const bvps = {
-    //             date_end: company.financials[0].date_end,
-    //             interval: company.financials[0].interval,
-    //             value: equity.value / company.outstanding_shares
-    //         };
-    //         const pbv = {
-    //             date_end: company.financials[0].date_end,
-    //             interval: company.financials[0].interval,
-    //             value: company.final_price / bvps.value
-    //         }
-    //         const der = {
-    //             date_end: company.financials[0].date_end,
-    //             interval: company.financials[0].interval,
-    //             value: company.financials[0].liability / equity.value
-    //         }
-    //         let eps = {};
-    //         let per = {};
-    //         let roe = {};
-    //         for (const financial of company.financials) {
-    //             if (financial.interval == 12) {
-    //                 eps = {
-    //                     date_end: financial.date_end,
-    //                     interval: financial.interval,
-    //                     value: financial.net_income / company.outstanding_shares
-    //                 };
-    //                 per = {
-    //                     date_end: financial.date_end,
-    //                     interval: financial.interval,
-    //                     value: company.final_price / eps.value
-    //                 };
-    //                 roe = {
-    //                     date_end: financial.date_end,
-    //                     interval: financial.interval,
-    //                     value: financial.net_income / equity.value
-    //                 };
-    //                 break;
-    //             }
-    //         }
-    //
-    //         return {
-    //             equity: equity,
-    //             bvps: bvps,
-    //             pbv: pbv,
-    //             eps: eps,
-    //             per: per,
-    //             der: der,
-    //             roe: roe,
-    //         }
-    //     } else {
-    //         const equity = {
-    //             date_end: company.financials[0].date_end,
-    //             interval: company.financials[0].interval,
-    //             value: company.financials[0].asset - company.financials[0].liability
-    //         };
-    //         const bvps = {
-    //             date_end: company.financials[0].date_end,
-    //             interval: company.financials[0].interval,
-    //             value: equity.value / company.outstanding_shares
-    //         };
-    //         const pbv = {
-    //             date_end: company.financials[0].date_end,
-    //             interval: company.financials[0].interval,
-    //             low_value: company.low_price / bvps.value,
-    //             high_value: company.high_price / bvps.value
-    //         }
-    //         const der = {
-    //             date_end: company.financials[0].date_end,
-    //             interval: company.financials[0].interval,
-    //             value: company.financials[0].liability / equity.value
-    //         }
-    //         let eps = {};
-    //         let per = {};
-    //         let roe = {};
-    //         for (const financial of company.financials) {
-    //             if (financial.interval == 12) {
-    //                 eps = {
-    //                     date_end: financial.date_end,
-    //                     interval: financial.interval,
-    //                     value: financial.net_income / company.outstanding_shares
-    //                 };
-    //                 per = {
-    //                     date_end: financial.date_end,
-    //                     interval: financial.interval,
-    //                     low_value: company.low_price / eps.value,
-    //                     high_value: company.high_price / eps.value
-    //                 };
-    //                 roe = {
-    //                     date_end: financial.date_end,
-    //                     interval: financial.interval,
-    //                     value: financial.net_income / equity.value
-    //                 };
-    //                 break;
-    //             }
-    //         }
-    //
-    //         return {
-    //             equity: equity,
-    //             bvps: bvps,
-    //             pbv: pbv,
-    //             eps: eps,
-    //             per: per,
-    //             der: der,
-    //             roe: roe,
-    //         }
-    //     }
-    // });
     let cardMetrics = {}
 
     let interval = -1
@@ -187,50 +73,6 @@ function CompanyComponent({company}) {
         }
     }
 
-
-
-    console.log(company.financials)
-
-    // useEffect(() => {
-    //     for (const financial of company.financials) {
-    //         if (financial.id == activeFinancialId) {
-    //             if (company.final_price) {
-    //                 const equity = financial.asset - financial.liability;
-    //                 const bvps = equity / company.outstanding_shares;
-    //                 const eps = financial.net_income / company.outstanding_shares;
-    //
-    //                 setMetrics({
-    //                     equity: equity,
-    //                     bvps: bvps,
-    //                     pbv: company.final_price / bvps,
-    //                     eps: eps,
-    //                     per: company.final_price / eps,
-    //                     der: financial.liability / equity,
-    //                     roe: financial.net_income / equity,
-    //                 })
-    //             } else {
-    //                 const equity = financial.asset - financial.liability;
-    //                 const bvps = equity / company.outstanding_shares;
-    //                 const eps = financial.net_income / company.outstanding_shares;
-    //
-    //                 setMetrics({
-    //                     equity: equity,
-    //                     bvps: bvps,
-    //                     low_pbv: company.low_price / bvps,
-    //                     high_pbv: company.high_price / bvps,
-    //                     eps: eps,
-    //                     low_per: company.low_price / eps,
-    //                     high_per: company.high_price / eps,
-    //                     der: financial.liability / equity,
-    //                     roe: financial.net_income / equity,
-    //                 })
-    //             }
-    //
-    //             break;
-    //         }
-    //     }
-    // },[activeFinancialId])
-
     let currDateStr = new Date().toLocaleDateString();
     let currDate = new Date(currDateStr)
     let dateOption1 = {year: 'numeric', month: 'long', day: 'numeric'};
@@ -248,14 +90,6 @@ function CompanyComponent({company}) {
             return result;
         }, {})
     );
-
-    // groupedFinancials.forEach((financials) => {
-    //     financials.sort((a, b) => {
-    //         const dateA = new Date(a.date_end);
-    //         const dateB = new Date(b.date_end);
-    //         return dateA + dateB;
-    //     });
-    // });
 
     function toRp(num: number) {
         let currencyFormatter = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR",
@@ -440,183 +274,157 @@ function CompanyComponent({company}) {
                     </ol>
                 </div>
                 <div>
-                    {/*<dl className="flex items-center space-x-6">*/}
-                    {/*    <div>*/}
-                    {/*        <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">BV</dt>*/}
-                    {/*        <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{cardMetrics.bvps.value}</dd>*/}
-                    {/*    </div>*/}
-                    {/*    <div>*/}
-                    {/*        <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">PBV</dt>*/}
-                    {/*        <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{cardMetrics.pbv.value}</dd>*/}
-                    {/*    </div>*/}
-                    {/*    <div>*/}
-                    {/*        <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">PER</dt>*/}
-                    {/*        <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{cardMetrics.per.value}</dd>*/}
-                    {/*    </div>*/}
-                    {/*    <div>*/}
-                    {/*        <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">DER</dt>*/}
-                    {/*        <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{cardMetrics.der.value}</dd>*/}
-                    {/*    </div>*/}
-                    {/*    <div>*/}
-                    {/*        <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">ROE</dt>*/}
-                    {/*        <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{cardMetrics.roe.value}</dd>*/}
-                    {/*    </div>*/}
-                    {/*    <div>*/}
-                    {/*        <dt className="mb-2 font-semibold leading-none text-gray-900 dark:text-white">EPS</dt>*/}
-                    {/*        <dd className="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{cardMetrics.eps.value}</dd>*/}
-                    {/*    </div>*/}
-                    {/*</dl>*/}
-                    <div>
-                        <h2 className='text-lg font-semibold pb-4'>Informasi Keuangan </h2>
-                        {groupedFinancials.map((groupedFinancial, index) => (
-                            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 block overflow-x-auto" key={index}>
-                                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                <tr>
-                                    <th scope="col" className="px-6 py-3 whitespace-nowrap w-[1%]">
-                                        {groupedFinancial[0].interval} Bulan
-                                    </th>
-                                    {groupedFinancial.map((financial, index) => (
-                                        <th scope="col" className={'px-6 py-3 rounded-lg' + (activeFinancialId == financial.id  ?
-                                            ' bg-primary rounded-lg text-white' :
-                                            ' hover:bg-gray-100 transition cursor-pointer text-primary_hover')} key={index}
-                                        onClick={() => setActiveFinancialId(financial.id)} >
+                    <h2 className='text-lg font-semibold pb-4'>Informasi Perusahaan</h2>
+                    <p>{company.description}</p>
+                </div>
+                <div>
+                    <h2 className='text-lg font-semibold pb-4'>Informasi Keuangan</h2>
+                    {groupedFinancials.map((groupedFinancial, index) => (
+                        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 block overflow-x-auto" key={index}>
+                            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <th scope="col" className="px-6 py-3 whitespace-nowrap w-[1%]">
+                                    {groupedFinancial[0].interval} Bulan
+                                </th>
+                                {groupedFinancial.map((financial, index) => (
+                                    <th scope="col" className='px-6 py-3 rounded-lg text-primary_hover' key={index}
+                                    >
                                         {/*<th scope="col" className="px-6 py-3" key={index}>*/}
-                                            {new Date(financial.date_end).toLocaleDateString("id-ID", dateOption3)}
-                                        </th>
-                                    ))}
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <p>BVPS <span className='font-light'>(<i>Book Value per Share</i>)</span></p>
+                                        {new Date(financial.date_end).toLocaleDateString("id-ID", dateOption3)}
                                     </th>
-                                    {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4 font-medium" key={index}>
-                                            {toRp(financial.net_income)}
-                                        </td>
-                                    ))}
-                                </tr>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <p>PBV <span className='font-light'>(<i>Price to Book Value</i>)</span></p>
-                                    </th>
-                                    {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4 font-medium" key={index}>
-                                            {company.final_price ? (
-                                                financial.pbv.value
-                                            ) : (
-                                                <>
-                                                    <span>{financial.low_pbv.toFixed(2)}</span>
-                                                    <span className='font-thin px-1'>-</span>
-                                                    <span>{financial.high_pbv.toFixed(2)}</span>
-                                                </>
-                                            )}
-                                        </td>
-                                    ))}
-                                </tr>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <p>EPS <span className='font-light'>(<i>Earnings per Share</i>)</span></p>
-                                    </th>
-                                    {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4 font-medium" key={index}>
-                                            {financial.eps.toFixed(2)}
-                                        </td>
-                                    ))}
-                                </tr>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <p>PER <span className='font-light'>(<i>Price to Earnings Ratio</i>)</span></p>
-                                    </th>
-                                    {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4 font-medium" key={index}>
-                                            {company.final_price ? (
-                                                financial.per.value
-                                            ) : (
-                                                <>
-                                                    <span>{financial.low_per.toFixed(2)}</span>
-                                                    <span className='font-thin px-1'>-</span>
-                                                    <span>{financial.high_per.toFixed(2)}</span>
-                                                </>
-                                            )}
-                                        </td>
-                                    ))}
-                                </tr>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <p>DER <span className='font-light'>(<i>Debt to Equity Ratio</i>)</span></p>
-                                    </th>
-                                    {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4 font-medium" key={index}>
-                                            {financial.der.toFixed(2)}
-                                        </td>
-                                    ))}
-                                </tr>
-                                <tr className="bg-white border-b-2 dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        <p>ROE <span className='font-light'>(<i>Return on Equity</i>)</span></p>
-                                    </th>
-                                    {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4 font-medium" key={index}>
-                                            {financial.roe.toFixed(2)}
-                                        </td>
-                                    ))}
-                                </tr>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Laba Bersih (<i>Net Income</i>)
-                                    </th>
-                                    {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4 font-medium" key={index}>
-                                            {toRp(financial.net_income)}
-                                        </td>
-                                    ))}
-                                </tr>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Total Ekuitas
-                                    </th>
-                                    {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4 font-medium" key={index}>
-                                            {toRp(financial.equity)}
-                                        </td>
-                                    ))}
-                                </tr>
-                                <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <th scope="row"
-                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Total Aset
-                                    </th>
-                                    {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4 font-medium" key={index}>
-                                            {toRp(financial.asset)}
-                                        </td>
-                                    ))}
-                                </tr>
-                                <tr className="bg-white dark:bg-gray-800">
-                                    <th scope="row"
-                                        className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                        Total Liabilitas
-                                    </th>
-                                    {groupedFinancial.map((financial, index) => (
-                                        <td className="px-6 py-4 font-medium" key={index}>
-                                            {toRp(financial.liability)}
-                                        </td>
-                                    ))}
-                                </tr>
-                                </tbody>
-                            </table>
-                        ))}
-                    </div>
+                                ))}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <p>BVPS <span className='font-light'>(<i>Book Value per Share</i>)</span></p>
+                                </th>
+                                {groupedFinancial.map((financial, index) => (
+                                    <td className="px-6 py-4 font-medium" key={index}>
+                                        {toRp(financial.net_income)}
+                                    </td>
+                                ))}
+                            </tr>
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <p>PBV <span className='font-light'>(<i>Price to Book Value</i>)</span></p>
+                                </th>
+                                {groupedFinancial.map((financial, index) => (
+                                    <td className="px-6 py-4 font-medium" key={index}>
+                                        {company.final_price ? (
+                                            financial.pbv.value
+                                        ) : (
+                                            <>
+                                                <span>{financial.low_pbv.toFixed(2)}</span>
+                                                <span className='font-thin px-1'>-</span>
+                                                <span>{financial.high_pbv.toFixed(2)}</span>
+                                            </>
+                                        )}
+                                    </td>
+                                ))}
+                            </tr>
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <p>EPS <span className='font-light'>(<i>Earnings per Share</i>)</span></p>
+                                </th>
+                                {groupedFinancial.map((financial, index) => (
+                                    <td className="px-6 py-4 font-medium" key={index}>
+                                        {financial.eps.toFixed(2)}
+                                    </td>
+                                ))}
+                            </tr>
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <p>PER <span className='font-light'>(<i>Price to Earnings Ratio</i>)</span></p>
+                                </th>
+                                {groupedFinancial.map((financial, index) => (
+                                    <td className="px-6 py-4 font-medium" key={index}>
+                                        {company.final_price ? (
+                                            financial.per.value
+                                        ) : (
+                                            <>
+                                                <span>{financial.low_per.toFixed(2)}</span>
+                                                <span className='font-thin px-1'>-</span>
+                                                <span>{financial.high_per.toFixed(2)}</span>
+                                            </>
+                                        )}
+                                    </td>
+                                ))}
+                            </tr>
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <p>DER <span className='font-light'>(<i>Debt to Equity Ratio</i>)</span></p>
+                                </th>
+                                {groupedFinancial.map((financial, index) => (
+                                    <td className="px-6 py-4 font-medium" key={index}>
+                                        {financial.der.toFixed(2)}
+                                    </td>
+                                ))}
+                            </tr>
+                            <tr className="bg-white border-b-2 dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    <p>ROE <span className='font-light'>(<i>Return on Equity</i>)</span></p>
+                                </th>
+                                {groupedFinancial.map((financial, index) => (
+                                    <td className="px-6 py-4 font-medium" key={index}>
+                                        {financial.roe.toFixed(2)}
+                                    </td>
+                                ))}
+                            </tr>
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Laba Bersih <span className='font-light'>(<i>Net Income</i>)</span>
+                                </th>
+                                {groupedFinancial.map((financial, index) => (
+                                    <td className="px-6 py-4 font-medium" key={index}>
+                                        {toRp(financial.net_income)}
+                                    </td>
+                                ))}
+                            </tr>
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Total Ekuitas
+                                </th>
+                                {groupedFinancial.map((financial, index) => (
+                                    <td className="px-6 py-4 font-medium" key={index}>
+                                        {toRp(financial.equity)}
+                                    </td>
+                                ))}
+                            </tr>
+                            <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                <th scope="row"
+                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Total Aset
+                                </th>
+                                {groupedFinancial.map((financial, index) => (
+                                    <td className="px-6 py-4 font-medium" key={index}>
+                                        {toRp(financial.asset)}
+                                    </td>
+                                ))}
+                            </tr>
+                            <tr className="bg-white dark:bg-gray-800">
+                                <th scope="row"
+                                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    Total Liabilitas
+                                </th>
+                                {groupedFinancial.map((financial, index) => (
+                                    <td className="px-6 py-4 font-medium" key={index}>
+                                        {toRp(financial.liability)}
+                                    </td>
+                                ))}
+                            </tr>
+                            </tbody>
+                        </table>
+                    ))}
                 </div>
             </div>
         </section>
