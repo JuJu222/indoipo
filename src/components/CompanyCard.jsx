@@ -53,7 +53,7 @@ function CompanyCard({company}) {
 
     return (
         <Link href={'/companies/' + company.ticker}
-            className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-50 transition overflow-clip">
+            className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-50 transition overflow-clip">
             <div className={"text-sm font-medium w-full py-1.5 text-white " + statusClass}>{statusName}</div>
 
             <div className='p-5'>

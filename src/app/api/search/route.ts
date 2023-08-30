@@ -22,6 +22,7 @@ export async function GET(request: Request) {
                 }
             ]
         },
+        take: 10,
         orderBy: {
             id: 'asc'
         },
