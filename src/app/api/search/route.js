@@ -1,9 +1,9 @@
 import prisma from "@/lib/prisma";
 import {NextResponse} from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request) {
     const { searchParams } = new URL(request.url)
-    const query: string = searchParams.get('query')!
+    const query = searchParams.get('query')
 
     const companies = await prisma.company.findMany({
         where: {

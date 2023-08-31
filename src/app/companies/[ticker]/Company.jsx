@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import TimelineCircle from "@/components/TimelineCircle";
 import Image from 'next/image'
 
-function CompanyComponent({company} : {company:any}) {
+function CompanyComponent({company}) {
     let cardMetrics = {}
 
     let interval = -1
@@ -91,7 +91,7 @@ function CompanyComponent({company} : {company:any}) {
         }, {})
     );
 
-    function toRp(num: number) {
+    function toRp(num) {
         let currencyFormatter = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR",
             maximumFractionDigits: 0 })
 
