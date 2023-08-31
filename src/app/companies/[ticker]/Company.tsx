@@ -121,7 +121,8 @@ function CompanyComponent({company}) {
                     </div>
                     <div className='w-2/3'>
                         <h3 className="text-md mb-1 leading-none text-gray-900 dark:text-white">{company.ticker}</h3>
-                        <h1 className="text-xl mb-2 font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">{company.name}</h1>
+                        <h1 className="text-xl mb-1 font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">{company.name}</h1>
+                        <h4 className="text-sm mb-2 leading-none text-gray-900 dark:text-white">{company.subsector.name} - {company.subsector.sector.name}</h4>
                         {company.final_price ? (
                             <h3 className="mb-4 text-xl font-bold leading-none text-gray-900 md:text-4xl dark:text-white">{company.low_price}</h3>
                         ) : (
@@ -273,8 +274,8 @@ function CompanyComponent({company}) {
                         </li>
                     </ol>
                 </div>
-                <div>
-                    <h2 className='text-lg font-semibold pb-4'>Informasi Perusahaan</h2>
+                <div className='pb-8'>
+                    <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
                     <p>{company.description}</p>
                 </div>
                 <div>

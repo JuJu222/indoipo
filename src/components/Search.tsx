@@ -4,9 +4,9 @@ import React, {useEffect, useState} from 'react';
 import prisma from "@/lib/prisma";
 import Image from "next/image";
 
-function Search(props) {
+function Search({companies}) {
     const [searchQuery, setSearchQuery] = useState('')
-    const [searchData, setSearchData] = useState([])
+    const [searchData, setSearchData] = useState(companies)
     const [showSearchData, setShowSearchData] = useState(false)
 
     useEffect(()=>{
@@ -21,8 +21,6 @@ function Search(props) {
                     });
             }
             getSearch()
-        } else {
-            setSearchData([])
         }
     },[searchQuery]);
 
