@@ -1,0 +1,19 @@
+services:
+  nextjs:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./indoipo-nextjs:/usr/src/app
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: indoipo_user
+      POSTGRES_DB: indoipo
+      POSTGRES_PASSWORD: "${DB_PASSWORD}"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:

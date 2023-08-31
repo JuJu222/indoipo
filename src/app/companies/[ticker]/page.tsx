@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma";
 import CompanyComponent from "@/app/companies/[ticker]/Company";
 import {notFound} from "next/navigation";
 
-export async function Company({params}) {
+export default async function Company({params}) {
     let company = await prisma.company.findFirst({
         where: {
             ticker: params.ticker,
@@ -44,5 +44,3 @@ export async function Company({params}) {
         </>
     );
 }
-
-export default Company;

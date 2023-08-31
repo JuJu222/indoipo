@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import TimelineCircle from "@/components/TimelineCircle";
 import Image from 'next/image'
 
-function CompanyComponent({company}) {
+function CompanyComponent({company} : {company:any}) {
     let cardMetrics = {}
 
     let interval = -1

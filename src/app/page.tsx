@@ -32,7 +32,7 @@ export default async function Home() {
             Analisa IPO dengan Mudah
           </h1>
           <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-            Indoipo membantu anda dalam menyediakan semua 
+            Indoipo membantu anda dalam menyediakan semua
           </p>
           <div
               className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
@@ -124,8 +124,8 @@ export default async function Home() {
             </div>
           </div>
           <div className="grid grid-cols-4 gap-6 my-8">
-            {companies.map((company) => (
-                <CompanyCard company={company}></CompanyCard>
+            {companies.map((company, index) => (
+                <CompanyCard key={index} company={company}></CompanyCard>
             ))}
           </div>
         </div>
