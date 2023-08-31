@@ -45,14 +45,15 @@ function CompanyCard({company}) {
         statusName = 'Penawaran Awal'
     }
 
-    const formatter = new Intl.NumberFormat('id-ID', {
-        style: 'currency',
-        currency: 'IDR',
-        maximumFractionDigits: 0
-    });
+    function toRp(num) {
+        let currencyFormatter = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR",
+            maximumFractionDigits: 0 })
+
+        return currencyFormatter.format(num)
+    }
 
     return (
-        <Link href={'/companies/' + company.ticker}
+        <Link href={'/ipo/' + company.ticker}
             className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-50 transition overflow-clip">
             <div className={"text-sm font-medium w-full py-1.5 text-white " + statusClass}>{statusName}</div>
 
