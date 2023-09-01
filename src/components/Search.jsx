@@ -1,6 +1,6 @@
 'use client'
 
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import prisma from "@/lib/prisma";
 import Image from "next/image";
 
@@ -8,6 +8,28 @@ function Search({companies}) {
     const [searchQuery, setSearchQuery] = useState('')
     const [searchData, setSearchData] = useState(companies)
     const [showSearchData, setShowSearchData] = useState(false)
+
+    function useOutsideAlerter(ref) {
+        useEffect(() => {
+            /**
+             * Alert if clicked on outside of element
+             */
+            function handleClickOutside(event) {
+                if (ref.current && !ref.current.contains(event.target)) {
+                    setShowSearchData(false)
+                }
+            }
+            // Bind the event listener
+            document.addEventListener("mousedown", handleClickOutside);
+            return () => {
+                // Unbind the event listener on clean up
+                document.removeEventListener("mousedown", handleClickOutside);
+            };
+        }, [ref]);
+    }
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef);
+
 
     useEffect(()=>{
         if (searchQuery !== '') {
@@ -25,7 +47,7 @@ function Search({companies}) {
     },[searchQuery]);
 
     return (
-        <div className="relative hidden md:block w-full">
+        <div className="relative hidden md:block w-full" ref={wrapperRef}>
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -44,13 +66,13 @@ function Search({companies}) {
                             <li key={index}>
                                 <a href={'/ipo/' + company.ticker} className='hover:bg-gray-50 px-4 py-2.5 border-b last:border-0 transition cursor-pointer flex gap-2 items-center'>
                                     <Image
-                                    src={"/img/companies/" + company.img}
-                                    width={0}
-                                    height={0}
-                                    sizes="100vw"
-                                    alt='aaa'
-                                    className='w-8 h-8 object-contain'
-                                />
+                                        src={"/img/companies/" + company.img}
+                                        width={0}
+                                        height={0}
+                                        sizes="100vw"
+                                        alt='aaa'
+                                        className='w-8 h-8 object-contain'
+                                    />
                                     <span className='font-semibold'>{company.ticker}</span>
                                     <span> - </span>
                                     <span>{company.name}</span>
