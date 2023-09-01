@@ -3,12 +3,8 @@ import Search from "@/components/Search";
 import prisma from "@/lib/prisma";
 
 async function Navbar(props) {
-    const companies = await prisma.company.findMany({
-        take: 8,
-        orderBy: {
-            id: 'asc'
-        },
-    });
+     const companies = await fetch('http://localhost:3000/api/search')
+        .then((res) => res.json())
 
     return (
         <nav

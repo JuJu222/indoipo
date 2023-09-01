@@ -6,23 +6,8 @@ import React from 'react';
 import TimelineCircle from "@/components/TimelineCircle";
 
 export default async function Company({params}) {
-    let company = await prisma.company.findFirst({
-        where: {
-            ticker: params.ticker,
-        },
-        include: {
-            subsector: {
-                include: {
-                    sector: true
-                }
-            },
-            financials: {
-                orderBy:  {
-                    date_end: 'desc'
-                }
-            }
-        }
-    });
+    let company = await fetch('http://localhost:3000/api/ipo/' + params.ticker)
+        .then((res) => res.json())
 
     if (!company) {
         notFound()

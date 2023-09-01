@@ -34,15 +34,16 @@ function Search({companies}) {
                 </svg>
                 <span className="sr-only">Search icon</span>
             </div>
-            <input type="text" id="search-navbar" onChange={(e) => setSearchQuery(e.target.value)} onFocus={(e) => setShowSearchData(true)} onBlur={(e) => setShowSearchData(false)}
+            <input type="text" id="search-navbar" onChange={(e) => setSearchQuery(e.target.value)} onFocus={(e) => setShowSearchData(true)}
                    className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-white focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                    placeholder="Cari IPO..."/>
             <div className='relative'>
                 <ul className='absolute bg-white shadow rounded-lg overflow-hidden w-full'>
                     {showSearchData && (
                         searchData.map((company, index) => (
-                            <li key={index} className='hover:bg-gray-50 px-4 py-2.5 border-b last:border-0 transition cursor-pointer flex gap-2 items-center'>
-                                <Image
+                            <li key={index}>
+                                <a href={'/ipo/' + company.ticker} className='hover:bg-gray-50 px-4 py-2.5 border-b last:border-0 transition cursor-pointer flex gap-2 items-center'>
+                                    <Image
                                     src={"/img/companies/" + company.img}
                                     width={0}
                                     height={0}
@@ -50,9 +51,10 @@ function Search({companies}) {
                                     alt='aaa'
                                     className='w-8 h-8 object-contain'
                                 />
-                                <span className='font-semibold'>{company.ticker}</span>
-                                <span> - </span>
-                                <span>{company.name}</span>
+                                    <span className='font-semibold'>{company.ticker}</span>
+                                    <span> - </span>
+                                    <span>{company.name}</span>
+                                </a>
                             </li>
                         ))
                     )}
