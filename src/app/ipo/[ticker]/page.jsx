@@ -22,7 +22,7 @@ export default async function Company({params}) {
     let cardMetrics = {}
 
     let interval = -1
-    for (const [index, financial] of company.financials.entries()){
+    for (const [index, financial] of company.financials.entries()) {
         financial['equity'] = financial.asset - financial.liability
         financial['bvps'] = financial.equity / company.outstanding_shares
         financial['eps'] = financial.net_income / company.outstanding_shares
@@ -106,8 +106,10 @@ export default async function Company({params}) {
     );
 
     function toRp(num) {
-        let currencyFormatter = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR",
-            maximumFractionDigits: 0 })
+        let currencyFormatter = new Intl.NumberFormat("id-ID", {
+            style: "currency", currency: "IDR",
+            maximumFractionDigits: 0
+        })
 
         return currencyFormatter.format(num)
     }
@@ -135,9 +137,11 @@ export default async function Company({params}) {
                                 className='w-full h-auto object-contain p-4'
                             />
                             {company.waran_numerator ? (
-                                <p className='bg-secondary text-white px-4 py-1.5 rounded w-full text-center'>Tidak Ada Waran</p>
+                                <p className='bg-secondary text-white px-4 py-1.5 rounded w-full text-center'>Tidak Ada
+                                    Waran</p>
                             ) : (
-                                <p className='bg-green-600 text-white px-4 py-1.5 rounded w-full text-center'>5 Waran untuk 1 Lembar Saham</p>
+                                <p className='bg-green-600 text-white px-4 py-1.5 rounded w-full text-center'>5 Waran
+                                    untuk 1 Lembar Saham</p>
                             )}
                         </div>
                         <div className='w-2/3'>
@@ -168,7 +172,8 @@ export default async function Company({params}) {
                                             </>
                                         )}
                                     </p>
-                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.per.interval}M - {new Date(cardMetrics.per.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.per.interval}M
+                                        - {new Date(cardMetrics.per.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                 </div>
                                 <div>
                                     <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">PBV</p>
@@ -185,23 +190,28 @@ export default async function Company({params}) {
                                             </>
                                         )}
                                     </p>
-                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.pbv.interval}M - {new Date(cardMetrics.pbv.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.pbv.interval}M
+                                        - {new Date(cardMetrics.pbv.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                 </div>
                                 <div>
                                     <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">DER</p>
                                     <p className="mb-2 text-xs leading-none">Rasio <i>Debt to Equity</i></p>
                                     <p className="text-2xl font-bold leading-none text-gray-900">{cardMetrics.der.value.toFixed(2)}</p>
-                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.der.interval}M - {new Date(cardMetrics.der.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.der.interval}M
+                                        - {new Date(cardMetrics.der.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                 </div>
                                 <div>
                                     <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">ROE</p>
                                     <p className="mb-2 text-xs leading-none"><i>Return on Equity</i></p>
                                     <p className="text-2xl font-bold leading-none text-gray-900">{(cardMetrics.roe.value * 100).toFixed(2)}%</p>
-                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.roe.interval}M - {new Date(cardMetrics.roe.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.roe.interval}M
+                                        - {new Date(cardMetrics.roe.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                 </div>
                             </div>
-                            <div className='grid grid-cols-3 rounded-md border bg-white shadow-sm w-full overflow-hidden'>
-                                <a href={company.prospectus_url} target='_blank' className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-white hover:bg-primary_hover focus:relative flex gap-2 items-center justify-center bg-primary transition">
+                            <div
+                                className='grid grid-cols-3 rounded-md border bg-white shadow-sm w-full overflow-hidden'>
+                                <a href={company.prospectus_url} target='_blank'
+                                   className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-white hover:bg-primary_hover focus:relative flex gap-2 items-center justify-center bg-primary transition">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                          className="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
                                         <path
@@ -298,12 +308,67 @@ export default async function Company({params}) {
                     <div className='pb-8'>
                         <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
                         <p>{company.description}</p>
+                        <div className='flex gap-20 w-full'>
+                            <table className='text-left mt-2 max-w-[50%]'>
+                                <tbody>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-1'>
+                                        Jumlah Saham Ditawarkan
+                                    </th>
+                                    <td className='pt-1 px-2'>:</td>
+                                    <td className='pt-1'>{company.offered_shares.toLocaleString('id-ID')} Lembar</td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-1'>
+                                        Sektor
+                                    </th>
+                                    <td className='pt-1 px-2'>:</td>
+                                    <td className='pt-1'>{company.subsector.sector.name}</td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-1'>
+                                        Subsektor
+                                    </th>
+                                    <td className='pt-1 px-2'>:</td>
+                                    <td className='pt-1'>{company.subsector.name}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <table className='text-left mt-2 max-w-[50%]'>
+                                <tbody>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-1'>
+                                        Total Saham Dicatatkan
+                                    </th>
+                                    <td className='pt-1 px-2'>:</td>
+                                    <td className='pt-1'>{company.outstanding_shares.toLocaleString('id-ID')} Lembar</td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-1'>
+                                        Alamat
+                                    </th>
+                                    <td className='pt-1 px-2'>:</td>
+                                    <td className='pt-1'>{company.address}</td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-1'>
+                                        Website
+                                    </th>
+                                    <td className='pt-1 px-2'>:</td>
+                                    <td className='pt-1'><a target='_blank' className='underline' href={company.website}>{company.website}</a></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div>
                         <h2 className='text-lg font-semibold pb-4'>Informasi Keuangan</h2>
                         {groupedFinancials.map((groupedFinancial, index) => (
-                            <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 block overflow-x-auto" key={index}>
-                                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <table
+                                className="w-full text-sm text-left text-gray-500 dark:text-gray-400 block overflow-x-auto"
+                                key={index}>
+                                <thead
+                                    className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 <tr>
                                     <th scope="col" className="px-6 py-3 whitespace-nowrap w-[1%]">
                                         {groupedFinancial[0].interval} Bulan
