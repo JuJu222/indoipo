@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import {NextResponse} from "next/server";
+import {notFound} from "next/navigation";
 
 export const dynamic = 'force-dynamic'
 
@@ -34,6 +35,10 @@ export async function GET(request) {
             },
         });
 
+        if (!companies) {
+            return notFound()
+        }
+
         return NextResponse.json(companies);
     } else {
         const companies = await prisma.company.findMany({
@@ -42,6 +47,10 @@ export async function GET(request) {
                 id: 'asc'
             },
         });
+
+        if (!companies) {
+            return notFound()
+        }
 
         return NextResponse.json(companies);
     }

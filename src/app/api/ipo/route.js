@@ -1,5 +1,6 @@
 import prisma from "@/lib/prisma";
 import {NextResponse} from "next/server";
+import {notFound} from "next/navigation";
 
 export const dynamic = 'force-dynamic'
 
@@ -12,6 +13,10 @@ export async function GET(request) {
             subsector: true,
         },
     });
+
+    if (!companies) {
+        return notFound()
+    }
 
     return NextResponse.json(companies);
 }
