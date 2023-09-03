@@ -104,6 +104,15 @@ export default async function Company({params}) {
             return result;
         }, {})
     );
+    groupedFinancials.sort((a, b) => {
+        // Assuming 'interval' is a string representing a date (e.g., '2023-09-01')
+        const dateA = new Date(a[0].interval);
+        const dateB = new Date(b[0].interval);
+
+        // Sort in descending order by comparing the dates
+        return dateB - dateA;
+    });
+
 
     function toRp(num) {
         let currencyFormatter = new Intl.NumberFormat("id-ID", {
