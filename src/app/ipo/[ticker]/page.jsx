@@ -7,11 +7,26 @@ import TimelineCircle from "@/components/TimelineCircle";
 import Financials from "./Financials";
 
 export default async function Company({params}) {
-    let company = await fetch('http://localhost:3000/api/ipo/' + params.ticker)
-        .then((res) => res.json())
+    let company = await prisma.company.findFirst({
+        where: {
+            ticker: params.ticker.toUpperCase(),
+        },
+        include: {
+            subsector: {
+                include: {
+                    sector: true
+                }
+            },
+            financials: {
+                orderBy:  {
+                    date_end: 'desc'
+                }
+            }
+        }
+    });
 
     if (!company) {
-        notFound()
+        return notFound()
     }
 
     company = JSON.parse(JSON.stringify(company, (key, value) =>

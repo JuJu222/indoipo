@@ -1,10 +1,19 @@
 import React from 'react';
 import Search from "@/components/Search";
 import prisma from "@/lib/prisma";
+import {notFound} from "next/navigation";
 
 async function Navbar(props) {
-     const companies = await fetch('http://localhost:3000/api/search')
-        .then((res) => res.json())
+    const companies = await prisma.company.findMany({
+        take: 8,
+        orderBy: {
+            id: 'asc'
+        },
+    });
+
+    if (!companies) {
+        return notFound()
+    }
 
     return (
         <nav

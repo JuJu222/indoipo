@@ -1,10 +1,21 @@
 import Image from 'next/image'
 import prisma from "@/lib/prisma";
 import CompanyCard from "@/components/CompanyCard";
+import {notFound} from "next/navigation";
 
 export default async function Home() {
-    const companies = await fetch('http://localhost:3000/api/ipo')
-        .then((res) => res.json())
+    const companies = await prisma.company.findMany({
+        orderBy: {
+            id: 'asc'
+        },
+        include: {
+            subsector: true,
+        },
+    });
+
+    if (!companies) {
+        return notFound()
+    }
 
     return (
         <section className="bg-white dark:bg-gray-900">
