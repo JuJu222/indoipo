@@ -2,6 +2,7 @@ import Image from 'next/image'
 import prisma from "@/lib/prisma";
 import CompanyCard from "@/components/CompanyCard";
 import {notFound} from "next/navigation";
+import Reveal from "../components/animations/Reveal";
 
 export default async function Home() {
     const companies = await prisma.company.findMany({
@@ -33,9 +34,11 @@ export default async function Home() {
                               clipRule="evenodd"></path>
                     </svg>
                 </a>
-                <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-                    Analisa IPO dengan Mudah
-                </h1>
+                <Reveal>
+                    <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+                        Analisa IPO dengan Mudah
+                    </h1>
+                </Reveal>
                 <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
                     Indoipo membantu anda dalam menyediakan semua
                 </p>
@@ -128,11 +131,13 @@ export default async function Home() {
                         </a>
                     </div>
                 </div>
-                <div className="grid grid-cols-4 gap-6 my-8">
-                    {companies.map((company, index) => (
-                        <CompanyCard key={index} company={company}></CompanyCard>
-                    ))}
-                </div>
+                <Reveal>
+                    <div className="grid grid-cols-4 gap-6 my-8">
+                        {companies.map((company, index) => (
+                            <CompanyCard key={index} company={company}></CompanyCard>
+                        ))}
+                    </div>
+                </Reveal>
             </div>
         </section>
     )
