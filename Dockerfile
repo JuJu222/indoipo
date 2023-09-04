@@ -28,12 +28,12 @@ COPY . .
 # ENV NEXT_TELEMETRY_DISABLED 1
 
 # RUN yarn build
-RUN yarn add jest-worker --save-dev
+# RUN yarn add jest-worker --save-dev
 
 # If using npm comment out above and use below instead
 RUN npx prisma generate
 RUN npx prisma migrate deploy
-RUN npx prisma migrate seed
+RUN npx prisma db seed
 RUN npm run build
 
 # Production image, copy all the files and run next
