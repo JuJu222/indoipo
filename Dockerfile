@@ -34,7 +34,7 @@ COPY . .
 RUN npx prisma generate
 RUN npx prisma migrate deploy
 RUN npx prisma db seed
-RUN npm run build
+RUN yarn build
 
 # Production image, copy all the files and run next
 FROM base AS runner
