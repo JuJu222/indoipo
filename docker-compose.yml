@@ -8,8 +8,6 @@ services:
       - "3000:3000"
     depends_on:
       - postgres
-    networks:
-      - app-network
 
   postgres:
     image: postgres:latest
@@ -21,12 +19,6 @@ services:
       - postgres-data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
-    networks:
-      - app-network
-    extra_hosts:
-      - "host.docker.internal:host-gateway"
 
-networks:
-  app-network:
 volumes:
   postgres-data:
