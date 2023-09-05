@@ -2,6 +2,7 @@ import React from 'react';
 import Search from "@/components/Search";
 import prisma from "@/lib/prisma";
 import {notFound} from "next/navigation";
+import NavbarItem from "@/components/NavbarItem";
 
 async function Navbar(props) {
     const companies = await prisma.company.findMany({
@@ -25,19 +26,20 @@ async function Navbar(props) {
                 <div className='flex items-center gap-10 w-full justify-between'>
                     <div className='flex gap-8'>
                         <a href="/"
-                           className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-primary md:p-0 whitespace-nowrap"
+                           className="block py-2 pl-3 pr-4 text-secondary bg-blue-700 rounded md:bg-transparent md:p-0 whitespace-nowrap"
                            aria-current="page">Beranda</a>
                     </div>
                     <div className='flex gap-8'>
                         <a href="/ipo"
-                           className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-primary md:p-0 whitespace-nowrap"
+                           className="block py-2 pl-3 pr-4 text-secondary bg-blue-700 rounded md:bg-transparent md:p-0 whitespace-nowrap"
                            aria-current="page">Semua IPO</a>
                     </div>
                     <div className='flex gap-8'>
                         <a href="/"
-                           className="block py-2 pl-3 pr-4 text-white bg-blue-700 rounded md:bg-transparent md:text-primary md:p-0 whitespace-nowrap"
+                           className="block py-2 pl-3 pr-4 text-secondary bg-blue-700 rounded md:bg-transparent md:p-0 whitespace-nowrap"
                            aria-current="page">Tentang Kami</a>
                     </div>
+                    <NavbarItem href='/'>aaaa</NavbarItem>
                     <Search companies={companies}></Search>
                 </div>
             </div>
