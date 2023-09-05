@@ -1,5 +1,6 @@
 services:
   nextjs-app:
+    restart: unless-stopped
     build:
       context: .
     ports:
@@ -10,6 +11,7 @@ services:
       - app-network
 
   postgres:
+    restart: unless-stopped
     image: postgres:latest
     environment:
       POSTGRES_DB: indoipo

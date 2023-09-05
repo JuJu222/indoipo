@@ -1,19 +1,11 @@
 'use client'
 
 import React, {useState} from 'react';
+import {toRp} from "../../../helpers/formatter";
 
 function Financials({groupedFinancials, company}) {
     const [interval, setInterval] = useState(12)
     let dateOption3 = {month: 'long', year: 'numeric'};
-
-    function toRp(num) {
-        let currencyFormatter = new Intl.NumberFormat("id-ID", {
-            style: "currency", currency: "IDR",
-            maximumFractionDigits: 0
-        })
-
-        return currencyFormatter.format(num)
-    }
 
     return (
         <>

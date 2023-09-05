@@ -5,6 +5,7 @@ import Image from "next/image";
 import React from 'react';
 import TimelineCircle from "@/components/TimelineCircle";
 import Financials from "./Financials";
+import {toRp} from "../../../helpers/formatter";
 
 export async function generateMetadata({ params }) {
 
@@ -136,16 +137,6 @@ export default async function Company({ params }) {
         return dateB - dateA;
     });
 
-
-    function toRp(num) {
-        let currencyFormatter = new Intl.NumberFormat("id-ID", {
-            style: "currency", currency: "IDR",
-            maximumFractionDigits: 0
-        })
-
-        return currencyFormatter.format(num)
-    }
-
     return (
         <>
             <section className="bg-white dark:bg-gray-900">
@@ -245,7 +236,8 @@ export default async function Company({ params }) {
                                     </svg>
                                     Prospektus
                                 </a>
-                                <a className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-primary_hover hover:bg-gray-50 focus:relative border-l border-r flex gap-2 items-center justify-center transition">
+                                <a href={company.prospectus_summary_url} target='_blank'
+                                    className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-primary_hover hover:bg-gray-50 focus:relative border-l border-r flex gap-2 items-center justify-center transition">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                          className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
                                         <path
@@ -255,7 +247,8 @@ export default async function Company({ params }) {
                                     </svg>
                                     Ringkasan Prospektus
                                 </a>
-                                <a className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-primary_hover hover:bg-gray-50 focus:relative flex gap-2 items-center justify-center transition">
+                                <a href={company.additional_information_url} target='_blank'
+                                   className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-primary_hover hover:bg-gray-50 focus:relative flex gap-2 items-center justify-center transition">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
                                          className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
                                         <path

@@ -24,22 +24,9 @@ async function Navbar(props) {
                     <img src="/indoipo.svg" className="h-12" alt="Indoipo Logo"/>
                 </a>
                 <div className='flex items-center gap-10 w-full justify-between'>
-                    <div className='flex gap-8'>
-                        <a href="/"
-                           className="block py-2 pl-3 pr-4 text-secondary bg-blue-700 rounded md:bg-transparent md:p-0 whitespace-nowrap"
-                           aria-current="page">Beranda</a>
-                    </div>
-                    <div className='flex gap-8'>
-                        <a href="/ipo"
-                           className="block py-2 pl-3 pr-4 text-secondary bg-blue-700 rounded md:bg-transparent md:p-0 whitespace-nowrap"
-                           aria-current="page">Semua IPO</a>
-                    </div>
-                    <div className='flex gap-8'>
-                        <a href="/"
-                           className="block py-2 pl-3 pr-4 text-secondary bg-blue-700 rounded md:bg-transparent md:p-0 whitespace-nowrap"
-                           aria-current="page">Tentang Kami</a>
-                    </div>
-                    <NavbarItem href='/'>aaaa</NavbarItem>
+                    <NavbarItem href='/'>Beranda</NavbarItem>
+                    <NavbarItem href='/ipo'>Semua IPO</NavbarItem>
+                    <NavbarItem href='/'>Tentang Kami</NavbarItem>
                     <Search companies={companies}></Search>
                 </div>
             </div>

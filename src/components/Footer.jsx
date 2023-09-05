@@ -12,13 +12,13 @@ function Footer(props) {
                     interactive elements built for better web.</p>
                 <ul className="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
                     <li>
-                        <a href="#" className="mr-4 hover:underline md:mr-6 ">Beranda</a>
+                        <a href="/" className="mr-4 hover:underline md:mr-6 ">Beranda</a>
                     </li>
                     <li>
-                        <a href="#" className="mr-4 hover:underline md:mr-6">Semua IPO</a>
+                        <a href="/ipo" className="mr-4 hover:underline md:mr-6">Semua IPO</a>
                     </li>
                     <li>
-                        <a href="#" className="mr-4 hover:underline md:mr-6 ">Penafian</a>
+                        <a href="/penafian" className="mr-4 hover:underline md:mr-6 ">Penafian</a>
                     </li>
                     <li>
                         <a href="#" className="mr-4 hover:underline md:mr-6 ">Tentang Kami</a>

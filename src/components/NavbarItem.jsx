@@ -1,10 +1,15 @@
+'use client'
+
 import React from 'react';
+import {usePathname} from "next/navigation";
 
 function NavbarItem({children, href}) {
+    const pathname = usePathname()
+
     return (
         <div className='flex gap-8'>
             <a href={href}
-               className="block py-2 pl-3 pr-4 text-secondary bg-blue-700 rounded md:bg-transparent md:p-0 whitespace-nowrap"
+               className={"block py-2 pl-3 pr-4 bg-blue-700 rounded md:bg-transparent md:p-0 whitespace-nowrap font-medium hover:text-primary_hover transition" + (pathname == href ? ' text-primary' : ' text-secondary')}
                aria-current="page">{children}</a>
         </div>
     );

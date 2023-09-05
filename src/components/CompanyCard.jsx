@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from "next/link";
+import {toRp} from "../helpers/formatter";
 
 function CompanyCard({company}) {
     let statusClass = ''
@@ -45,13 +46,6 @@ function CompanyCard({company}) {
         statusName = 'Penawaran Awal'
     }
 
-    function toRp(num) {
-        let currencyFormatter = new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR",
-            maximumFractionDigits: 0 })
-
-        return currencyFormatter.format(num)
-    }
-
     return (
         <Link href={'/ipo/' + company.ticker}
             className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-50 transition overflow-clip">
@@ -68,12 +62,12 @@ function CompanyCard({company}) {
                     {company.final_price ? (
                         <div>
                             <h5 className="font-bold">Harga Final</h5>
-                            <p>{formatter.format(company.final_price)}</p>
+                            <p>{toRp(company.final_price)}</p>
                         </div>
                     ) : (
                         <div>
                             <h5 className="font-bold">Harga Penawaran</h5>
-                            <p>Rp224 - Rp250</p>
+                            <p>{toRp(company.low_price)} - {toRp(company.high_price)}</p>
                         </div>
                     )}
                     <div>
