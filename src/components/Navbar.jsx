@@ -18,7 +18,7 @@ async function Navbar(props) {
 
     return (
         <nav
-            className="bg-white dark:bg-gray-900 sticky w-full z-20 top-0 left-0">
+            className="bg-white sticky w-full z-20 top-0 left-0">
             <div className="max-w-screen-xl flex  items-center mx-auto py-3 px-4">
                 <a href="/" className="flex items-center mr-10">
                     <img src="/indoipo.svg" className="h-12" alt="Indoipo Logo"/>
