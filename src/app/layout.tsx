@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={quicksand.className}>
+      <body className={quicksand.className + ' bg-white'}>
         <Navbar></Navbar>
           <main>
             {children}
