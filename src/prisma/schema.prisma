@@ -19,8 +19,8 @@ model Company {
   prospectus_url             String
   prospectus_summary_url     String
   additional_information_url String
-  low_price                  Float
-  high_price                 Float
+  low_price                  Float?
+  high_price                 Float?
   final_price                Float?
   offered_shares             Float
   outstanding_shares         Float

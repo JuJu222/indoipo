@@ -23,10 +23,10 @@ async function Navbar(props) {
                 <a href="/" className="flex items-center mr-10">
                     <img src="/indoipo.svg" className="h-12" alt="Indoipo Logo"/>
                 </a>
-                <div className='flex items-center gap-10 w-full justify-between'>
+                <div className='flex items-center gap-5 w-full justify-between'>
                     <NavbarItem href='/'>Beranda</NavbarItem>
                     <NavbarItem href='/ipo'>Semua IPO</NavbarItem>
-                    <NavbarItem href='/'>Tentang Kami</NavbarItem>
+                    <NavbarItem href='/tentang-kami'>Tentang Kami</NavbarItem>
                     <Search companies={companies}></Search>
                 </div>
             </div>

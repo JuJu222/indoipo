@@ -180,7 +180,7 @@ export default async function Company({ params }) {
                                     <p className="mb-2 text-xs leading-none">Rasio <i>Price to Earnings</i></p>
                                     <p className="text-2xl font-bold leading-none text-gray-900">
                                         {company.final_price ? (
-                                            cardMetrics.per.value
+                                            <span>{cardMetrics.per.value.toFixed(2)}</span>
                                         ) : (
                                             <>
                                                 <span>{cardMetrics.per.low_value.toFixed(2)}</span>
@@ -197,7 +197,7 @@ export default async function Company({ params }) {
                                     <p className="mb-2 text-xs leading-none">Nilai <i>Price to Book</i></p>
                                     <p className="text-2xl font-bold leading-none text-gray-900">
                                         {company.final_price ? (
-                                            cardMetrics.pbv.value
+                                            <span>{cardMetrics.pbv.value.toFixed(2)}</span>
                                         ) : (
                                             <>
                                                 <span>{cardMetrics.pbv.low_value.toFixed(2)}</span>

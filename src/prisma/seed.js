@@ -88,8 +88,7 @@ async function seedCompanies() {
             prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=246&type=',
             prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=246&type=summary',
             additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=246',
-            low_price: 270,
-            high_price: 288,
+            final_price: 270,
             offered_shares: 8335000000,
             outstanding_shares: 83345000000,
             date_awal_start: new Date("2023-07-16"),
@@ -219,6 +218,78 @@ async function seedFinancials() {
             is_audited: false,
             date_end: new Date("2023-03-31"),
             company_id: 1,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 6 },
+        update: {},
+        create: {
+            net_income: 460384000000,
+            liability: 4106897000000,
+            asset: 6759546000000,
+            interval: 12,
+            date_end: new Date("2022-12-31"),
+            company_id: 2,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 7 },
+        update: {},
+        create: {
+            net_income: -351315000000,
+            liability: 2461178000000,
+            asset: 6417741000000,
+            interval: 1,
+            date_end: new Date("2021-12-31"),
+            company_id: 2,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 8 },
+        update: {},
+        create: {
+            net_income: 460384000000,
+            liability: 4106897000000,
+            asset: 6759546000000,
+            interval: 12,
+            date_end: new Date("2022-12-31"),
+            company_id: 3,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 9 },
+        update: {},
+        create: {
+            net_income: -351315000000,
+            liability: 2461178000000,
+            asset: 6417741000000,
+            interval: 1,
+            date_end: new Date("2021-12-31"),
+            company_id: 3,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 10 },
+        update: {},
+        create: {
+            net_income: 460384000000,
+            liability: 4106897000000,
+            asset: 6759546000000,
+            interval: 12,
+            date_end: new Date("2022-12-31"),
+            company_id: 4,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 11 },
+        update: {},
+        create: {
+            net_income: -351315000000,
+            liability: 2461178000000,
+            asset: 6417741000000,
+            interval: 1,
+            date_end: new Date("2021-12-31"),
+            company_id: 4,
         },
     })
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from "next/link";
 import {toRp} from "../helpers/formatter";
+import Image from "next/image";
 
 function CompanyCard({company}) {
     let statusClass = ''
@@ -46,13 +47,50 @@ function CompanyCard({company}) {
         statusName = 'Penawaran Awal'
     }
 
+    let metrics = {}
+
+    let interval = -1
+    for (const [index, financial] of company.financials.entries()) {
+        if (index == 0) {
+            const equity = financial.asset - financial.liability
+            const bvps = equity / company.outstanding_shares
+            if (company.final_price) {
+                metrics['pbv'] = company.final_price / bvps
+            } else {
+                metrics['low_pbv'] = company.low_price / bvps
+                metrics['high_pbv'] = company.high_price / bvps
+            }
+        }
+
+        if (interval != financial.interval) {
+            interval = financial.interval
+
+            if (interval == 12) {
+                const eps = financial.net_income / company.outstanding_shares
+                if (company.final_price) {
+                    metrics['per'] = company.final_price / eps
+                } else {
+                    metrics['low_per'] = company.low_price / eps
+                    metrics['high_per'] = company.high_price / eps
+                }
+            }
+        }
+    }
+
     return (
         <Link href={'/ipo/' + company.ticker}
             className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-50 transition overflow-clip">
             <div className={"text-sm font-medium w-full py-1.5 text-white " + statusClass}>{statusName}</div>
 
             <div className='p-5'>
-                <img className="rounded-t-lg h-20 mx-auto object-contain" src={"/img/companies/" + company.img} alt="product image"/>
+                <Image
+                    src={"/img/companies/" + company.img}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    alt='aaa'
+                    className='h-20 w-auto mx-auto object-contain'
+                />
                 <div className="pt-4 flex flex-col gap-4">
                     <div>
                         <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{company.ticker}</h5>
@@ -62,21 +100,39 @@ function CompanyCard({company}) {
                     {company.final_price ? (
                         <div>
                             <h5 className="font-bold">Harga Final</h5>
-                            <p>{toRp(company.final_price)}</p>
+                            <span className='text-lg'>{toRp(company.final_price)}</span>
                         </div>
                     ) : (
                         <div>
                             <h5 className="font-bold">Harga Penawaran</h5>
-                            <p>{toRp(company.low_price)} - {toRp(company.high_price)}</p>
+                            <span className='text-lg'>{toRp(company.low_price)}</span>
+                            <span className='text-lg font-thin px-1'>-</span>
+                            <span className='text-lg'>{toRp(company.high_price)}</span>
                         </div>
                     )}
                     <div>
                         <h5 className="font-bold">PER</h5>
-                        <p>Rp224 - Rp250</p>
+                        {company.final_price ? (
+                            <span className='text-lg'>{metrics.per.toFixed(2)}</span>
+                        ) : (
+                            <>
+                                <span className='text-lg'>{metrics.low_per.toFixed(2)}</span>
+                                <span className='text-lg font-thin px-1'>-</span>
+                                <span className='text-lg'>{metrics.high_per.toFixed(2)}</span>
+                            </>
+                        )}
                     </div>
                     <div>
                         <h5 className="font-bold">PBV</h5>
-                        <p>Rp224 - Rp250</p>
+                        {company.final_price ? (
+                            <span className='text-lg'>{metrics.pbv.toFixed(2)}</span>
+                        ) : (
+                            <>
+                                <span className='text-lg'>{metrics.low_pbv.toFixed(2)}</span>
+                                <span className='font-thin px-1'>-</span>
+                                <span className='text-lg'>{metrics.high_pbv.toFixed(2)}</span>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

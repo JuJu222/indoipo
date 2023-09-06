@@ -10,8 +10,17 @@ export default async function Home() {
             id: 'asc'
         },
         include: {
-            subsector: true,
-        },
+            subsector: {
+                include: {
+                    sector: true
+                }
+            },
+            financials: {
+                orderBy:  {
+                    date_end: 'desc'
+                }
+            }
+        }
     });
 
     if (!companies) {
@@ -44,9 +53,9 @@ export default async function Home() {
                 </p>
                 <div
                     className="flex flex-col mb-8 lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-                    <a href="#"
+                    <a href="/ipo"
                        className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-white rounded-lg bg-primary hover:bg-primary_hover transition focus:ring-4 focus:ring-green-200 dark:focus:ring-green-200">
-                        Learn more
+                        Lihat semua IPO
                         <svg className="ml-2 -mr-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
                              xmlns="http://www.w3.org/2000/svg">
                             <path fillRule="evenodd"
@@ -54,15 +63,15 @@ export default async function Home() {
                                   clipRule="evenodd"></path>
                         </svg>
                     </a>
-                    <a href="#"
-                       className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
-                        <svg className="mr-2 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                             xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>
-                        </svg>
-                        Watch video
-                    </a>
+                    {/*<a href="#"*/}
+                    {/*   className="inline-flex justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">*/}
+                    {/*    <svg className="mr-2 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"*/}
+                    {/*         xmlns="http://www.w3.org/2000/svg">*/}
+                    {/*        <path*/}
+                    {/*            d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"></path>*/}
+                    {/*    </svg>*/}
+                    {/*    Watch video*/}
+                    {/*</a>*/}
                 </div>
                 <span className="font-semibold text-xl text-gray-400 uppercase">IPO TERBARU</span>
                 <Reveal>
