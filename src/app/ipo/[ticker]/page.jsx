@@ -14,6 +14,7 @@ export async function generateMetadata({ params }) {
         title: params.ticker + ' - Indoipo',
     }
 }
+export const revalidate = 60
 
 export default async function Company({ params }) {
     let company = await prisma.company.findFirst({

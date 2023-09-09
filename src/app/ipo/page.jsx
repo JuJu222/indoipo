@@ -4,6 +4,8 @@ import {notFound} from "next/navigation";
 import Reveal from "../../components/animations/Reveal";
 import CompanyCard from "../../components/CompanyCard";
 
+export const revalidate = 60
+
 async function Companies(props) {
     const companies = await prisma.company.findMany({
         orderBy: {
