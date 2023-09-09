@@ -1,4 +1,5 @@
 import React from 'react';
+import prisma from "@/lib/prisma";
 import {notFound} from "next/navigation";
 import Reveal from "../../components/animations/Reveal";
 import CompanyCard from "../../components/CompanyCard";
