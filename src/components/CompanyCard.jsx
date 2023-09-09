@@ -94,7 +94,7 @@ function CompanyCard({company}) {
                 <div className="pt-4 flex flex-col gap-4">
                     <div>
                         <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{company.ticker}</h5>
-                        <p className='text-black pb-1'>PT Multi Makmur Lemindo Tbk</p>
+                        <p className='text-black pb-1'>{company.name}</p>
                         <p className='text-black pb-2 text-sm'>{company.subsector.name}</p>
                     </div>
                     {company.final_price ? (
