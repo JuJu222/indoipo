@@ -4,6 +4,8 @@ import prisma from "@/lib/prisma";
 import {notFound} from "next/navigation";
 import NavbarItem from "@/components/NavbarItem";
 
+export const revalidate = 60
+
 async function Navbar(props) {
     const companies = await prisma.company.findMany({
         take: 8,
