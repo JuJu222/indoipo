@@ -28,7 +28,7 @@ async function Navbar(props) {
                 <div className='flex items-center gap-5 w-full justify-between'>
                     <NavbarItem href='/'>Beranda</NavbarItem>
                     <NavbarItem href='/ipo'>Semua IPO</NavbarItem>
-                    <NavbarItem href='/tentang-kami'>Tentang Kami</NavbarItem>
+                    {/*<NavbarItem href='/tentang-kami'>Tentang Kami</NavbarItem>*/}
                     <Search companies={companies}></Search>
                 </div>
             </div>
