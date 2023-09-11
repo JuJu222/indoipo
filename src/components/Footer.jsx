@@ -18,7 +18,10 @@ function Footer(props) {
                         <a href="/ipo" className="mr-4 hover:underline md:mr-6">Semua IPO</a>
                     </li>
                     <li>
-                        <a href="/penafian" className="mr-4 hover:underline md:mr-6 ">Penafian</a>
+                        <a href="/syarat-ketentuan" className="mr-4 hover:underline md:mr-6 ">Syarat & Ketentuan</a>
+                    </li>
+                    <li>
+                        <a href="/kebijakan-privasi" className="mr-4 hover:underline md:mr-6 ">Kebijakan Privasi</a>
                     </li>
                     <li>
                         <a href="#" className="mr-4 hover:underline md:mr-6 ">Tentang Kami</a>
