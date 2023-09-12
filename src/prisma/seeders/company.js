@@ -14,6 +14,7 @@ async function seedCompanies(prisma) {
             additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=246',
             low_price: 270,
             high_price: 288,
+            waran_numerator: 2,
             offered_shares: 8335000000,
             outstanding_shares: 83345000000,
             date_awal_start: new Date("2023-07-16"),

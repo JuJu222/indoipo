@@ -79,7 +79,7 @@ function CompanyCard({company}) {
 
     return (
         <Link href={'/ipo/' + company.ticker}
-            className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-50 transition overflow-clip">
+            className="w-full bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-50 transition overflow-clip">
             <div className={"text-sm font-medium w-full py-1.5 text-white " + statusClass}>{statusName}</div>
 
             <div className='p-5'>
@@ -92,10 +92,13 @@ function CompanyCard({company}) {
                     className='h-20 w-auto mx-auto object-contain'
                 />
                 <div className="pt-4 flex flex-col gap-4">
-                    <div>
+                    <div className='flex flex-col items-center'>
                         <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{company.ticker}</h5>
                         <p className='text-black pb-1'>{company.name}</p>
                         <p className='text-black pb-2 text-sm'>{company.subsector.name}</p>
+                        {company.waran_numerator && (
+                            <p className='text-white font-semibold px-3 py-1 rounded-full text-sm bg-primary w-fit text-sm'>Bonus Waran 1:5</p>
+                        )}
                     </div>
                     {company.final_price ? (
                         <div>

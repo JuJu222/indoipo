@@ -8,8 +8,7 @@ function Footer(props) {
                    className="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
                     <img src="/indoipo.svg" className="h-10" alt="Logo Indoipo" />
                 </a>
-                <p className="my-6 text-gray-500 dark:text-gray-400">Open-source library of over 400+ web components and
-                    interactive elements built for better web.</p>
+                <p className="my-6 text-gray-500 dark:text-gray-400">Pusat analisa IPO di Indonesia dengan perusahaan-perusahaan terbaru.</p>
                 <ul className="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">
                     <li>
                         <a href="/syarat-ketentuan" className="mr-4 hover:underline md:mr-6 ">Syarat & Ketentuan</a>
