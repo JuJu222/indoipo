@@ -32,8 +32,9 @@ async function Companies(props) {
     return (
         <section className="bg-white dark:bg-gray-900">
             <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
+                <h1 className='text-center text-4xl font-bold'>Semua IPO</h1>
                 <Reveal>
-                    <div className="grid grid-cols-4 gap-6 my-8">
+                    <div className="grid grid-cols-4 gap-6 mt-8">
                         {companies.map((company, index) => (
                             <CompanyCard key={index} company={company}></CompanyCard>
                         ))}
