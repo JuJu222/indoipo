@@ -94,7 +94,7 @@ function CompanyCard({company}) {
                 <div className="pt-4 flex flex-col gap-4">
                     <div className='flex flex-col items-center'>
                         <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{company.ticker}</h5>
-                        <p className='text-black pb-1'>{company.name}</p>
+                        <p className='text-black font-semibold pb-1 text-sm'>{company.name}</p>
                         <p className='text-black pb-2 text-sm'>{company.subsector.name}</p>
                         {company.waran_numerator && (
                             <p className='text-white font-semibold px-3 py-1 rounded-full text-sm bg-primary w-fit text-sm'>Bonus Waran 1:5</p>

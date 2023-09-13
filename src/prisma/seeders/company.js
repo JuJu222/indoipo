@@ -31,7 +31,7 @@ async function seedCompanies(prisma) {
         where: { id: 2 },
         update: {},
         create: {
-            name: 'PT Nusantara Sejahtera Raya Tbk',
+            name: 'PT Nusantara Raya Tbk',
             description: 'Perseroan dan Entitas Anak (selanjutnya disebut "Cinema XXI") berkedudukan di Jakarta Pusat, didirikan pada tahun 1988 berdasarkan peraturan perundang-undangan yang berlaku di Negara Republik Indonesia, dengan nama PT Subentra Nusantara berdasarkan Akta Pendirian No. 67 tanggal 7 Juni 1988 yang ditandai dengan pembukaan Studio 21, multipleks modern pertama di Indonesia. Perseroan merupakan perusahaan yang fokus dalam pemutaran film dan penyediaan F&B untuk memberikan pengalaman hiburan yang berkualitas tinggi.',
             ticker: 'CNMB',
             img: 'CNMA.png',

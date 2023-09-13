@@ -142,8 +142,8 @@ export default async function Company({ params }) {
         <>
             <section className="bg-white dark:bg-gray-900">
                 <div className="py-8 px-4 mx-auto max-w-screen-xl lg:px-12">
-                    <div className='flex space-x-10'>
-                        <div className='w-1/3 flex flex-col items-center justify-center'>
+                    <div className='flex space-x-10 flex-col md:flex-row'>
+                        <div className='w-full md:w-1/3 flex flex-col items-center justify-center'>
                             {/*<Image src={"/img/companies/" + company.img} className='m-auto object-contain p-4'*/}
                             {/*       alt={'Logo ' + company.ticker} fill={true} />*/}
                             <Image
@@ -155,19 +155,18 @@ export default async function Company({ params }) {
                                 className='w-full h-auto object-contain p-4'
                             />
                             {company.waran_numerator ? (
-                                <p className='bg-secondary text-white px-4 py-1.5 rounded w-full text-center'>Tidak Ada
-                                    Waran</p>
-                            ) : (
                                 <p className='bg-green-600 text-white px-4 py-1.5 rounded w-full text-center'>5 Waran
                                     untuk 1 Lembar Saham</p>
+                            ) : (
+                                ''
                             )}
                         </div>
-                        <div className='w-2/3'>
+                        <div className='w-full md:w-2/3'>
                             <h3 className="text-md mb-1 leading-none text-gray-900 dark:text-white">{company.ticker}</h3>
                             <h1 className="text-xl mb-1 font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">{company.name}</h1>
                             <h4 className="text-sm mb-2 leading-none text-gray-900 dark:text-white">{company.subsector.name} - {company.subsector.sector.name}</h4>
                             {company.final_price ? (
-                                <h3 className="mb-4 text-xl font-bold leading-none text-gray-900 md:text-4xl dark:text-white">{company.low_price}</h3>
+                                <h3 className="mb-4 text-xl font-bold leading-none text-gray-900 md:text-4xl dark:text-white">{toRp(company.final_price)}</h3>
                             ) : (
                                 <h3 className="mb-4 text-xl font-bold leading-none text-gray-900 md:text-4xl dark:text-white">
                                     <span>{toRp(company.low_price)}</span>
@@ -248,17 +247,31 @@ export default async function Company({ params }) {
                                     </svg>
                                     Ringkasan Prospektus
                                 </a>
-                                <a href={company.additional_information_url} target='_blank'
-                                   className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-primary_hover hover:bg-gray-50 focus:relative flex gap-2 items-center justify-center transition">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                         className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
-                                        <path
-                                            d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
-                                        <path
-                                            d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
-                                    </svg>
-                                    Informasi Tambahan
-                                </a>
+                                {company.additional_information_url ? (
+                                    <a href={company.additional_information_url} target='_blank'
+                                       className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-primary_hover hover:bg-gray-50 focus:relative flex gap-2 items-center justify-center transition">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                             className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
+                                            <path
+                                                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                                        </svg>
+                                        Informasi Tambahan
+                                    </a>
+                                ) : (
+                                    <div
+                                       className="inline-block px-4 py-2 text-sm font-medium text-gray-300 bg-gray-50 focus:relative flex gap-2 items-center justify-center transition">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                             className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+                                            <path
+                                                d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
+                                            <path
+                                                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                                        </svg>
+                                        Informasi Tambahan
+                                    </div>
+                                )}
                             </div>
                         </div>
                     </div>
