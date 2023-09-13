@@ -97,7 +97,7 @@ function CompanyCard({company}) {
                         <p className='text-black font-semibold pb-1 text-sm'>{company.name}</p>
                         <p className='text-black pb-2 text-sm'>{company.subsector.name}</p>
                         {company.waran_numerator && (
-                            <p className='text-white font-semibold px-3 py-1 rounded-full text-sm bg-primary w-fit text-sm'>Bonus Waran 1:5</p>
+                            <p className='text-white font-semibold px-3 py-1 rounded-full text-sm bg-primary w-fit text-sm'>Bonus Waran - {company.waran_numerator} : {company.waran_denominator}</p>
                         )}
                     </div>
                     {company.final_price ? (

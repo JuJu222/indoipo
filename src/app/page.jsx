@@ -23,7 +23,8 @@ export default async function Home() {
                     date_end: 'desc'
                 }
             }
-        }
+        },
+        take: 4,
     });
 
     if (!companies) {
@@ -59,7 +60,7 @@ export default async function Home() {
                            <HeroIcon delay={2}>
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     className="w-20 h-20" viewBox="0 0 16 16">
-                               <path fill-rule="evenodd"
+                               <path fillRule="evenodd"
                                      d="M0 0h1v15h15v1H0V0Zm10 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V4.9l-3.613 4.417a.5.5 0 0 1-.74.037L7.06 6.767l-3.656 5.027a.5.5 0 0 1-.808-.588l4-5.5a.5.5 0 0 1 .758-.06l2.609 2.61L13.445 4H10.5a.5.5 0 0 1-.5-.5Z"/>
                            </svg>
                            </HeroIcon>
@@ -104,7 +105,7 @@ export default async function Home() {
                                      clipRule="evenodd"></path>
                            </svg>
                        </a>
-                       <a href="#"
+                       <a href="/tentang-kami"
                           className="inline-flex bg-white justify-center items-center py-3 px-5 text-base font-medium text-center text-gray-900 rounded-lg border border-gray-300 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:text-white dark:border-gray-700 dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                            {/*<svg className="mr-2 -ml-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"*/}
                            {/*     xmlns="http://www.w3.org/2000/svg">*/}
