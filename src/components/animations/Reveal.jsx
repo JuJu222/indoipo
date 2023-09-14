@@ -9,12 +9,12 @@ function Reveal({ children, direction }) {
             <>
                 <motion.div
                     variants={{
-                        hidden: { opacity: 0, y: 75 },
+                        hidden: { opacity: 0, y: 0 },
                         visible: { opacity: 1, y: 0 },
                     }}
                     initial="hidden"
                     animate="visible"
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 1 }}
                 >
                     {children}
                 </motion.div>
@@ -25,12 +25,12 @@ function Reveal({ children, direction }) {
             <>
                 <motion.div
                     variants={{
-                        hidden: { opacity: 0, y: 75 },
+                        hidden: { opacity: 0, y: 0 },
                         visible: { opacity: 1, y: 0 },
                     }}
                     initial="hidden"
                     animate="visible"
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 1 }}
                 >
                     {children}
                 </motion.div>
@@ -41,12 +41,12 @@ function Reveal({ children, direction }) {
             <>
                 <motion.div
                     variants={{
-                        hidden: { opacity: 0, y: 75 },
+                        hidden: { opacity: 0, y: 0 },
                         visible: { opacity: 1, y: 0 },
                     }}
                     initial="hidden"
                     animate="visible"
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 1 }}
                 >
                     {children}
                 </motion.div>
@@ -57,12 +57,12 @@ function Reveal({ children, direction }) {
             <>
                 <motion.div
                     variants={{
-                        hidden: { opacity: 0, y: 75 },
+                        hidden: { opacity: 0, y: 0 },
                         visible: { opacity: 1, y: 0 },
                     }}
                     initial="hidden"
                     animate="visible"
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 1 }}
                 >
                     {children}
                 </motion.div>
@@ -73,12 +73,12 @@ function Reveal({ children, direction }) {
             <>
                 <motion.div
                     variants={{
-                        hidden: { opacity: 0, y: 75 },
+                        hidden: { opacity: 0, y: 0 },
                         visible: { opacity: 1, y: 0 },
                     }}
                     initial="hidden"
                     animate="visible"
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 1 }}
                 >
                     {children}
                 </motion.div>

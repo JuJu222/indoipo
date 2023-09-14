@@ -37,7 +37,7 @@ export default async function Home() {
                <div className='py-8 pb-20'>
                    <div className='flex w-full justify-between h-0'>
                        <div className='-z-10 text-primary opacity-40'>
-                           <HeroIcon delay={1}>
+                           <HeroIcon delay={0}>
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     className="w-20 h-20" viewBox="0 0 16 16">
                                    <path
@@ -48,7 +48,7 @@ export default async function Home() {
                            </HeroIcon>
                        </div>
                        <div className='-z-10 text-primary opacity-40'>
-                           <HeroIcon delay={3}>
+                           <HeroIcon delay={2}>
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     className="w-20 h-20" viewBox="0 0 16 16">
                                <path
@@ -57,7 +57,7 @@ export default async function Home() {
                            </HeroIcon>
                        </div>
                        <div className='-z-10 text-primary opacity-40'>
-                           <HeroIcon delay={2}>
+                           <HeroIcon delay={1}>
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     className="w-20 h-20" viewBox="0 0 16 16">
                                <path fillRule="evenodd"
@@ -66,7 +66,7 @@ export default async function Home() {
                            </HeroIcon>
                        </div>
                        <div className='-z-10 text-primary opacity-40'>
-                           <HeroIcon delay={4}>
+                           <HeroIcon delay={3}>
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     className="w-20 h-20" viewBox="0 0 16 16">
                                    <path d="M1 3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1H1zm7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4z"/>
@@ -76,7 +76,7 @@ export default async function Home() {
                            </HeroIcon>
                        </div>
                        <div className='-z-10 text-primary opacity-40'>
-                           <HeroIcon delay={5}>
+                           <HeroIcon delay={4}>
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     className="w-20 h-20" viewBox="0 0 16 16">
                                    <path
