@@ -109,30 +109,6 @@ async function seedFinancials(prisma) {
             company_id: 3,
         },
     })
-    await prisma.financial.upsert({
-        where: { id: 10 },
-        update: {},
-        create: {
-            net_income: 460384000000,
-            liability: 4106897000000,
-            asset: 6759546000000,
-            interval: 12,
-            date_end: new Date("2022-12-31"),
-            company_id: 4,
-        },
-    })
-    await prisma.financial.upsert({
-        where: { id: 11 },
-        update: {},
-        create: {
-            net_income: -351315000000,
-            liability: 2461178000000,
-            asset: 6417741000000,
-            interval: 1,
-            date_end: new Date("2021-12-31"),
-            company_id: 4,
-        },
-    })
 }
 
 module.exports = { seedFinancials }

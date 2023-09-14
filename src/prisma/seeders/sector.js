@@ -17,7 +17,21 @@ async function seedSectors(prisma) {
         where: {id: 3},
         update: {},
         create: {
-            name: 'bbb',
+            name: 'Technology',
+        },
+    })
+    await prisma.sector.upsert({
+        where: {id: 4},
+        update: {},
+        create: {
+            name: 'Properties & Real Estate',
+        },
+    })
+    await prisma.sector.upsert({
+        where: {id: 5},
+        update: {},
+        create: {
+            name: 'Consumer Non-Cyclicals',
         },
     })
 }

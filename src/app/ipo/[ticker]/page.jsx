@@ -362,59 +362,59 @@ export default async function Company({ params }) {
                         <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
                         <div className='flex gap-20 w-full'>
                             <table className='text-left mt-2 max-w-[50%] h-fit'>
-                                <tbody>
+                                <tbody className='align-top'>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-1'>
+                                    <th className='font-medium pr-2 pt-2'>
                                         Jumlah Saham Ditawarkan
                                     </th>
-                                    <td className='pt-1 px-2'>:</td>
-                                    <td className='pt-1'>{company.offered_shares.toLocaleString('id-ID')} Lembar</td>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.offered_shares.toLocaleString('id-ID')} Lembar</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-1'>
+                                    <th className='font-medium pr-2 pt-2'>
                                         Sektor
                                     </th>
-                                    <td className='pt-1 px-2'>:</td>
-                                    <td className='pt-1'>{company.subsector.sector.name}</td>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.subsector.sector.name}</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-1'>
+                                    <th className='font-medium pr-2 pt-2'>
                                         Subsektor
                                     </th>
-                                    <td className='pt-1 px-2'>:</td>
-                                    <td className='pt-1'>{company.subsector.name}</td>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.subsector.name}</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-1'>
+                                    <th className='font-medium pr-2 pt-2'>
                                         Bidang Usaha
                                     </th>
-                                    <td className='pt-1 px-2'>:</td>
-                                    <td className='pt-1'>{company.bidang_usaha}</td>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.bidang_usaha}</td>
                                 </tr>
                                 </tbody>
                             </table>
                             <table className='text-left mt-2 max-w-[50%] h-fit'>
-                                <tbody>
+                                <tbody className='align-top'>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-1'>
+                                    <th className='font-medium pr-2 pt-2'>
                                         Total Saham Dicatatkan
                                     </th>
-                                    <td className='pt-1 px-2'>:</td>
-                                    <td className='pt-1'>{company.outstanding_shares.toLocaleString('id-ID')} Lembar</td>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.outstanding_shares.toLocaleString('id-ID')} Lembar</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-1'>
+                                    <th className='font-medium pr-2 pt-2'>
                                         Alamat
                                     </th>
-                                    <td className='pt-1 px-2'>:</td>
-                                    <td className='pt-1'>{company.address}</td>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.address}</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-1'>
+                                    <th className='font-medium pr-2 pt-2'>
                                         Website
                                     </th>
-                                    <td className='pt-1 px-2'>:</td>
-                                    <td className='pt-1'><a target='_blank' className='underline' href={company.website}>{company.website}</a></td>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'><a target='_blank' className='underline' href={company.website}>{company.website}</a></td>
                                 </tr>
                                 </tbody>
                             </table>
