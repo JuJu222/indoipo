@@ -16,6 +16,7 @@ model Company {
   img                        String
   address                    String
   website                    String
+  bidang_usaha                    String
   prospectus_url             String
   prospectus_summary_url     String
   additional_information_url String?

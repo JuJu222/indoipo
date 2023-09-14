@@ -361,7 +361,7 @@ export default async function Company({ params }) {
                         <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
                         <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
                         <div className='flex gap-20 w-full'>
-                            <table className='text-left mt-2 max-w-[50%]'>
+                            <table className='text-left mt-2 max-w-[50%] h-fit'>
                                 <tbody>
                                 <tr>
                                     <th className='font-medium pr-2 pt-1'>
@@ -384,9 +384,16 @@ export default async function Company({ params }) {
                                     <td className='pt-1 px-2'>:</td>
                                     <td className='pt-1'>{company.subsector.name}</td>
                                 </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-1'>
+                                        Bidang Usaha
+                                    </th>
+                                    <td className='pt-1 px-2'>:</td>
+                                    <td className='pt-1'>{company.bidang_usaha}</td>
+                                </tr>
                                 </tbody>
                             </table>
-                            <table className='text-left mt-2 max-w-[50%]'>
+                            <table className='text-left mt-2 max-w-[50%] h-fit'>
                                 <tbody>
                                 <tr>
                                     <th className='font-medium pr-2 pt-1'>
