@@ -14,7 +14,7 @@ function Reveal({ children, direction }) {
                     }}
                     initial="hidden"
                     animate="visible"
-                    transition={{ duration: 0.5, delay: 0.25 }}
+                    transition={{ duration: 0.5 }}
                 >
                     {children}
                 </motion.div>
@@ -30,7 +30,7 @@ function Reveal({ children, direction }) {
                     }}
                     initial="hidden"
                     animate="visible"
-                    transition={{ duration: 0.5, delay: 0.25 }}
+                    transition={{ duration: 0.5 }}
                 >
                     {children}
                 </motion.div>
@@ -46,7 +46,7 @@ function Reveal({ children, direction }) {
                     }}
                     initial="hidden"
                     animate="visible"
-                    transition={{ duration: 0.5, delay: 0.25 }}
+                    transition={{ duration: 0.5 }}
                 >
                     {children}
                 </motion.div>
@@ -62,7 +62,7 @@ function Reveal({ children, direction }) {
                     }}
                     initial="hidden"
                     animate="visible"
-                    transition={{ duration: 0.5, delay: 0.25 }}
+                    transition={{ duration: 0.5 }}
                 >
                     {children}
                 </motion.div>
@@ -78,7 +78,7 @@ function Reveal({ children, direction }) {
                     }}
                     initial="hidden"
                     animate="visible"
-                    transition={{ duration: 0.5, delay: 0.25 }}
+                    transition={{ duration: 0.5 }}
                 >
                     {children}
                 </motion.div>
