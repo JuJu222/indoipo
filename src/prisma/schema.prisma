@@ -82,6 +82,7 @@ model CompanyUnderwriter {
   id             Int          @id @default(autoincrement())
   company_id     Int
   underwriter_id Int
+  type           String
   created_at     DateTime     @default(now())
   updated_at     DateTime     @updatedAt
   company        Company?     @relation(fields: [company_id], references: [id])
