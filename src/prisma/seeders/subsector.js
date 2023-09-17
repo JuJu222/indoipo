@@ -47,6 +47,14 @@ async function seedSubSectors(prisma) {
             sector_id: 5,
         },
     })
+    await prisma.subsector.upsert({
+        where: { id: 7 },
+        update: {},
+        create: {
+            name: 'Electric Utilities',
+            sector_id: 6,
+        },
+    })
 }
 
 module.exports = { seedSubSectors }
