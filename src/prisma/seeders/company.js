@@ -147,7 +147,7 @@ async function seedCompanies(prisma) {
             low_price: 120,
             high_price: 160,
             offered_shares: 450000000,
-            outstanding_shares: 4500000000,
+            outstanding_shares: 4415590000,
             waran_numerator: 1,
             waran_denominator: 1,
             date_awal_start: new Date("2023-09-07"),
