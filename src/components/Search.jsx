@@ -66,7 +66,7 @@ function Search({companies}) {
                             <li key={index}>
                                 <a href={'/ipo/' + company.ticker} className='hover:bg-gray-50 px-4 py-2.5 border-b last:border-0 transition cursor-pointer flex gap-2 items-center'>
                                     <Image
-                                        src={"/img/companies/" + company.img}
+                                        src={company.img}
                                         width={0}
                                         height={0}
                                         sizes="100vw"

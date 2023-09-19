@@ -52,7 +52,13 @@ function CompanyCard({company}) {
     let interval = -1
     for (const [index, financial] of company.financials.entries()) {
         if (index == 0) {
-            const equity = financial.asset - financial.liability
+            let asset = financial.asset
+            let liability = financial.liability
+            if (company.kurs_usd) {
+                asset = asset * company.kurs_usd
+                liability = liability * company.kurs_usd
+            }
+            const equity = asset - liability
             const bvps = equity / company.outstanding_shares
             if (company.final_price) {
                 metrics['pbv'] = company.final_price / bvps
@@ -66,7 +72,11 @@ function CompanyCard({company}) {
             interval = financial.interval
 
             if (interval == 12) {
-                const eps = financial.net_income / company.outstanding_shares
+                let net_income = financial.net_income
+                if (company.kurs_usd) {
+                    net_income = net_income * company.kurs_usd
+                }
+                const eps = net_income / company.outstanding_shares
                 if (company.final_price) {
                     metrics['per'] = company.final_price / eps
                 } else {
@@ -84,7 +94,7 @@ function CompanyCard({company}) {
 
             <div className='p-5'>
                 <Image
-                    src={"/img/companies/" + company.img}
+                    src={company.img}
                     width={0}
                     height={0}
                     sizes="100vw"

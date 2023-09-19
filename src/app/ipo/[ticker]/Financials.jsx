@@ -6,10 +6,11 @@ import {toRp} from "../../../helpers/formatter";
 function Financials({groupedFinancials, company}) {
     const [interval, setInterval] = useState(12)
     let dateOption3 = {month: 'long', year: 'numeric'};
+    let dateOption1 = {year: 'numeric', month: 'long', day: 'numeric'};
 
     return (
         <>
-            <div className='flex gap-4 items-center pb-4'>
+            <div className={'flex gap-4 items-center' + (company.kurs_usd ? ' pb-2' : ' pb-4')}>
                 <h2 className='text-lg font-semibold'>Informasi Keuangan</h2>
                 <div className="inline-flex roundclassName shadow-sm">
                     {groupedFinancials.map((groupedFinancial, index) => (
@@ -34,6 +35,9 @@ function Financials({groupedFinancials, company}) {
                     ))}
                 </div>
             </div>
+            {company.kurs_usd &&
+                <p className='text-sm pb-4'>Seluruh informasi keuangan dan metrik saham dihitung menggunakan kurs USD/IDR dengan nilai {toRp(company.kurs_usd)} per {new Date(company.kurs_date).toLocaleDateString("id-ID", dateOption1)}</p>
+            }
             {groupedFinancials.map((groupedFinancial, index) => (
                 groupedFinancial[0].interval == interval && (
                     <table
@@ -49,7 +53,11 @@ function Financials({groupedFinancials, company}) {
                                 <th scope="col" className='px-6 py-3 rounded-lg text-primary_hover' key={index}
                                 >
                                     {/*<th scope="col" className="px-6 py-3" key={index}>*/}
-                                    {new Date(financial.date_end).toLocaleDateString("id-ID", dateOption3)}
+                                    {
+                                        new Date(financial.date_end).toLocaleDateString("id-ID", dateOption3)
+                                        +
+                                        (financial.is_audited ? '' : ' *')
+                                    }
                                 </th>
                             ))}
                         </tr>
@@ -185,6 +193,7 @@ function Financials({groupedFinancials, company}) {
                     </table>
                 )
             ))}
+            <p className='text-sm pt-4 border-t border-gray-400'>* : Tidak diaudit</p>
         </>
     );
 }

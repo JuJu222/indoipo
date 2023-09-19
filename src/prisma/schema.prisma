@@ -36,6 +36,8 @@ model Company {
   waran_numerator            Float?
   waran_denominator          Float?
   exercise_price             Float?
+  kurs_usd               Float?
+  kurs_date               DateTime?
   subsector_id               Int?
   created_at                 DateTime             @default(now())
   updated_at                 DateTime             @updatedAt
@@ -99,7 +101,6 @@ model Financial {
   liability           Float
   asset               Float
   is_audited          Boolean  @default(true)
-  is_operating_income Boolean  @default(false)
   company_id          Int?
   created_at          DateTime @default(now())
   updated_at          DateTime @updatedAt

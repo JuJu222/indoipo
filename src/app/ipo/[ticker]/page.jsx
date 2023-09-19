@@ -8,8 +8,6 @@ import Financials from "./Financials";
 import {toRp} from "../../../helpers/formatter";
 
 export async function generateMetadata({ params }) {
-
-
     return {
         title: params.ticker + ' - Indoipo',
     }
@@ -49,6 +47,11 @@ export default async function Company({ params }) {
 
     let interval = -1
     for (const [index, financial] of company.financials.entries()) {
+        if (company.kurs_usd) {
+            financial.asset = financial.asset * company.kurs_usd
+            financial.liability = financial.liability * company.kurs_usd
+            financial.net_income = financial.net_income * company.kurs_usd
+        }
         financial['equity'] = financial.asset - financial.liability
         financial['bvps'] = financial.equity / company.outstanding_shares
         financial['eps'] = financial.net_income / company.outstanding_shares
@@ -144,10 +147,10 @@ export default async function Company({ params }) {
                 <div className="py-8 px-4 mx-auto max-w-screen-xl lg:px-12">
                     <div className='flex space-x-10 flex-col md:flex-row'>
                         <div className='w-full md:w-1/3 flex flex-col items-center justify-center'>
-                            {/*<Image src={"/img/companies/" + company.img} className='m-auto object-contain p-4'*/}
+                            {/*<Image src={company.img} className='m-auto object-contain p-4'*/}
                             {/*       alt={'Logo ' + company.ticker} fill={true} />*/}
                             <Image
-                                src={"/img/companies/" + company.img}
+                                src={company.img}
                                 width={0}
                                 height={0}
                                 sizes="100vw"
