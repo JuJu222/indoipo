@@ -371,7 +371,7 @@ export default async function Company({ params }) {
                                         Jumlah Saham Ditawarkan
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
-                                    <td className='pt-2'>{company.offered_shares.toLocaleString('id-ID')} Lembar</td>
+                                    <td className='pt-2'>{company.offered_shares.toLocaleString('id-ID')} Lembar ({(company.offered_shares / company.outstanding_shares * 100).toFixed(2)}%)</td>
                                 </tr>
                                 <tr>
                                     <th className='font-medium pr-2 pt-2'>
