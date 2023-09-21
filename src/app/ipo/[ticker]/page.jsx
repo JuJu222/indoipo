@@ -116,8 +116,9 @@ export default async function Company({ params }) {
         }
     }
 
-    let currDateStr = new Date().toLocaleDateString();
-    let currDate = new Date(currDateStr)
+    let currDate = new Date()
+    currDate.setHours(currDate.getHours() - (currDate.getTimezoneOffset() / 60))
+    currDate = currDate.toISOString().split("T")[0]
     let dateOption1 = {year: 'numeric', month: 'long', day: 'numeric'};
     let dateOption2 = {month: 'long', day: 'numeric'};
     let dateMYOnly = {month: 'short', year: 'numeric'};
@@ -325,18 +326,6 @@ export default async function Company({ params }) {
                             </li>
                             <li className="w-full mb-6 sm:mb-0">
                                 <TimelineCircle currentDate={currDate}
-                                                referenceDate={new Date(company.date_distribusi)}></TimelineCircle>
-                                <div className="mt-3 sm:px-4">
-                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Distribusi
-                                        Saham</h3>
-                                    <time
-                                        className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
-                                        {new Date(company.date_distribusi).toLocaleDateString("id-ID", dateOption1)}
-                                    </time>
-                                </div>
-                            </li>
-                            <li className="w-full mb-6 sm:mb-0">
-                                <TimelineCircle currentDate={currDate}
                                                 referenceDate={new Date(company.date_penjatahan)}></TimelineCircle>
                                 <div className="mt-3 sm:px-4">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penjatahan
@@ -344,6 +333,18 @@ export default async function Company({ params }) {
                                     <time
                                         className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
                                         {new Date(company.date_penjatahan).toLocaleDateString("id-ID", dateOption1)}
+                                    </time>
+                                </div>
+                            </li>
+                            <li className="w-full mb-6 sm:mb-0">
+                                <TimelineCircle currentDate={currDate}
+                                                referenceDate={new Date(company.date_distribusi)}></TimelineCircle>
+                                <div className="mt-3 sm:px-4">
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Distribusi
+                                        Saham</h3>
+                                    <time
+                                        className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
+                                        {new Date(company.date_distribusi).toLocaleDateString("id-ID", dateOption1)}
                                     </time>
                                 </div>
                             </li>

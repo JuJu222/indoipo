@@ -2,7 +2,8 @@ import React from 'react';
 
 function TimelineCircle({currentDate, startDate, endDate, referenceDate}) {
     if (referenceDate) {
-        if (currentDate.toLocaleDateString() == referenceDate.toLocaleDateString()) {
+        referenceDate = referenceDate.toISOString().split("T")[0]
+        if (currentDate == referenceDate) {
             return (
                 <div className="flex items-center">
                     <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
@@ -16,7 +17,7 @@ function TimelineCircle({currentDate, startDate, endDate, referenceDate}) {
                     <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                 </div>
             )
-        } else if (currentDate.toLocaleDateString() > referenceDate.toLocaleDateString()) {
+        } else if (currentDate > referenceDate) {
             return (
                 <div className="flex items-center">
                     <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
@@ -43,7 +44,9 @@ function TimelineCircle({currentDate, startDate, endDate, referenceDate}) {
             )
         }
     } else {
-        if (startDate.toLocaleDateString() <= currentDate.toLocaleDateString() && endDate.toLocaleDateString() >= currentDate.toLocaleDateString()) {
+        startDate = startDate.toISOString().split("T")[0]
+        endDate = endDate.toISOString().split("T")[0]
+        if (startDate <= currentDate && endDate >= currentDate) {
             return (
                 <div className="flex items-center">
                     <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
@@ -57,7 +60,7 @@ function TimelineCircle({currentDate, startDate, endDate, referenceDate}) {
                     <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                 </div>
             )
-        } else if (endDate.toLocaleDateString() < currentDate.toLocaleDateString()) {
+        } else if (endDate < currentDate) {
             return (
                 <div className="flex items-center">
                     <div className="hidden sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>

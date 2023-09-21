@@ -24,27 +24,28 @@ function CompanyCard({company}) {
     //         statusClass = 'bg-secondary'
     // }
 
-    let currentDate = new Date().toLocaleDateString();
-    currentDate = new Date(currentDate)
+    let currentDate = new Date()
+    currentDate.setHours(currentDate.getHours() - (currentDate.getTimezoneOffset() / 60))
+    currentDate = currentDate.toISOString().split("T")[0]
 
-    if (new Date(company.date_awal_start).toLocaleDateString() <= currentDate.toLocaleDateString() && new Date(company.date_awal_end).toLocaleDateString() >= currentDate.toLocaleDateString()) {
+    if (new Date(company.date_awal_start).toISOString().split("T")[0] <= currentDate && new Date(company.date_umum_start).toISOString().split("T")[0] > currentDate) {
         statusClass = 'bg-green-600'
         statusName = 'Penawaran Awal'
-    } else if (new Date(company.date_umum_start).toLocaleDateString() <= currentDate.toLocaleDateString() && new Date(company.date_umum_end).toLocaleDateString() >= currentDate.toLocaleDateString()) {
+    } else if (new Date(company.date_umum_start).toISOString().split("T")[0] <= currentDate && new Date(company.date_distribusi).toISOString().split("T")[0] > currentDate) {
         statusClass = 'bg-primary'
         statusName = 'Penawaran Umum'
-    } else if (currentDate.toLocaleDateString() == new Date(company.date_distribusi).toLocaleDateString()) {
-        statusClass = 'bg-secondary'
+    } else if (new Date(company.date_distribusi).toISOString().split("T")[0] <= currentDate && new Date(company.date_penjatahan).toISOString().split("T")[0] > currentDate) {
+        statusClass = 'bg-gray-500'
         statusName = 'Distribusi Saham'
-    } else if (currentDate.toLocaleDateString() == new Date(company.date_penjatahan).toLocaleDateString()) {
-        statusClass = 'bg-secondary'
+    } else if (new Date(company.date_penjatahan).toISOString().split("T")[0] <= currentDate && new Date(company.date_ipo).toISOString().split("T")[0] > currentDate) {
+        statusClass = 'bg-gray-500'
         statusName = 'Penjatahan Efek'
-    } else if (currentDate.toLocaleDateString() == new Date(company.date_ipo).toLocaleDateString() || currentDate.toLocaleDateString() > new Date(company.date_ipo).toLocaleDateString()) {
-        statusClass = 'bg-secondary'
+    } else if (currentDate == new Date(company.date_ipo).toISOString().split("T")[0] || currentDate > new Date(company.date_ipo).toISOString().split("T")[0]) {
+        statusClass = 'bg-gray-400'
         statusName = 'IPO'
     } else {
-        statusClass = 'bg-primary'
-        statusName = 'Penawaran Awal'
+        statusClass = 'bg-secondary'
+        statusName = 'Akan Datang'
     }
 
     let metrics = {}
