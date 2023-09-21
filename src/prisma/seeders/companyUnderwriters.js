@@ -3,7 +3,9 @@ async function seedUnderwriters(prisma) {
         where: { id: 1 },
         update: {},
         create: {
-            name: 'XA - NH KORINDO SEKURITAS INDONESIA',
+            company_id: 'XA - NH KORINDO SEKURITAS INDONESIA',
+            underwriter_id: 'XA - NH KORINDO SEKURITAS INDONESIA',
+            type: 'XA - NH KORINDO SEKURITAS INDONESIA',
         },
     })
 }
