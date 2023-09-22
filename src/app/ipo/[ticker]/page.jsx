@@ -20,6 +20,11 @@ export default async function Company({ params }) {
             ticker: params.ticker.toUpperCase(),
         },
         include: {
+            underwriters: {
+                include: {
+                    underwriter: true
+                }
+            },
             subsector: {
                 include: {
                     sector: true
@@ -364,61 +369,91 @@ export default async function Company({ params }) {
                     <div className='pb-8'>
                         <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
                         <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
-                        <div className='flex gap-20 w-full'>
+                        <div className='flex justify-between gap-4 w-full'>
                             <table className='text-left mt-2 max-w-[50%] h-fit'>
                                 <tbody className='align-top'>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2'>
+                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
                                         Jumlah Saham Ditawarkan
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.offered_shares.toLocaleString('id-ID')} Lembar ({(company.offered_shares / company.outstanding_shares * 100).toFixed(2)}%)</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2'>
+                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
                                         Sektor
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.subsector.sector.name}</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2'>
+                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
                                         Subsektor
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.subsector.name}</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2'>
+                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
                                         Bidang Usaha
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.bidang_usaha}</td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
+                                        Partisipan Admin
+                                    </th>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>
+                                        {company.underwriters.map((underwriter, index) => (
+                                            underwriter.type == 'partisipan_admin' && (
+                                                <p key={index}>
+                                                    {underwriter.underwriter.name}
+                                                </p>
+                                            )
+                                        ))}
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
                             <table className='text-left mt-2 max-w-[50%] h-fit'>
                                 <tbody className='align-top'>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2'>
+                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
                                         Total Saham Dicatatkan
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.outstanding_shares.toLocaleString('id-ID')} Lembar</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2'>
+                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
                                         Alamat
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.address}</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2'>
+                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
                                         Website
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'><a target='_blank' className='underline' href={company.website}>{company.website}</a></td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
+                                        Penjamin Emisi Efek
+                                    </th>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>
+                                        {company.underwriters.map((underwriter, index) => (
+                                            underwriter.type == 'penjamin_emisi_efek' && (
+                                                <p key={index}>
+                                                    {underwriter.underwriter.name}
+                                                </p>
+                                            )
+                                        ))}
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>

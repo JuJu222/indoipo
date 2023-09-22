@@ -8,6 +8,9 @@ export const revalidate = 60
 
 async function Companies(props) {
     const companies = await prisma.company.findMany({
+        where: {
+            financials: { some: {} }
+        },
         orderBy: {
             date_awal_start: 'desc'
         },

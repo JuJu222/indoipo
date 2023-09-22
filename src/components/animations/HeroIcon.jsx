@@ -3,7 +3,7 @@
 import React from 'react';
 import {motion} from "framer-motion";
 
-function HeroIcon({ children, delay }) {
+function HeroIcon({ children, delay, yEnd }) {
 
 
     return (
@@ -11,7 +11,7 @@ function HeroIcon({ children, delay }) {
             <motion.div
                 variants={{
                     hidden: { y:-200, rotateZ: 0, opacity: 100 },
-                    visible: { y: 300, rotateZ: 360, opacity: 0 },
+                    visible: { y: yEnd, rotateZ: 360, opacity: 0 },
                 }}
                 initial="hidden"
                 animate="visible"
