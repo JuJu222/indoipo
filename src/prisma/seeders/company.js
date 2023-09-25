@@ -196,6 +196,38 @@ async function seedCompanies(prisma) {
             subsector_id: 6,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 7 },
+        update: {},
+        create: {
+            name: 'PT Koka Indonesia Tbk',
+            description: 'PT Koka Indonesia Tbk ("Perseroan") adalah sebuah perusahaan terbatas yang didirikan pada tahun 2011 dan berfokus pada sektor kontraktor umum dalam proyek konstruksi, teknik mesin, teknik geoteknik, desain interior, dan produksi furniture. Perusahaan ini memiliki tingkat kualifikasi yang tinggi dalam bidang konstruksi bangunan, konstruksi industri pabrik, serta jembatan dan terowongan, dan telah melaksanakan berbagai proyek investasi dan konstruksi di Indonesia. Dalam lebih dari 10 tahun beroperasi, Perseroan telah menyelesaikan lebih dari 100 proyek di Indonesia. Dalam menjalankan operasinya, Perseroan mengikuti standar ISO 9001, ISO 14001, dan OHSAS 18001 untuk sistem manajemen mutu, lingkungan, serta kesehatan dan keselamatan kerja.',
+            ticker: 'KOKA',
+            img: 'https://juju222.sgp1.cdn.digitaloceanspaces.com/indoipo/img/KOKA.png',
+            address: 'Jl. Sultan Iskandar Muda, No. 7, Lt. 3, Kebayoran Lama, Jakarta Selatan 12240',
+            bidang_usaha: 'Jasa Konstruksi Gedung Industri, Bangunan Sipil dan Gedung Hunian',
+            website: 'https://koka.co.id/en/beranda-en/',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=267&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=267&type=summary',
+            additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=267',
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/267/koka-pt-koka-indonesia-tbk',
+            low_price: 128,
+            high_price: 161,
+            offered_shares: 715333000,
+            outstanding_shares: 2861333000,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            date_awal_start: new Date("2023-09-19"),
+            date_awal_end: new Date("2023-09-26"),
+            date_umum_start: new Date("2023-10-02"),
+            date_umum_end: new Date("2023-10-05"),
+            date_penjatahan: new Date("2023-10-05"),
+            date_distribusi: new Date("2023-10-06"),
+            date_ipo: new Date("2023-10-09"),
+            subsector_id: 8,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
