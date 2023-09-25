@@ -162,6 +162,40 @@ async function seedCompanies(prisma) {
             subsector_id: 5,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 6 },
+        update: {},
+        create: {
+            name: 'PT Lovina Beach Brewery Tbk',
+            description: 'PT Lovina Beach Brewery, sebuah perusahaan Indonesia yang telah berperan sebagai pelopor dalam industri craft beer di negara ini, memiliki fokus utama dalam distribusi minuman beralkohol. Perusahaan ini juga memiliki anak perusahaan yang terlibat dalam produksi minuman beralkohol, mulai dari tahap awal brewing hingga menghasilkan produk minuman beralkohol yang siap untuk didistribusikan. Bahan baku utama yang digunakan untuk produksi minuman beralkohol ini diimpor dari berbagai negara seperti Jerman, Belgia, dan negara lainnya. Perseroan bertekad untuk menghasilkan produk minuman beralkohol dengan kualitas tingkat internasional.\n' +
+                '\n' +
+                'Perusahaan mulai beroperasi dalam distribusi minuman beralkohol pada tahun 2010, saat itu fokus distribusi hanya pada produk dengan kadar alkohol golongan A (0% hingga 5%). Kemudian, pada tahun 2016, Perseroan mengembangkan usahanya dengan memasarkan produk minuman beralkohol golongan B (dengan kadar alkohol antara 5,01% hingga 20,00%) dan golongan C (dengan kadar alkohol antara 20,01% hingga 55,00%). Pada tahun 2020, Perseroan memperluas jangkauannya dengan mendistribusikan minuman beralkohol beraroma lokal.',
+            ticker: 'STRK',
+            img: 'https://juju222.sgp1.cdn.digitaloceanspaces.com/indoipo/img/STRK.png',
+            address: 'Jl. Tukad Banyu Poh 110 X, Sesetan Denpasar Selatan, 80223',
+            bidang_usaha: 'Bergerak dalam bidang Industri Distribusi Minuman Beralkohol & Pengolahannya melalui Anak perusahaan',
+            website: 'https://lovinabeachbrewery.com/',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=263&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=263&type=summary',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/263/strk-pt-lovina-beach-brewery-tbk',
+            low_price: 100,
+            high_price: 119,
+            offered_shares: 1180000000,
+            outstanding_shares: 10721709000,
+            waran_numerator: 100,
+            waran_denominator: 275,
+            exercise_price: 250,
+            date_awal_start: new Date("2023-09-06"),
+            date_awal_end: new Date("2023-09-20"),
+            date_umum_start: new Date("2023-10-03"),
+            date_umum_end: new Date("2023-10-06"),
+            date_penjatahan: new Date("2023-10-06"),
+            date_distribusi: new Date("2023-10-09"),
+            date_ipo: new Date("2023-10-10"),
+            subsector_id: 6,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
