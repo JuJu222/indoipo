@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client-js"
+  provider      = "prisma-client-js"
   binaryTargets = ["native", "linux-musl-arm64-openssl-3.0.x"]
 }
 
@@ -16,7 +16,7 @@ model Company {
   img                        String
   address                    String
   website                    String
-  bidang_usaha                    String
+  bidang_usaha               String
   prospectus_url             String
   prospectus_summary_url     String
   additional_information_url String?
@@ -36,8 +36,8 @@ model Company {
   waran_numerator            Float?
   waran_denominator          Float?
   exercise_price             Float?
-  kurs_usd               Float?
-  kurs_date               DateTime?
+  kurs_usd                   Float?
+  kurs_date                  DateTime?
   subsector_id               Int?
   created_at                 DateTime             @default(now())
   updated_at                 DateTime             @updatedAt
@@ -65,7 +65,7 @@ model Subsector {
   created_at DateTime  @default(now())
   updated_at DateTime  @updatedAt
   companies  Company[]
-  sector    Sector?   @relation(fields: [sector_id], references: [id])
+  sector     Sector?   @relation(fields: [sector_id], references: [id])
 
   @@map("subsectors")
 }
@@ -94,17 +94,17 @@ model CompanyUnderwriter {
 }
 
 model Financial {
-  id                  Int      @id @default(autoincrement())
-  interval            Float
-  date_end            DateTime
-  net_income          Float
-  liability           Float
-  asset               Float
-  is_audited          Boolean  @default(true)
-  company_id          Int?
-  created_at          DateTime @default(now())
-  updated_at          DateTime @updatedAt
-  company             Company? @relation(fields: [company_id], references: [id])
+  id         Int      @id @default(autoincrement())
+  interval   Float
+  date_end   DateTime
+  net_income Float
+  liability  Float?
+  asset      Float?
+  is_audited Boolean  @default(true)
+  company_id Int?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  company    Company? @relation(fields: [company_id], references: [id])
 
   @@map("financials")
 }
