@@ -82,13 +82,19 @@ function Financials({groupedFinancials, company}) {
                             {groupedFinancial.map((financial, index) => (
                                 <td className="px-6 py-4 font-medium" key={index}>
                                     {company.final_price ? (
-                                        <span>{financial.pbv.toFixed(2)}</span>
+                                        <span>{financial.pbv ? financial.pbv.toFixed(2) : '-'}</span>
                                     ) : (
-                                        <>
-                                            <span>{financial.low_pbv.toFixed(2)}</span>
-                                            <span className='font-thin px-1'>-</span>
-                                            <span>{financial.high_pbv.toFixed(2)}</span>
-                                        </>
+                                        financial.low_pbv && financial.high_pbv ? (
+                                            <>
+                                                <span>{financial.low_pbv ? financial.low_pbv.toFixed(2) : '-'}</span>
+                                                <span className='font-thin px-1'>-</span>
+                                                <span>{financial.high_pbv ? financial.high_pbv.toFixed(2) : '-'}</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>-</span>
+                                            </>
+                                        )
                                     )}
                                 </td>
                             ))}
@@ -100,7 +106,7 @@ function Financials({groupedFinancials, company}) {
                             </th>
                             {groupedFinancial.map((financial, index) => (
                                 <td className="px-6 py-4 font-medium" key={index}>
-                                    {financial.eps.toFixed(2)}
+                                    {financial.eps ? financial.eps.toFixed(2) : '-'}
                                 </td>
                             ))}
                         </tr>
@@ -112,13 +118,19 @@ function Financials({groupedFinancials, company}) {
                             {groupedFinancial.map((financial, index) => (
                                 <td className="px-6 py-4 font-medium" key={index}>
                                     {company.final_price ? (
-                                        <span>{financial.per.toFixed(2)}</span>
+                                        <span>{financial.per ? financial.per.toFixed(2) : '-'}</span>
                                     ) : (
-                                        <>
-                                            <span>{financial.low_per.toFixed(2)}</span>
-                                            <span className='font-thin px-1'>-</span>
-                                            <span>{financial.high_per.toFixed(2)}</span>
-                                        </>
+                                        financial.low_per && financial.high_per ? (
+                                            <>
+                                                <span>{financial.low_per ? financial.low_per.toFixed(2) : '-'}</span>
+                                                <span className='font-thin px-1'>-</span>
+                                                <span>{financial.high_per ? financial.high_per.toFixed(2) : '-'}</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>-</span>
+                                            </>
+                                        )
                                     )}
                                 </td>
                             ))}
@@ -130,7 +142,7 @@ function Financials({groupedFinancials, company}) {
                             </th>
                             {groupedFinancial.map((financial, index) => (
                                 <td className="px-6 py-4 font-medium" key={index}>
-                                    {financial.der.toFixed(2)}
+                                    {financial.der ? financial.der.toFixed(2) : '-'}
                                 </td>
                             ))}
                         </tr>
@@ -141,7 +153,7 @@ function Financials({groupedFinancials, company}) {
                             </th>
                             {groupedFinancial.map((financial, index) => (
                                 <td className="px-6 py-4 font-medium" key={index}>
-                                    {financial.roe.toFixed(2)}
+                                    {financial.roe ? financial.roe.toFixed(2) : '-'}
                                 </td>
                             ))}
                         </tr>
@@ -152,7 +164,7 @@ function Financials({groupedFinancials, company}) {
                             </th>
                             {groupedFinancial.map((financial, index) => (
                                 <td className="px-6 py-4 font-medium" key={index}>
-                                    {toRp(financial.net_income)}
+                                    {financial.net_income ? toRp(financial.net_income) : '-'}
                                 </td>
                             ))}
                         </tr>
@@ -163,7 +175,7 @@ function Financials({groupedFinancials, company}) {
                             </th>
                             {groupedFinancial.map((financial, index) => (
                                 <td className="px-6 py-4 font-medium" key={index}>
-                                    {toRp(financial.equity)}
+                                    {financial.equity ? toRp(financial.equity) : '-'}
                                 </td>
                             ))}
                         </tr>
@@ -174,7 +186,7 @@ function Financials({groupedFinancials, company}) {
                             </th>
                             {groupedFinancial.map((financial, index) => (
                                 <td className="px-6 py-4 font-medium" key={index}>
-                                    {toRp(financial.asset)}
+                                    {financial.asset ? toRp(financial.asset) : '-'}
                                 </td>
                             ))}
                         </tr>
@@ -185,7 +197,7 @@ function Financials({groupedFinancials, company}) {
                             </th>
                             {groupedFinancial.map((financial, index) => (
                                 <td className="px-6 py-4 font-medium" key={index}>
-                                    {toRp(financial.liability)}
+                                    {financial.liability ? toRp(financial.liability) : '-'}
                                 </td>
                             ))}
                         </tr>

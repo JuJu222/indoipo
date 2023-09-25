@@ -53,24 +53,45 @@ export default async function Company({ params }) {
     let interval = -1
     for (const [index, financial] of company.financials.entries()) {
         if (company.kurs_usd) {
-            financial.asset = financial.asset * company.kurs_usd
-            financial.liability = financial.liability * company.kurs_usd
+            if (financial.asset != null && financial.liability != null) {
+                financial.asset = financial.asset * company.kurs_usd
+                financial.liability = financial.liability * company.kurs_usd
+            }
             financial.net_income = financial.net_income * company.kurs_usd
         }
-        financial['equity'] = financial.asset - financial.liability
-        financial['bvps'] = financial.equity / company.outstanding_shares
+        if (financial.asset != null && financial.liability != null) {
+            financial['equity'] = financial.asset - financial.liability
+            financial['bvps'] = financial.equity / company.outstanding_shares
+        } else {
+            financial['equity'] = null
+            financial['bvps'] = null
+        }
         financial['eps'] = financial.net_income / company.outstanding_shares
         if (company.final_price) {
-            financial['pbv'] = company.final_price / financial.bvps
+            if (financial.asset != null && financial.liability != null) {
+                financial['pbv'] = company.final_price / financial.bvps
+            } else {
+                financial['pbv'] = null
+            }
             financial['per'] = company.final_price / financial.eps
         } else {
-            financial['high_pbv'] = company.high_price / financial.bvps
-            financial['low_pbv'] = company.low_price / financial.bvps
+            if (financial.asset != null && financial.liability != null) {
+                financial['high_pbv'] = company.high_price / financial.bvps
+                financial['low_pbv'] = company.low_price / financial.bvps
+            } else {
+                financial['high_pbv'] = null
+                financial['low_pbv'] = null
+            }
             financial['high_per'] = company.high_price / financial.eps
             financial['low_per'] = company.low_price / financial.eps
         }
-        financial['der'] = financial.liability / financial.equity
-        financial['roe'] = financial.net_income / financial.equity
+        if (financial.asset != null && financial.liability != null) {
+            financial['der'] = financial.liability / financial.equity
+            financial['roe'] = financial.net_income / financial.equity
+        } else {
+            financial['der'] = null
+            financial['roe'] = null
+        }
 
         if (index == 0) {
             if (company.final_price) {

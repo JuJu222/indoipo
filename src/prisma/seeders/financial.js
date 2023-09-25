@@ -229,7 +229,7 @@ async function seedFinancials(prisma) {
             liability: null,
             asset: null,
             interval: 3,
-            is_audited: true,
+            is_audited: false,
             date_end: new Date("2022-03-31"),
             company_id: 5,
         },
