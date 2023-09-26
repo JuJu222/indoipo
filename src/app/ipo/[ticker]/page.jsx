@@ -1,23 +1,15 @@
-import Head from "next/head";
+import React, {cache} from 'react'
 import prisma from "@/lib/prisma";
 import {notFound} from "next/navigation";
 import Image from "next/image";
-import React from 'react';
 import TimelineCircle from "@/components/TimelineCircle";
 import Financials from "./Financials";
 import {toRp} from "../../../helpers/formatter";
 
-export async function generateMetadata({ params }) {
-    return {
-        title: params.ticker + ' - Indoipo',
-    }
-}
-export const revalidate = 60
-
-export default async function Company({ params }) {
-    let company = await prisma.company.findFirst({
+export const getCompany = cache(async (ticker) => {
+    return await prisma.company.findFirst({
         where: {
-            ticker: params.ticker.toUpperCase(),
+            ticker: ticker.toUpperCase(),
         },
         include: {
             underwriters: {
@@ -31,12 +23,25 @@ export default async function Company({ params }) {
                 }
             },
             financials: {
-                orderBy:  {
+                orderBy: {
                     date_end: 'desc'
                 }
             }
         }
-    });
+    })
+});
+
+export async function generateMetadata({ params }) {
+    let company = await getCompany(params.ticker.toUpperCase())
+    return {
+        title: params.ticker.toUpperCase() + ' | Indoipo - Analisa IPO dengan Mudah',
+        description: `${params.ticker.toUpperCase()} - ${company.name} merupakan perusahaan yang bergerak di bidang ${company.bidang_usaha}. Lihat PER, PBV, DER, ROE, dan metrik-metrik lainnya untuk membantu ada dalam menentukan investasi anda. IPO ditawarkan dengan harga mulai dari Rp ${company.low_price} hingga Rp ${company.high_price} per lot.`
+    }
+}
+export const revalidate = 60
+
+export default async function Company({ params }) {
+   let company = await getCompany(params.ticker.toUpperCase())
 
     if (!company) {
         return notFound()

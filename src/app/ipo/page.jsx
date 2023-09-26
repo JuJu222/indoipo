@@ -4,6 +4,11 @@ import {notFound} from "next/navigation";
 import Reveal from "../../components/animations/Reveal";
 import CompanyCard from "../../components/CompanyCard";
 
+export const metadata = {
+    title: 'Semua IPO | Indoipo - Analisa IPO dengan Mudah',
+    description: 'Dapatkan informasi yang mudah dimengerti mengenai IPO terbaru. Lihat PER, PBV, DER, ROE, dan metrik-metrik lainnya untuk membantu ada dalam menentukan investasi anda. Indoipo membantu anda dalam menyediakan metrik-metrik serta informasi keuangan dari perusahaan yang sedang IPO dalam bentuk yang sederhana.'
+}
+
 export const revalidate = 60
 
 async function Companies(props) {
