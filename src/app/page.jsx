@@ -27,7 +27,7 @@ export default async function Home() {
                 }
             }
         },
-        take: 4,
+        take: 8,
     });
 
     if (!companies) {

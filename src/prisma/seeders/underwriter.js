@@ -69,6 +69,34 @@ async function seedUnderwriters(prisma) {
             name: 'PD - INDO PREMIER SEKURITAS',
         },
     })
+    await prisma.underwriter.upsert({
+        where: { id: 11 },
+        update: {},
+        create: {
+            name: 'SH - ARTHA SEKURITAS INDONESIA',
+        },
+    })
+    await prisma.underwriter.upsert({
+        where: { id: 12 },
+        update: {},
+        create: {
+            name: 'AI - UOB KAY HIAN SEKURITAS',
+        },
+    })
+    await prisma.underwriter.upsert({
+        where: { id: 13 },
+        update: {},
+        create: {
+            name: 'HD - KGI SEKURITAS INDONESIA',
+        },
+    })
+    await prisma.underwriter.upsert({
+        where: { id: 14 },
+        update: {},
+        create: {
+            name: 'SA - ELIT SUKSES SEKURITAS',
+        },
+    })
 }
 
 module.exports = { seedUnderwriters }

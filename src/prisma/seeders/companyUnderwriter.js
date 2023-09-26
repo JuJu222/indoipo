@@ -125,6 +125,87 @@ async function seedCompanyUnderwriter(prisma) {
             type: 'penjamin_emisi_efek',
         },
     })
+    await prisma.companyUnderwriter.upsert({
+        where: { id: 14 },
+        update: {},
+        create: {
+            company_id: 6,
+            underwriter_id: 11,
+            type: 'partisipan_admin',
+        },
+    })
+    await prisma.companyUnderwriter.upsert({
+        where: { id: 15 },
+        update: {},
+        create: {
+            company_id: 6,
+            underwriter_id: 11,
+            type: 'penjamin_emisi_efek',
+        },
+    })
+    await prisma.companyUnderwriter.upsert({
+        where: { id: 16 },
+        update: {},
+        create: {
+            company_id: 7,
+            underwriter_id: 12,
+            type: 'partisipan_admin',
+        },
+    })
+    await prisma.companyUnderwriter.upsert({
+        where: { id: 17 },
+        update: {},
+        create: {
+            company_id: 7,
+            underwriter_id: 12,
+            type: 'penjamin_emisi_efek',
+        },
+    })
+    await prisma.companyUnderwriter.upsert({
+        where: { id: 18 },
+        update: {},
+        create: {
+            company_id: 7,
+            underwriter_id: 13,
+            type: 'penjamin_emisi_efek',
+        },
+    })
+    await prisma.companyUnderwriter.upsert({
+        where: { id: 19 },
+        update: {},
+        create: {
+            company_id: 8,
+            underwriter_id: 14,
+            type: 'partisipan_admin',
+        },
+    })
+    await prisma.companyUnderwriter.upsert({
+        where: { id: 20 },
+        update: {},
+        create: {
+            company_id: 8,
+            underwriter_id: 14,
+            type: 'penjamin_emisi_efek',
+        },
+    })
+    await prisma.companyUnderwriter.upsert({
+        where: { id: 21 },
+        update: {},
+        create: {
+            company_id: 9,
+            underwriter_id: 1,
+            type: 'partisipan_admin',
+        },
+    })
+    await prisma.companyUnderwriter.upsert({
+        where: { id: 22 },
+        update: {},
+        create: {
+            company_id: 9,
+            underwriter_id: 1,
+            type: 'penjamin_emisi_efek',
+        },
+    })
 }
 
 module.exports = { seedCompanyUnderwriter }
