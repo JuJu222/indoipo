@@ -228,6 +228,42 @@ async function seedCompanies(prisma) {
             subsector_id: 8,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 8 },
+        update: {},
+        create: {
+            name: 'PT Logisticsplus International Tbk',
+            description: 'PT Logisticsplus International Tbk adalah penyedia jasa transportasi, terletak di SAV Building, Jagakarsa, Jakarta Selatan. Berdiri sejak 2013, mulai beroperasi pada tahun 2016 dengan hanya 2 truk dan 3 pelanggan. Saat ini, mereka memiliki lebih dari 20 pelanggan dan armada yang lebih besar.\n' +
+                '\n' +
+                'PT Logisticsplus International Tbk merupakan hasil kerjasama antara pengusaha logistik lokal dan Logisticsplus Inc, yang memiliki jaringan internasional di hampir 180 negara. Mereka dapat memanfaatkan jaringan ini untuk pengiriman barang internasional. PT Logisticsplus International Tbk juga menawarkan layanan kepabeanan, pengemasan, penyimpanan, pemilahan barang, dan pelabelan.\n' +
+                '\n' +
+                'Selama bertahun-tahun, PT Logisticsplus International Tbk telah berpengalaman dalam mengirim berbagai jenis barang, termasuk alat kesehatan, peralatan pengeboran minyak, peralatan pemurnian minyak, alat telekomunikasi, alat transportasi kereta, makanan, dan pembangkit listrik, serta menyediakan layanan pengemasan, penyimpanan, dan dokumentasi bea cukai.',
+            ticker: 'LOPI',
+            img: 'https://juju222.sgp1.cdn.digitaloceanspaces.com/indoipo/img/LOPI.jpeg',
+            address: 'SAV Building Jl. Kavling Polri No. 20 Jagakarsa, Jakarta Selatan 12620, Indonesia',
+            bidang_usaha: 'Bergerak di Bidang Jasa Pengurusan Transportasi (Freight Forwarding)',
+            website: 'https://www.logisticsplus.co.id',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=269&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=269&type=summary',
+            additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=269',
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/269/lopi-pt-logisticsplus-international-tbk',
+            low_price: 100,
+            high_price: 150,
+            offered_shares: 300000000,
+            outstanding_shares: 1100000000,
+            waran_numerator: 2,
+            waran_denominator: 1,
+            exercise_price: 200,
+            date_awal_start: new Date("2023-09-20"),
+            date_awal_end: new Date("2023-09-22"),
+            date_umum_start: new Date("2023-10-03"),
+            date_umum_end: new Date("2023-10-05"),
+            date_penjatahan: new Date("2023-10-05"),
+            date_distribusi: new Date("2023-10-06"),
+            date_ipo: new Date("2023-10-09"),
+            subsector_id: 9,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
