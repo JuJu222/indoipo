@@ -1,35 +1,10 @@
 import React, {cache} from 'react'
-import prisma from "@/lib/prisma";
 import {notFound} from "next/navigation";
 import Image from "next/image";
 import TimelineCircle from "@/components/TimelineCircle";
 import Financials from "./Financials";
 import {toRp} from "../../../helpers/formatter";
-
-export const getCompany = cache(async (ticker) => {
-    return await prisma.company.findFirst({
-        where: {
-            ticker: ticker.toUpperCase(),
-        },
-        include: {
-            underwriters: {
-                include: {
-                    underwriter: true
-                }
-            },
-            subsector: {
-                include: {
-                    sector: true
-                }
-            },
-            financials: {
-                orderBy: {
-                    date_end: 'desc'
-                }
-            }
-        }
-    })
-});
+import { getCompany } from '@/utils/getCompany'
 
 export async function generateMetadata({ params }) {
     let company = await getCompany(params.ticker.toUpperCase())
