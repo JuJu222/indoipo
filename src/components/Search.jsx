@@ -47,7 +47,7 @@ function Search({companies}) {
     },[searchQuery]);
 
     return (
-        <div className="relative hidden md:block w-full" ref={wrapperRef}>
+        <div className="relative md:block w-full" ref={wrapperRef}>
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
                      xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -60,7 +60,7 @@ function Search({companies}) {
                    className="block w-full p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-full bg-white focus:ring-primary focus:border-primary dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary dark:focus:border-primary"
                    placeholder="Cari IPO..."/>
             <div className='relative'>
-                <ul className='absolute bg-white shadow rounded-lg overflow-hidden w-full'>
+                <ul className='absolute bg-white shadow rounded-lg overflow-hidden w-full max-h-[50vh] overflow-y-auto'>
                     {showSearchData && (
                         searchData.map((company, index) => (
                             <li key={index}>

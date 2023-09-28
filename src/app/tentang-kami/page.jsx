@@ -10,8 +10,8 @@ export const metadata = {
 function AboutUs(props) {
     return (
         <section className="bg-white dark:bg-gray-900">
-            <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12 flex'>
-                <div className='w-1/2'>
+            <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12 md:flex'>
+                <div className='md:w-1/2'>
                     <h1 className='text-center text-4xl font-bold pb-6'>Tentang Kami</h1>
                     <p className="mb-4">Indoipo, sumber informasi mengenai Penawaran Umum Perdana (Initial Public Offerings/IPO) di Indonesia. Berdiri pada tahun 2023, Indoipo hadir untuk membantu Anda menganalisa IPO di Indonesia.</p>
                     <h2 className="text-xl font-semibold mb-2">Misi Kami</h2>
@@ -24,14 +24,14 @@ function AboutUs(props) {
                     </div>
                     <p className="pt-3"><span className='font-semibold'>Dikembangkan Oleh:</span> Justin Yap</p>
                 </div>
-                <div className='w-1/2 flex justify-center items-center'>
+                <div className='md:w-1/2 flex justify-center items-center'>
                     <Image
                         src={"/indoipo.svg"}
                         width={0}
                         height={0}
                         sizes="100vw"
                         alt='aaa'
-                        className='w-full h-auto object-contain p-4'
+                        className='hidden md:block w-full h-auto object-contain p-4'
                     />
                 </div>
             </div>

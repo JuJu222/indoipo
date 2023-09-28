@@ -151,8 +151,8 @@ export default async function Company({ params }) {
     return (
         <>
             <section className="bg-white dark:bg-gray-900">
-                <div className="py-8 px-4 mx-auto max-w-screen-xl lg:px-12">
-                    <div className='flex space-x-10 flex-col md:flex-row'>
+                <div className="md:py-8 py-4 px-4 mx-auto max-w-screen-xl lg:px-12">
+                    <div className='flex md:space-x-10 flex-col md:flex-row'>
                         <div className='w-full md:w-1/3 flex flex-col items-center justify-center'>
                             {/*<Image src={company.img} className='m-auto object-contain p-4'*/}
                             {/*       alt={'Logo ' + company.ticker} fill={true} />*/}
@@ -162,7 +162,7 @@ export default async function Company({ params }) {
                                 height={0}
                                 sizes="100vw"
                                 alt='aaa'
-                                className='w-full h-auto object-contain p-4'
+                                className='w-60 md:w-full h-auto object-contain p-4'
                             />
                             {company.waran_numerator ? (
                                     <p className='bg-green-600 text-white px-4 py-1.5 rounded w-full text-center font-semibold'>
@@ -175,16 +175,16 @@ export default async function Company({ params }) {
                                 ''
                             )}
                         </div>
-                        <div className='w-full md:w-2/3'>
-                           <div className='flex justify-between'>
+                        <div className='w-full md:w-2/3 py-8 md:p-0'>
+                           <div className='flex justify-between gap-4'>
                                <div>
-                                   <h3 className="text-md mb-1 leading-none text-gray-900 dark:text-white">{company.ticker}</h3>
-                                   <h1 className="text-xl mb-1 font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">{company.name}</h1>
-                                   <h4 className="text-sm mb-2 leading-none text-gray-900 dark:text-white">{company.subsector.name} - {company.subsector.sector.name}</h4>
+                                   <h3 className="text-md mb-2 leading-none text-gray-900 dark:text-white">{company.ticker}</h3>
+                                   <h1 className="text-2xl mb-2 font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">{company.name}</h1>
+                                   <h4 className="text-sm mb-3 leading-none text-gray-900 dark:text-white">{company.subsector.name} - {company.subsector.sector.name}</h4>
                                    {company.final_price ? (
-                                       <h3 className="mb-4 text-xl font-bold leading-none text-gray-900 md:text-4xl dark:text-white">{toRp(company.final_price)}</h3>
+                                       <h3 className="mb-4 text-3xl font-bold leading-none text-gray-900 md:text-4xl dark:text-white">{toRp(company.final_price)}</h3>
                                    ) : (
-                                       <h3 className="mb-4 text-xl font-bold leading-none text-gray-900 md:text-4xl dark:text-white">
+                                       <h3 className="mb-4 text-3xl font-bold leading-none text-gray-900 md:text-4xl dark:text-white">
                                            <span>{toRp(company.low_price)}</span>
                                            <span className='font-thin px-1'>-</span>
                                            <span>{toRp(company.high_price)}</span>
@@ -203,7 +203,8 @@ export default async function Company({ params }) {
                                    </a>
                                </div>
                            </div>
-                            <div className='flex justify-between shadow-md rounded-lg p-5 mb-4 gap-2'>
+                            {/*desktop*/}
+                            <div className='hidden lg:flex justify-between shadow-md rounded-lg p-5 mb-4 gap-2'>
                                 <div>
                                     <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">PER</p>
                                     <p className="mb-2 text-xs leading-none">Rasio <i>Price to Earnings</i></p>
@@ -252,6 +253,62 @@ export default async function Company({ params }) {
                                     <p className="text-2xl font-bold leading-none text-gray-900">{(cardMetrics.roe.value * 100).toFixed(2)}%</p>
                                     <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.roe.interval}M
                                         - {new Date(cardMetrics.roe.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                </div>
+                            </div>
+                            {/*mobile*/}
+                            <div className='flex flex-col lg:hidden shadow-md rounded-lg p-5 mb-4 gap-6'>
+                                <div className='flex justify-around gap-2'>
+                                    <div>
+                                        <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">PER</p>
+                                        <p className="mb-2 text-xs leading-none">Rasio <i>Price to Earnings</i></p>
+                                        <p className="text-2xl font-bold leading-none text-gray-900">
+                                            {company.final_price ? (
+                                                <span>{cardMetrics.per.value.toFixed(2)}</span>
+                                            ) : (
+                                                <>
+                                                    <span>{cardMetrics.per.low_value.toFixed(2)}</span>
+                                                    <span className='font-thin px-1'>-</span>
+                                                    <span>{cardMetrics.per.high_value.toFixed(2)}</span>
+                                                </>
+                                            )}
+                                        </p>
+                                        <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.per.interval}M
+                                            - {new Date(cardMetrics.per.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                    </div>
+                                    <div>
+                                        <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">PBV</p>
+                                        <p className="mb-2 text-xs leading-none">Nilai <i>Price to Book</i></p>
+                                        <p className="text-2xl font-bold leading-none text-gray-900">
+                                            {company.final_price ? (
+                                                <span>{cardMetrics.pbv.value.toFixed(2)}</span>
+                                            ) : (
+                                                <>
+                                                    <span>{cardMetrics.pbv.low_value.toFixed(2)}</span>
+                                                    <span className='font-thin px-1'>-</span>
+                                                    <span>{cardMetrics.pbv.high_value.toFixed(2)}</span>
+
+                                                </>
+                                            )}
+                                        </p>
+                                        <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.pbv.interval}M
+                                            - {new Date(cardMetrics.pbv.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                    </div>
+                                </div>
+                                <div className='flex justify-around gap-2'>
+                                    <div>
+                                        <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">DER</p>
+                                        <p className="mb-2 text-xs leading-none">Rasio <i>Debt to Equity</i></p>
+                                        <p className="text-2xl font-bold leading-none text-gray-900">{cardMetrics.der.value.toFixed(2)}</p>
+                                        <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.der.interval}M
+                                            - {new Date(cardMetrics.der.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                    </div>
+                                    <div>
+                                        <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">ROE</p>
+                                        <p className="mb-2 text-xs leading-none"><i>Return on Equity</i></p>
+                                        <p className="text-2xl font-bold leading-none text-gray-900">{(cardMetrics.roe.value * 100).toFixed(2)}%</p>
+                                        <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.roe.interval}M
+                                            - {new Date(cardMetrics.roe.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                    </div>
                                 </div>
                             </div>
                             <div
@@ -304,8 +361,70 @@ export default async function Company({ params }) {
                             </div>
                         </div>
                     </div>
-                    <div className='py-8'>
-                        <ol className="items-start sm:flex">
+                    <div className='py-4 md:py-8'>
+                        {/*desktop*/}
+                        <ol className="hidden md:flex items-start">
+                            <li className="w-full mb-6 sm:mb-0">
+                                <TimelineCircle currentDate={currDate} startDate={new Date(company.date_awal_start)}
+                                                endDate={new Date(company.date_awal_end)}></TimelineCircle>
+                                <div className="mt-3 sm:px-4">
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penawaran
+                                        Awal</h3>
+                                    <time
+                                        className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
+                                        {new Date(company.date_awal_start).toLocaleDateString("id-ID", dateOption2)} - {new Date(company.date_awal_end).toLocaleDateString("id-ID", dateOption1)}
+                                    </time>
+                                </div>
+                            </li>
+                            <li className="w-full mb-6 sm:mb-0">
+                                <TimelineCircle currentDate={currDate} startDate={new Date(company.date_umum_start)}
+                                                endDate={new Date(company.date_umum_end)}></TimelineCircle>
+                                <div className="mt-3 sm:px-4">
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penawaran
+                                        Umum</h3>
+                                    <time
+                                        className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
+                                        {new Date(company.date_umum_start).toLocaleDateString("id-ID", dateOption2)} - {new Date(company.date_umum_end).toLocaleDateString("id-ID", dateOption1)}
+                                    </time>
+                                </div>
+                            </li>
+                            <li className="w-full mb-6 sm:mb-0">
+                                <TimelineCircle currentDate={currDate}
+                                                referenceDate={new Date(company.date_penjatahan)}></TimelineCircle>
+                                <div className="mt-3 sm:px-4">
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penjatahan
+                                        Efek</h3>
+                                    <time
+                                        className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
+                                        {new Date(company.date_penjatahan).toLocaleDateString("id-ID", dateOption1)}
+                                    </time>
+                                </div>
+                            </li>
+                            <li className="w-full mb-6 sm:mb-0">
+                                <TimelineCircle currentDate={currDate}
+                                                referenceDate={new Date(company.date_distribusi)}></TimelineCircle>
+                                <div className="mt-3 sm:px-4">
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Distribusi
+                                        Saham</h3>
+                                    <time
+                                        className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
+                                        {new Date(company.date_distribusi).toLocaleDateString("id-ID", dateOption1)}
+                                    </time>
+                                </div>
+                            </li>
+                            <li className="w-full mb-6 sm:mb-0">
+                                <TimelineCircle currentDate={currDate}
+                                                referenceDate={new Date(company.date_ipo)}></TimelineCircle>
+                                <div className="mt-3 sm:px-4">
+                                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">IPO</h3>
+                                    <time
+                                        className="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500 text-center">
+                                        {new Date(company.date_ipo).toLocaleDateString("id-ID", dateOption1)}
+                                    </time>
+                                </div>
+                            </li>
+                        </ol>
+                        <ol className="md:hidden  lex block items-start">
                             <li className="w-full mb-6 sm:mb-0">
                                 <TimelineCircle currentDate={currDate} startDate={new Date(company.date_awal_start)}
                                                 endDate={new Date(company.date_awal_end)}></TimelineCircle>
@@ -370,39 +489,40 @@ export default async function Company({ params }) {
                     <div className='pb-8'>
                         <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
                         <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
-                        <div className='flex justify-between gap-4 w-full'>
-                            <table className='text-left mt-2 max-w-[50%] h-fit'>
+                        <div className='flex justify-between gap-4 w-full overflow-x-auto'>
+                            {/*desktop*/}
+                            <table className='hidden md:block text-left mt-2 max-w-[50%] h-fit'>
                                 <tbody className='align-top'>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
                                         Jumlah Saham Ditawarkan
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.offered_shares.toLocaleString('id-ID')} Lembar ({(company.offered_shares / company.outstanding_shares * 100).toFixed(2)}%)</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
                                         Sektor
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.subsector.sector.name}</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
                                         Subsektor
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.subsector.name}</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
                                         Bidang Usaha
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.bidang_usaha}</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
                                         Partisipan Admin
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
@@ -418,31 +538,115 @@ export default async function Company({ params }) {
                                 </tr>
                                 </tbody>
                             </table>
-                            <table className='text-left mt-2 max-w-[50%] h-fit'>
+                            <table className='hidden md:block text-left mt-2 max-w-[50%] h-fit'>
                                 <tbody className='align-top'>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
                                         Total Saham Dicatatkan
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.outstanding_shares.toLocaleString('id-ID')} Lembar</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
                                         Alamat
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'>{company.address}</td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
                                         Website
                                     </th>
                                     <td className='pt-2 px-2'>:</td>
                                     <td className='pt-2'><a target='_blank' className='underline' href={company.website}>{company.website}</a></td>
                                 </tr>
                                 <tr>
-                                    <th className='font-medium pr-2 pt-2 whitespace-nowrap'>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        Penjamin Emisi Efek
+                                    </th>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>
+                                        {company.underwriters.map((underwriter, index) => (
+                                            underwriter.type == 'penjamin_emisi_efek' && (
+                                                <p key={index}>
+                                                    {underwriter.underwriter.name}
+                                                </p>
+                                            )
+                                        ))}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            {/*mobile*/}
+                            <table className='md:hidden block text-left mt-2 w-full h-fit'>
+                                <tbody className='align-top'>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        Jumlah Saham Ditawarkan
+                                    </th>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.offered_shares.toLocaleString('id-ID')} Lembar ({(company.offered_shares / company.outstanding_shares * 100).toFixed(2)}%)</td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        Total Saham Dicatatkan
+                                    </th>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.outstanding_shares.toLocaleString('id-ID')} Lembar</td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        Sektor
+                                    </th>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.subsector.sector.name}</td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        Subsektor
+                                    </th>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.subsector.name}</td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        Bidang Usaha
+                                    </th>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.bidang_usaha}</td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        Alamat
+                                    </th>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>{company.address}</td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        Website
+                                    </th>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'><a target='_blank' className='underline' href={company.website}>{company.website}</a></td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        Partisipan Admin
+                                    </th>
+                                    <td className='pt-2 px-2'>:</td>
+                                    <td className='pt-2'>
+                                        {company.underwriters.map((underwriter, index) => (
+                                            underwriter.type == 'partisipan_admin' && (
+                                                <p key={index}>
+                                                    {underwriter.underwriter.name}
+                                                </p>
+                                            )
+                                        ))}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th className='font-medium pr-2 pt-2 w-1/2'>
                                         Penjamin Emisi Efek
                                     </th>
                                     <td className='pt-2 px-2'>:</td>

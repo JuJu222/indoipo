@@ -9,8 +9,8 @@ export const metadata = {
 function AboutUs(props) {
     return (
         <section className="bg-white dark:bg-gray-900">
-            <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12 flex'>
-                <div className='w-1/2'>
+            <div className='py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-12 md:flex'>
+                <div className='md:w-1/2'>
                     <h1 className='text-center text-4xl font-bold pb-8'>Kontak Kami</h1>
                     <p className="text-base leading-relaxed mb-9 text-body-color">
                         Jangan ragu untuk menghubungi kami dengan pertanyaan atau masukan apa pun melalui kontak di bawah.
@@ -74,14 +74,14 @@ function AboutUs(props) {
                         </div>
                     </div>
                 </div>
-                <div className='w-1/2 flex justify-center items-center'>
+                <div className='md:w-1/2 flex justify-center items-center'>
                     <Image
                         src={"/indoipo.svg"}
                         width={0}
                         height={0}
                         sizes="100vw"
                         alt='aaa'
-                        className='w-full h-auto object-contain p-4'
+                        className='hidden md:block w-full h-auto object-contain p-4'
                     />
                 </div>
             </div>

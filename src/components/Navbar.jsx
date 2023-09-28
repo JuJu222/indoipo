@@ -19,20 +19,38 @@ async function Navbar(props) {
     }
 
     return (
-        <nav
-            className="bg-white sticky w-full z-20 top-0 left-0">
-            <div className="max-w-screen-xl flex  items-center mx-auto py-3 px-4">
-                <a href="/" className="flex items-center mr-10">
-                    <img src="/indoipo.svg" className="h-12" alt="Indoipo Logo"/>
-                </a>
-                <div className='flex items-center gap-5 w-full justify-between'>
-                    <NavbarItem href='/'>Beranda</NavbarItem>
-                    <NavbarItem href='/ipo'>Semua IPO</NavbarItem>
-                    {/*<NavbarItem href='/tentang-kami'>Tentang Kami</NavbarItem>*/}
+        <>
+            <nav
+                className="hidden md:block bg-white sticky w-full z-20 top-0 left-0">
+                <div className="max-w-screen-xl flex  items-center mx-auto py-3 px-4">
+                    <a href="/" className="flex items-center mr-10">
+                        <img src="/indoipo.svg" className="h-12" alt="Indoipo Logo"/>
+                    </a>
+                    <div className='flex items-center gap-5 w-full justify-between'>
+                        <NavbarItem href='/'>Beranda</NavbarItem>
+                        <NavbarItem href='/ipo'>Semua IPO</NavbarItem>
+                        {/*<NavbarItem href='/tentang-kami'>Tentang Kami</NavbarItem>*/}
+                        <Search companies={companies}></Search>
+                    </div>
+                </div>
+            </nav>
+            <nav
+                className="md:hidden block bg-white sticky w-full z-20 top-0 left-0">
+                <div className="max-w-screen-xl flex  items-center mx-auto pt-3 px-4">
+                    <a href="/" className="flex items-center mr-10">
+                        <img src="/indoipo.svg" className="h-12" alt="Indoipo Logo"/>
+                    </a>
+                    <div className='flex items-center gap-5 w-full'>
+                        <NavbarItem href='/'>Beranda</NavbarItem>
+                        <NavbarItem href='/ipo'>Semua IPO</NavbarItem>
+                        {/*<NavbarItem href='/tentang-kami'>Tentang Kami</NavbarItem>*/}
+                    </div>
+                </div>
+                <div className='px-4 pb-3 pt-1'>
                     <Search companies={companies}></Search>
                 </div>
-            </div>
-        </nav>
+            </nav>
+        </>
     );
 }
 
