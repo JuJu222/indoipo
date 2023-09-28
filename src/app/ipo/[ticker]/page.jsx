@@ -151,6 +151,62 @@ export default async function Company({ params }) {
         return dateB - dateA;
     });
 
+    if (groupedFinancials[1].length > 1) {
+        const ttmNetIncome = groupedFinancials[0][0].net_income + groupedFinancials[1][0].net_income - groupedFinancials[1][1].net_income
+        const ttmEPS = ttmNetIncome / company.outstanding_shares
+        const ttmEquity = groupedFinancials[1][0].asset - groupedFinancials[1][0].liability
+        const ttmBVPS = ttmEquity / company.outstanding_shares
+        const ttmDER = groupedFinancials[1][0].liability / ttmEquity
+        const ttmROE = ttmNetIncome / ttmEquity
+
+        const ttmFinancial = {
+            id: 0,
+            interval: 0,
+            date_end: groupedFinancials[1][0].date_end,
+            net_income: ttmNetIncome,
+            liability: groupedFinancials[1][0].liability,
+            asset: groupedFinancials[1][0].asset,
+            is_audited: false,
+            equity: ttmEquity,
+            bvps: ttmBVPS,
+            eps: ttmEPS,
+            der: ttmDER,
+            roe: ttmROE
+        }
+        if (company.final_price) {
+            ttmFinancial['per'] = company.final_price / ttmEPS
+            ttmFinancial['pbv'] = company.final_price / ttmBVPS
+        } else {
+            ttmFinancial['high_per'] = company.high_price / ttmEPS
+            ttmFinancial['low_per'] = company.low_price / ttmEPS
+            ttmFinancial['high_pbv'] = company.high_price / ttmBVPS
+            ttmFinancial['low_pbv'] = company.low_price / ttmBVPS
+        }
+
+        if (company.final_price) {
+            cardMetrics['per'] = {
+                date_end: ttmFinancial.date_end,
+                interval: ttmFinancial.interval,
+                value: ttmFinancial.per
+            }
+        } else {
+            cardMetrics['per'] = {
+                date_end: ttmFinancial.date_end,
+                interval: ttmFinancial.interval,
+                low_value: ttmFinancial.low_per,
+                high_value: ttmFinancial.high_per
+            }
+        }
+        cardMetrics['roe'] = {
+            date_end: ttmFinancial.date_end,
+            interval: ttmFinancial.interval,
+            value: ttmFinancial.roe
+        }
+
+
+        groupedFinancials.push([ttmFinancial])
+    }
+
     return (
         <>
             <section className="bg-white dark:bg-gray-900">
@@ -222,7 +278,7 @@ export default async function Company({ params }) {
                                             </>
                                         )}
                                     </p>
-                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.per.interval}M
+                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.per.interval > 0 ? cardMetrics.per.interval + 'M ' : 'TTM '}
                                         - {new Date(cardMetrics.per.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                 </div>
                                 <div>
@@ -240,21 +296,19 @@ export default async function Company({ params }) {
                                             </>
                                         )}
                                     </p>
-                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.pbv.interval}M
-                                        - {new Date(cardMetrics.pbv.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                    <p className="text-xs leading-none pt-1 text-gray-400">{new Date(cardMetrics.pbv.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                 </div>
                                 <div>
                                     <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">DER</p>
                                     <p className="mb-2 text-xs leading-none">Rasio <i>Debt to Equity</i></p>
                                     <p className="text-2xl font-bold leading-none text-gray-900">{cardMetrics.der.value.toFixed(2)}</p>
-                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.der.interval}M
-                                        - {new Date(cardMetrics.der.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                    <p className="text-xs leading-none pt-1 text-gray-400">{new Date(cardMetrics.der.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                 </div>
                                 <div>
                                     <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">ROE</p>
                                     <p className="mb-2 text-xs leading-none"><i>Return on Equity</i></p>
                                     <p className="text-2xl font-bold leading-none text-gray-900">{(cardMetrics.roe.value * 100).toFixed(2)}%</p>
-                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.roe.interval}M
+                                    <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.roe.interval > 0 ? cardMetrics.roe.interval + 'M ' : 'TTM '}
                                         - {new Date(cardMetrics.roe.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                 </div>
                             </div>
@@ -275,7 +329,7 @@ export default async function Company({ params }) {
                                                 </>
                                             )}
                                         </p>
-                                        <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.per.interval}M
+                                        <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.per.interval > 0 ? cardMetrics.per.interval + 'M ' : 'TTM '}
                                             - {new Date(cardMetrics.per.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                     </div>
                                     <div>
@@ -293,8 +347,7 @@ export default async function Company({ params }) {
                                                 </>
                                             )}
                                         </p>
-                                        <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.pbv.interval}M
-                                            - {new Date(cardMetrics.pbv.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                        <p className="text-xs leading-none pt-1 text-gray-400">{new Date(cardMetrics.pbv.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                     </div>
                                 </div>
                                 <div className='flex justify-around gap-2'>
@@ -302,14 +355,13 @@ export default async function Company({ params }) {
                                         <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">DER</p>
                                         <p className="mb-2 text-xs leading-none">Rasio <i>Debt to Equity</i></p>
                                         <p className="text-2xl font-bold leading-none text-gray-900">{cardMetrics.der.value.toFixed(2)}</p>
-                                        <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.der.interval}M
-                                            - {new Date(cardMetrics.der.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
+                                        <p className="text-xs leading-none pt-1 text-gray-400">{new Date(cardMetrics.der.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                     </div>
                                     <div>
                                         <p className="mb-2 text-lg leading-none text-gray-900 font-semibold">ROE</p>
                                         <p className="mb-2 text-xs leading-none"><i>Return on Equity</i></p>
                                         <p className="text-2xl font-bold leading-none text-gray-900">{(cardMetrics.roe.value * 100).toFixed(2)}%</p>
-                                        <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.roe.interval}M
+                                        <p className="text-xs leading-none pt-1 text-gray-400">{cardMetrics.roe.interval > 0 ? cardMetrics.roe.interval + 'M ' : 'TTM '}
                                             - {new Date(cardMetrics.roe.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                                     </div>
                                 </div>

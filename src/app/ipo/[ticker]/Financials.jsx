@@ -17,18 +17,18 @@ function Financials({groupedFinancials, company}) {
                         index == 0 ? (
                             <button key={index} onClick={() => setInterval(groupedFinancial[0].interval)}
                                className={"px-4 py-2 font-semibold bg-white border border-gray-200 rounded-l-lg hover:bg-gray-50 transition dark:bg-gray-700 dark:border-gray-600 dark:text-white" + (interval == groupedFinancial[0].interval ? ' text-primary border border-primary' : ' text-gray-400')}>
-                                {groupedFinancial[0].interval} Bulan
+                                {groupedFinancial[0].interval > 0 ? groupedFinancial[0].interval + ' Bulan' : 'TTM'}
                             </button>
                         ) : (
                             index == groupedFinancials.length - 1 ? (
                                 <button key={index} onClick={() => setInterval(groupedFinancial[0].interval)}
                                    className={"px-4 py-2 font-semibold bg-white border border-gray-200 rounded-r-md hover:bg-gray-50 transition dark:bg-gray-700 dark:border-gray-600 dark:text-white" + (interval == groupedFinancial[0].interval ? ' text-primary border border-primary' : ' text-gray-400')}>
-                                    {groupedFinancial[0].interval} Bulan
+                                    {groupedFinancial[0].interval > 0 ? groupedFinancial[0].interval + ' Bulan' : 'TTM'}
                                 </button>
                             ) : (
                                 <button key={index} onClick={() => setInterval(groupedFinancial[0].interval)}
                                    className={"px-4 py-2 font-semibold bg-white border-t border-b border-gray-200 hover:bg-gray-50 transition dark:bg-gray-700 dark:border-gray-600 dark:text-white" + (interval == groupedFinancial[0].interval ? ' text-primary border border-primary' : ' text-gray-400')}>
-                                    {groupedFinancial[0].interval} Bulan
+                                    {groupedFinancial[0].interval > 0 ? groupedFinancial[0].interval + ' Bulan' : 'TTM'}
                                 </button>
                                 )
                             )
@@ -47,7 +47,7 @@ function Financials({groupedFinancials, company}) {
                             className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" className="px-6 py-3 whitespace-nowrap w-[1%]">
-                                {groupedFinancial[0].interval} Bulan
+                                {groupedFinancial[0].interval > 0 ? groupedFinancial[0].interval + ' Bulan' : 'TTM (12 Bulan Terakhir)'}
                             </th>
                             {groupedFinancial.map((financial, index) => (
                                 <th scope="col" className='px-6 py-3 rounded-lg text-primary_hover' key={index}

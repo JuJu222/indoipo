@@ -6,6 +6,7 @@ import Image from "next/image";
 function CompanyCard({company}) {
     let statusClass = ''
     let statusName = ''
+    let dateMYOnly = {month: 'short', year: 'numeric'};
 
     // switch (company.status.id) {
     //     case 1:
@@ -91,6 +92,69 @@ function CompanyCard({company}) {
         }
     }
 
+    const groupedFinancials = Object.values(
+        company.financials.reduce((result, financial) => {
+            const {interval} = financial;
+            if (!result[interval]) {
+                result[interval] = [];
+            }
+            result[interval].push(financial);
+            return result;
+        }, {})
+    );
+    groupedFinancials.sort((a, b) => {
+        // Assuming 'interval' is a string representing a date (e.g., '2023-09-01')
+        const dateA = new Date(a[0].interval);
+        const dateB = new Date(b[0].interval);
+
+        // Sort in descending order by comparing the dates
+        return dateB - dateA;
+    });
+
+    if (company.kurs_usd) {
+        groupedFinancials[0][0].net_income = groupedFinancials[0][0].net_income * company.kurs_usd
+        groupedFinancials[1][0].net_income = groupedFinancials[1][0].net_income * company.kurs_usd
+        groupedFinancials[1][1].net_income = groupedFinancials[1][1].net_income * company.kurs_usd
+        groupedFinancials[1][0].asset = groupedFinancials[1][0].asset * company.kurs_usd
+        groupedFinancials[1][0].liability = groupedFinancials[1][0].liability * company.kurs_usd
+    }
+
+    if (groupedFinancials[1].length > 1) {
+        const ttmNetIncome = groupedFinancials[0][0].net_income + groupedFinancials[1][0].net_income - groupedFinancials[1][1].net_income
+        const ttmEPS = ttmNetIncome / company.outstanding_shares
+        const ttmEquity = groupedFinancials[1][0].asset - groupedFinancials[1][0].liability
+        const ttmBVPS = ttmEquity / company.outstanding_shares
+        const ttmDER = groupedFinancials[1][0].liability / ttmEquity
+        const ttmROE = ttmNetIncome / ttmEquity
+
+        const ttmFinancial = {
+            id: 0,
+            interval: 0,
+            date_end: groupedFinancials[1][0].date_end,
+            net_income: ttmNetIncome,
+            liability: groupedFinancials[1][0].liability,
+            asset: groupedFinancials[1][0].asset,
+            is_audited: false,
+            equity: ttmEquity,
+            bvps: ttmBVPS,
+            eps: ttmEPS,
+            der: ttmDER,
+            roe: ttmROE
+        }
+        if (company.final_price) {
+            metrics['per'] = company.final_price / ttmEPS
+            metrics['pbv'] = company.final_price / ttmBVPS
+        } else {
+            metrics['high_per'] = company.high_price / ttmEPS
+            metrics['low_per'] = company.low_price / ttmEPS
+            metrics['high_pbv'] = company.high_price / ttmBVPS
+            metrics['low_pbv'] = company.low_price / ttmBVPS
+        }
+        metrics['interval'] = 0
+        metrics['date_end'] = groupedFinancials[1][0].date_end
+
+    }
+
     return (
         <Link href={'/ipo/' + company.ticker}
             className="w-full bg-white border border-gray-200 rounded-lg shadow-md hover:bg-gray-50 transition overflow-clip">
@@ -138,6 +202,8 @@ function CompanyCard({company}) {
                                 <span className='text-lg'>{metrics.high_per.toFixed(2)}</span>
                             </>
                         )}
+                        <p className='text-xs leading-none pt-1 text-gray-400'>{metrics.interval > 0 ? metrics.per.interval + 'M ' : 'TTM '}
+                            - {new Date(metrics.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                     </div>
                     <div>
                         <h5 className="font-bold">PBV</h5>
@@ -150,6 +216,7 @@ function CompanyCard({company}) {
                                 <span className='text-lg'>{metrics.high_pbv.toFixed(2)}</span>
                             </>
                         )}
+                        <p className="text-xs leading-none pt-1 text-gray-400">{new Date(metrics.date_end).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()}</p>
                     </div>
                 </div>
             </div>
