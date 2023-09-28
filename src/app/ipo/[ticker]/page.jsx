@@ -30,7 +30,8 @@ export default async function Company({ params }) {
 
     let cardMetrics = {}
 
-    let interval = -1
+    let latestMonthsLatestDate = new Date('01-01-1000')
+    let twelveMonthsLatestDate = new Date('01-01-1000')
     for (const [index, financial] of company.financials.entries()) {
         if (company.kurs_usd) {
             if (financial.asset != null && financial.liability != null) {
@@ -73,32 +74,8 @@ export default async function Company({ params }) {
             financial['roe'] = null
         }
 
-        if (index == 0) {
-            if (company.final_price) {
-                cardMetrics['pbv'] = {
-                    date_end: financial.date_end,
-                    interval: financial.interval,
-                    value: financial.pbv
-                }
-            } else {
-                cardMetrics['pbv'] = {
-                    date_end: financial.date_end,
-                    interval: financial.interval,
-                    low_value: financial.low_pbv,
-                    high_value: financial.high_pbv
-                }
-            }
-            cardMetrics['der'] = {
-                date_end: financial.date_end,
-                interval: financial.interval,
-                value: financial.der
-            }
-        }
-
-        if (interval != financial.interval) {
-            interval = financial.interval
-
-            if (interval == 12) {
+        if (financial.interval == 12) {
+            if (new Date(financial.date_end) > twelveMonthsLatestDate) {
                 if (company.final_price) {
                     cardMetrics['per'] = {
                         date_end: financial.date_end,
@@ -118,6 +95,32 @@ export default async function Company({ params }) {
                     interval: financial.interval,
                     value: financial.roe
                 }
+
+                twelveMonthsLatestDate = new Date(financial.date_end)
+            }
+        } else {
+            if (new Date(financial.date_end) > latestMonthsLatestDate) {
+                if (company.final_price) {
+                    cardMetrics['pbv'] = {
+                        date_end: financial.date_end,
+                        interval: financial.interval,
+                        value: financial.pbv
+                    }
+                } else {
+                    cardMetrics['pbv'] = {
+                        date_end: financial.date_end,
+                        interval: financial.interval,
+                        low_value: financial.low_pbv,
+                        high_value: financial.high_pbv
+                    }
+                }
+                cardMetrics['der'] = {
+                    date_end: financial.date_end,
+                    interval: financial.interval,
+                    value: financial.der
+                }
+
+                latestMonthsLatestDate = financial.date_end
             }
         }
     }

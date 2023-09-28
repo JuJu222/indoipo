@@ -50,29 +50,11 @@ function CompanyCard({company}) {
 
     let metrics = {}
 
-    let interval = -1
+    let latestMonthsLatestDate = new Date('01-01-1000')
+    let twelveMonthsLatestDate = new Date('01-01-1000')
     for (const [index, financial] of company.financials.entries()) {
-        if (index == 0) {
-            let asset = financial.asset
-            let liability = financial.liability
-            if (company.kurs_usd) {
-                asset = asset * company.kurs_usd
-                liability = liability * company.kurs_usd
-            }
-            const equity = asset - liability
-            const bvps = equity / company.outstanding_shares
-            if (company.final_price) {
-                metrics['pbv'] = company.final_price / bvps
-            } else {
-                metrics['low_pbv'] = company.low_price / bvps
-                metrics['high_pbv'] = company.high_price / bvps
-            }
-        }
-
-        if (interval != financial.interval) {
-            interval = financial.interval
-
-            if (interval == 12) {
+        if (financial.interval == 12) {
+            if (new Date(financial.date_end) > twelveMonthsLatestDate) {
                 let net_income = financial.net_income
                 if (company.kurs_usd) {
                     net_income = net_income * company.kurs_usd
@@ -84,6 +66,27 @@ function CompanyCard({company}) {
                     metrics['low_per'] = company.low_price / eps
                     metrics['high_per'] = company.high_price / eps
                 }
+
+                twelveMonthsLatestDate = new Date(financial.date_end)
+            }
+        } else {
+            if (new Date(financial.date_end) > latestMonthsLatestDate) {
+                let asset = financial.asset
+                let liability = financial.liability
+                if (company.kurs_usd) {
+                    asset = asset * company.kurs_usd
+                    liability = liability * company.kurs_usd
+                }
+                const equity = asset - liability
+                const bvps = equity / company.outstanding_shares
+                if (company.final_price) {
+                    metrics['pbv'] = company.final_price / bvps
+                } else {
+                    metrics['low_pbv'] = company.low_price / bvps
+                    metrics['high_pbv'] = company.high_price / bvps
+                }
+
+                latestMonthsLatestDate = financial.date_end
             }
         }
     }
