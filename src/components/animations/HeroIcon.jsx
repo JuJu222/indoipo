@@ -17,14 +17,14 @@ function HeroIcon({ children, delay, yEnd }) {
                 animate="visible"
                 transition={{
                     repeat: Infinity,
-                    duration: 5.00000,
+                    duration: 5,
                     delay: delay,
                     ease: "linear",
                     opacity: {
-                        delay: delay,
+                        delay: delay + 0.1,
                         repeat: Infinity,
-                        duration: 5.00000,
-                        times: [0.98, 1]
+                        duration: 5,
+                        times: [0.95, 1]
                     },
                     rotateZ: {
                         ease: "linear",
