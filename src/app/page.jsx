@@ -44,7 +44,7 @@ export default async function Home() {
             <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
                <div className='py-8 pb-20'>
                    <div className='flex w-full justify-between h-0'>
-                       <div className='-z-10 text-primary opacity-40'>
+                       <div className='-z-10 text-primary opacity-60'>
                            <HeroIcon delay={0} yEnd={300}>
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     className="w-14 h-14 md:w-20 md:h-20" viewBox="0 0 16 16">
@@ -55,7 +55,7 @@ export default async function Home() {
                                </svg>
                            </HeroIcon>
                        </div>
-                       <div className='-z-10 text-primary opacity-40'>
+                       <div className='-z-10 text-primary opacity-60'>
                            <HeroIcon delay={2} yEnd={250}>
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     className="w-14 h-14 md:w-20 md:h-20" viewBox="0 0 16 16">
@@ -64,7 +64,7 @@ export default async function Home() {
                            </svg>
                            </HeroIcon>
                        </div>
-                       <div className='-z-10 text-primary opacity-40'>
+                       <div className='-z-10 text-primary opacity-60'>
                            <HeroIcon delay={1} yEnd={300}>
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     className="w-14 h-14 md:w-20 md:h-20" viewBox="0 0 16 16">
@@ -73,7 +73,7 @@ export default async function Home() {
                            </svg>
                            </HeroIcon>
                        </div>
-                       <div className='-z-10 text-primary opacity-40'>
+                       <div className='-z-10 text-primary opacity-60'>
                            <HeroIcon delay={3} yEnd={350}>
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     className="w-14 h-14 md:w-20 md:h-20" viewBox="0 0 16 16">
@@ -83,7 +83,7 @@ export default async function Home() {
                                </svg>
                            </HeroIcon>
                        </div>
-                       <div className='-z-10 text-primary opacity-40'>
+                       <div className='-z-10 text-primary opacity-60'>
                            <HeroIcon delay={4} yEnd={300}>
                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     className="w-14 h-14 md:w-20 md:h-20" viewBox="0 0 16 16">
