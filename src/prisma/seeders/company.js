@@ -139,7 +139,7 @@ async function seedCompanies(prisma) {
                 '\n' +
                 'PT Kokoh Exa Nusantara juga memiliki peran penting dalam penyaluran Fasilitas Likuiditas Pembiayaan Perumahan (FLPP) untuk rumah tapak MBR di Provinsi Jawa Timur, dan merupakan penyumbang terbesar di Kabupaten Bangkalan, Madura menurut BP Tapera pada tahun 2022.',
             ticker: 'KOCI',
-            img: 'https://juju222.sgp1.cdn.digitaloceanspaces.com/indoipo/img/KOCI.JPG',
+            img: 'https://juju222.sgp1.cdn.digitaloceanspaces.com/indoipo/img/KOCI.png',
             address: 'Jl. Raya Sukolilo, Tebul, Kwanyar, Bangkalan - 69163',
             bidang_usaha: 'Konstruksi dan Real Estat',
             website: 'https://www.kokohcity.com',
