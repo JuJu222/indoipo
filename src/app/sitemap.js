@@ -1,3 +1,5 @@
+import prisma from "@/lib/prisma";
+
 export default async function sitemap() {
     const URL = "https://indoipo.com";
 
