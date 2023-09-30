@@ -9,7 +9,7 @@ import { getCompany } from '@/utils/getCompany'
 export async function generateMetadata({ params }) {
     let company = await getCompany(params.ticker.toUpperCase())
     return {
-        title: params.ticker.toUpperCase() + ' | Indoipo - Analisa IPO dengan Mudah',
+        title: params.ticker.toUpperCase() + ' | Analisa IPO (PER, PBV & ROE) - Indoipo',
         description: `${params.ticker.toUpperCase()} - ${company.name} merupakan perusahaan yang bergerak di bidang ${company.bidang_usaha}. Lihat PER, PBV, DER, ROE, dan metrik-metrik lainnya untuk membantu ada dalam menentukan investasi anda. IPO ditawarkan dengan harga mulai dari Rp ${company.low_price} hingga Rp ${company.high_price} per lot.`
     }
 }
