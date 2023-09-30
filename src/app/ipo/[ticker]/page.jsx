@@ -4,7 +4,7 @@ import Image from "next/image";
 import TimelineCircle from "@/components/TimelineCircle";
 import Financials from "./Financials";
 import {toRp} from "../../../helpers/formatter";
-import { getCompany } from '@/utils/getCompany'
+import { getCompany } from '@/lib/company'
 
 export async function generateMetadata({ params }) {
     let company = await getCompany(params.ticker.toUpperCase())
