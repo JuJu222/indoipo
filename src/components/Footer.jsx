@@ -6,7 +6,7 @@ function Footer(props) {
             <div className="mx-auto max-w-screen-xl text-center">
                 <a href="#"
                    className="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
-                    <img src="/indoipo.svg" className="h-10" alt="Logo Indoipo" />
+                    <img src="/indoipo.png" className="h-10 object-contain" alt="Logo Indoipo" />
                 </a>
                 <p className="my-6 text-gray-500 dark:text-gray-400">Pusat analisa IPO di Indonesia dengan perusahaan-perusahaan terbaru.</p>
                 <ul className="flex flex-wrap justify-center items-center mb-6 text-gray-900 dark:text-white">

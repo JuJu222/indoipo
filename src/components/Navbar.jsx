@@ -24,7 +24,7 @@ async function Navbar(props) {
                 className="hidden md:block bg-white sticky w-full z-20 top-0 left-0">
                 <div className="max-w-screen-xl flex  items-center mx-auto py-3 px-4">
                     <a href="/" className="flex items-center mr-10">
-                        <img src="/indoipo.svg" className="h-12" alt="Indoipo Logo"/>
+                        <img src="/indoipo.png" className="h-12 object-contain" alt="Indoipo Logo"/>
                     </a>
                     <div className='flex items-center gap-5 w-full justify-between'>
                         <NavbarItem href='/'>Beranda</NavbarItem>
@@ -38,7 +38,7 @@ async function Navbar(props) {
                 className="md:hidden block bg-white sticky w-full z-20 top-0 left-0">
                 <div className="max-w-screen-xl flex  items-center mx-auto pt-3 px-4">
                     <a href="/" className="flex items-center mr-10">
-                        <img src="/indoipo.svg" className="h-12" alt="Indoipo Logo"/>
+                        <img src="/indoipo.png" className="h-12 object-contain" alt="Indoipo Logo"/>
                     </a>
                     <div className='flex items-center gap-5 w-full'>
                         <NavbarItem href='/'>Beranda</NavbarItem>

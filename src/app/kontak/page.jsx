@@ -76,7 +76,7 @@ function AboutUs(props) {
                 </div>
                 <div className='md:w-1/2 flex justify-center items-center'>
                     <Image
-                        src={"/indoipo.svg"}
+                        src={"/indoipo.png"}
                         width={0}
                         height={0}
                         sizes="100vw"
