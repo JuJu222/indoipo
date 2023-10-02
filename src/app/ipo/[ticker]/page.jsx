@@ -420,7 +420,7 @@ export default async function Company({ params }) {
                         {/*desktop*/}
                         <ol className="hidden md:flex items-start">
                             <li className="w-full mb-6 sm:mb-0">
-                                <TimelineCircle currentDate={currDate} startDate={new Date(company.date_awal_start)}
+                                <TimelineCircle bgColor={' bg-yellow-400'} currentDate={currDate} startDate={new Date(company.date_awal_start)}
                                                 endDate={new Date(company.date_awal_end)}></TimelineCircle>
                                 <div className="mt-3 sm:px-4">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penawaran
@@ -432,7 +432,7 @@ export default async function Company({ params }) {
                                 </div>
                             </li>
                             <li className="w-full mb-6 sm:mb-0">
-                                <TimelineCircle currentDate={currDate} startDate={new Date(company.date_umum_start)}
+                                <TimelineCircle bgColor={' bg-primary'} currentDate={currDate} startDate={new Date(company.date_umum_start)}
                                                 endDate={new Date(company.date_umum_end)}></TimelineCircle>
                                 <div className="mt-3 sm:px-4">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penawaran
@@ -444,7 +444,7 @@ export default async function Company({ params }) {
                                 </div>
                             </li>
                             <li className="w-full mb-6 sm:mb-0">
-                                <TimelineCircle currentDate={currDate}
+                                <TimelineCircle bgColor={' bg-secondary'} currentDate={currDate}
                                                 referenceDate={new Date(company.date_penjatahan)}></TimelineCircle>
                                 <div className="mt-3 sm:px-4">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penjatahan
@@ -456,7 +456,7 @@ export default async function Company({ params }) {
                                 </div>
                             </li>
                             <li className="w-full mb-6 sm:mb-0">
-                                <TimelineCircle currentDate={currDate}
+                                <TimelineCircle bgColor={' bg-secondary'} currentDate={currDate}
                                                 referenceDate={new Date(company.date_distribusi)}></TimelineCircle>
                                 <div className="mt-3 sm:px-4">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Distribusi
@@ -468,7 +468,7 @@ export default async function Company({ params }) {
                                 </div>
                             </li>
                             <li className="w-full mb-6 sm:mb-0">
-                                <TimelineCircle currentDate={currDate}
+                                <TimelineCircle bgColor={' bg-secondary'} currentDate={currDate}
                                                 referenceDate={new Date(company.date_ipo)}></TimelineCircle>
                                 <div className="mt-3 sm:px-4">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">IPO</h3>
@@ -481,7 +481,7 @@ export default async function Company({ params }) {
                         </ol>
                         <ol className="md:hidden  lex block items-start">
                             <li className="w-full mb-6 sm:mb-0">
-                                <TimelineCircle currentDate={currDate} startDate={new Date(company.date_awal_start)}
+                                <TimelineCircle bgColor={' bg-yellow-400'} currentDate={currDate} startDate={new Date(company.date_awal_start)}
                                                 endDate={new Date(company.date_awal_end)}></TimelineCircle>
                                 <div className="mt-3 sm:px-4">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penawaran
@@ -493,7 +493,7 @@ export default async function Company({ params }) {
                                 </div>
                             </li>
                             <li className="w-full mb-6 sm:mb-0">
-                                <TimelineCircle currentDate={currDate} startDate={new Date(company.date_umum_start)}
+                                <TimelineCircle bgColor={' bg-primary'} currentDate={currDate} startDate={new Date(company.date_umum_start)}
                                                 endDate={new Date(company.date_umum_end)}></TimelineCircle>
                                 <div className="mt-3 sm:px-4">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penawaran
@@ -505,7 +505,7 @@ export default async function Company({ params }) {
                                 </div>
                             </li>
                             <li className="w-full mb-6 sm:mb-0">
-                                <TimelineCircle currentDate={currDate}
+                                <TimelineCircle bgColor={' bg-secondary'} currentDate={currDate}
                                                 referenceDate={new Date(company.date_penjatahan)}></TimelineCircle>
                                 <div className="mt-3 sm:px-4">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Penjatahan
@@ -517,7 +517,7 @@ export default async function Company({ params }) {
                                 </div>
                             </li>
                             <li className="w-full mb-6 sm:mb-0">
-                                <TimelineCircle currentDate={currDate}
+                                <TimelineCircle bgColor={' bg-secondary'} currentDate={currDate}
                                                 referenceDate={new Date(company.date_distribusi)}></TimelineCircle>
                                 <div className="mt-3 sm:px-4">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">Distribusi
@@ -529,7 +529,7 @@ export default async function Company({ params }) {
                                 </div>
                             </li>
                             <li className="w-full mb-6 sm:mb-0">
-                                <TimelineCircle currentDate={currDate}
+                                <TimelineCircle bgColor={' bg-secondary'} currentDate={currDate}
                                                 referenceDate={new Date(company.date_ipo)}></TimelineCircle>
                                 <div className="mt-3 sm:px-4">
                                     <h3 className="text-lg font-semibold text-gray-900 dark:text-white text-center">IPO</h3>

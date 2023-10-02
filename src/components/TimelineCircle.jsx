@@ -1,6 +1,6 @@
 import React from 'react';
 
-function TimelineCircle({currentDate, startDate, endDate, referenceDate}) {
+function TimelineCircle({currentDate, startDate, endDate, referenceDate, bgColor}) {
     if (referenceDate) {
         referenceDate = referenceDate.toISOString().split("T")[0]
         if (currentDate == referenceDate) {
@@ -10,9 +10,9 @@ function TimelineCircle({currentDate, startDate, endDate, referenceDate}) {
                     <div
                         className="relative z-10 flex items-center justify-center w-6 h-6 bg-green-200 rounded-full ring-0 ring-white sm:ring-8 shrink-0">
                         <div
-                            className="absolute w-4 h-4 rounded-full bg-primary animate-ping"></div>
+                            className={"absolute w-4 h-4 rounded-full animate-ping" + bgColor}></div>
                         <div
-                            className="absolute w-4 h-4 rounded-full bg-primary"></div>
+                            className={"absolute w-4 h-4 rounded-full" + bgColor}></div>
                     </div>
                     <div className="sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                 </div>
@@ -22,7 +22,7 @@ function TimelineCircle({currentDate, startDate, endDate, referenceDate}) {
                 <div className="flex items-center justify-center">
                     <div className="sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                     <div
-                        className="relative z-10 flex items-center justify-center w-6 h-6 bg-primary rounded-full ring-0 ring-white sm:ring-8 shrink-0">
+                        className={"relative z-10 flex items-center justify-center w-6 h-6 rounded-full ring-0 ring-white sm:ring-8 shrink-0" + bgColor}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor" className="text-white" viewBox="0 0 16 16">
                             <path
@@ -53,9 +53,9 @@ function TimelineCircle({currentDate, startDate, endDate, referenceDate}) {
                     <div
                         className="relative z-10 flex items-center justify-center w-6 h-6 bg-green-200 rounded-full ring-0 ring-white sm:ring-8 shrink-0">
                         <div
-                            className="absolute w-4 h-4 rounded-full bg-primary animate-ping"></div>
+                            className={"absolute w-4 h-4 rounded-full animate-ping" + bgColor}></div>
                         <div
-                            className="absolute w-4 h-4 rounded-full bg-primary"></div>
+                            className={"absolute w-4 h-4 rounded-full" + bgColor}></div>
                     </div>
                     <div className="sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                 </div>
@@ -65,7 +65,7 @@ function TimelineCircle({currentDate, startDate, endDate, referenceDate}) {
                 <div className="flex items-center justify-center">
                     <div className="sm:flex w-full bg-gray-200 h-0.5 dark:bg-gray-700"></div>
                     <div
-                        className="relative z-10 flex items-center justify-center w-6 h-6 bg-primary rounded-full ring-0 ring-white sm:ring-8 shrink-0">
+                        className={"relative z-10 flex items-center justify-center w-6 h-6 rounded-full ring-0 ring-white sm:ring-8 shrink-0" + bgColor}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                              fill="currentColor" className="text-white" viewBox="0 0 16 16">
                             <path
