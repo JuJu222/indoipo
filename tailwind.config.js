@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -7,6 +9,8 @@ module.exports = {
   ],
   theme: {
     colors: {
+      lime: colors.lime,
+      amber: colors.amber,
       primary: '#68B984',
       primary_hover: '#5ba274',
       secondary: '#3D5656',

@@ -30,19 +30,19 @@ function CompanyCard({company}) {
     currentDate = currentDate.toISOString().split("T")[0]
 
     if (new Date(company.date_awal_start).toISOString().split("T")[0] <= currentDate && new Date(company.date_umum_start).toISOString().split("T")[0] > currentDate) {
-        statusClass = 'bg-green-600'
+        statusClass = 'bg-yellow-400'
         statusName = 'Penawaran Awal'
     } else if (new Date(company.date_umum_start).toISOString().split("T")[0] <= currentDate && new Date(company.date_distribusi).toISOString().split("T")[0] > currentDate) {
-        statusClass = 'bg-primary'
+        statusClass = 'bg-green-600'
         statusName = 'Penawaran Umum'
     } else if (new Date(company.date_distribusi).toISOString().split("T")[0] <= currentDate && new Date(company.date_penjatahan).toISOString().split("T")[0] > currentDate) {
-        statusClass = 'bg-gray-500'
+        statusClass = 'bg-secondary'
         statusName = 'Distribusi Saham'
     } else if (new Date(company.date_penjatahan).toISOString().split("T")[0] <= currentDate && new Date(company.date_ipo).toISOString().split("T")[0] > currentDate) {
-        statusClass = 'bg-gray-500'
+        statusClass = 'bg-secondary'
         statusName = 'Penjatahan Efek'
     } else if (currentDate == new Date(company.date_ipo).toISOString().split("T")[0] || currentDate > new Date(company.date_ipo).toISOString().split("T")[0]) {
-        statusClass = 'bg-gray-400'
+        statusClass = 'bg-secondary'
         statusName = 'IPO'
     } else {
         statusClass = 'bg-secondary'
