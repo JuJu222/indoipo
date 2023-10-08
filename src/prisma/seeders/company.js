@@ -298,6 +298,38 @@ async function seedCompanies(prisma) {
             subsector_id: 10,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 10 },
+        update: {},
+        create: {
+            name: 'PT Agro Bahari Nusantara Tbk',
+            description: 'Perseroan ini berfokus pada bisnis budidaya Udang Vannamei (Litopenaeus Vannamei) dan telah mengalami pertumbuhan yang signifikan dalam usahanya. Awalnya, mereka hanya memiliki 6 kolam budidaya, tetapi sekarang mereka mengoperasikan 14 kolam yang intensif dan super-intensif. Sejak tahun 2019, Perseroan telah berhasil memproduksi lebih dari 400 ton udang Vannamei, baik untuk ekspor maupun pemenuhan kebutuhan dalam negeri. Dalam menjalankan operasinya, Perseroan sangat menekankan pendekatan ilmiah dan penggunaan analisis statistik. Dengan pendekatan ini, mereka mampu mengurangi risiko kegagalan panen akibat penyakit dan kondisi cuaca yang seringkali memengaruhi budidaya udang. Aset utama Perseroan saat ini mencakup 10 kolam budidaya udang intensif, 4 kolam super intensif, 3 kolam tendon, 4 Instalasi Pengolahan Air Limbah (IPAL), serta peralatan pendukung seperti aerator (kincir air), pompa, dan lainnya.',
+            ticker: 'UDNG',
+            img: 'https://juju222.sgp1.cdn.digitaloceanspaces.com/indoipo/img/UDNG.png',
+            address: 'Ruko Shibuya Unit SHC 012 – PIK 2 Jl. Marina Indah Raya No.1 Kel. Lemo, Kec. Teluknaga Tangerang – Banten 15510',
+            bidang_usaha: 'Budidaya Tambak Udang',
+            website: 'https://abn.farm/',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=270&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=270&type=summary',
+            additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=270',
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/270/udng-pt-agro-bahari-nusantara-tbk',
+            low_price: 90,
+            high_price: 100,
+            offered_shares: 500000000,
+            outstanding_shares: 1750000000,
+            waran_numerator: 5,
+            waran_denominator: 4,
+            exercise_price: 110,
+            date_awal_start: new Date("2023-10-06"),
+            date_awal_end: new Date("2023-10-12"),
+            date_umum_start: new Date("2023-10-23"),
+            date_umum_end: new Date("2023-10-26"),
+            date_penjatahan: new Date("2023-10-26"),
+            date_distribusi: new Date("2023-10-27"),
+            date_ipo: new Date("2023-10-30"),
+            subsector_id: 11,
+        },
+    })
 }
 
 module.exports = { seedCompanies }

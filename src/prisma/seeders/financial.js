@@ -578,6 +578,58 @@ async function seedFinancials(prisma) {
             company_id: 9,
         },
     })
+    await prisma.financial.upsert({
+        where: { id: 45 },
+        update: {},
+        create: {
+            net_income: 1603608081,
+            liability: 1122288441,
+            asset: 15186124530,
+            interval: 4,
+            is_audited: true,
+            date_end: new Date("2023-04-30"),
+            company_id: 10,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 46 },
+        update: {},
+        create: {
+            net_income: -965946674,
+            liability: 245827287,
+            asset: 2383823697,
+            interval: 4,
+            is_audited: true,
+            date_end: new Date("2022-04-30"),
+            company_id: 10,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 47 },
+        update: {},
+        create: {
+            net_income: -16531787,
+            liability: 809192523,
+            asset: 7205469247,
+            interval: 12,
+            is_audited: true,
+            date_end: new Date("2022-12-31"),
+            company_id: 10,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 48 },
+        update: {},
+        create: {
+            net_income: 86490822,
+            liability: 478815588,
+            asset: 3421758672,
+            interval: 12,
+            is_audited: true,
+            date_end: new Date("2021-12-31"),
+            company_id: 10,
+        },
+    })
 }
 
 module.exports = { seedFinancials }
