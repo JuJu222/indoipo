@@ -15,11 +15,13 @@ export default async function sitemap() {
 
     const posts = companies.map((company, index) => ({
         url: `${URL}/ipo/${company.ticker}`,
+        lastModified: company.updated_at,
         priority: 1,
     }));
 
     const routes = ["", "/ipo", "/kontak", "/tentang-kami", "/syarat-ketentuan", "/kebijakan-privasi"].map((route) => ({
         url: `${URL}${route}`,
+        lastModified: new Date().toISOString(),
         priority: route === "" ? 0.8 : 0.5,
     }));
 
