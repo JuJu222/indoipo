@@ -599,7 +599,7 @@ async function seedFinancials(prisma) {
             liability: 245827287,
             asset: 2383823697,
             interval: 4,
-            is_audited: true,
+            is_audited: false,
             date_end: new Date("2022-04-30"),
             company_id: 10,
         },
@@ -628,6 +628,71 @@ async function seedFinancials(prisma) {
             is_audited: true,
             date_end: new Date("2021-12-31"),
             company_id: 10,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 49 },
+        update: {},
+        create: {
+            net_income: -5190266540,
+            liability: 310757940908,
+            asset: 696500300607,
+            interval: 2,
+            is_audited: true,
+            date_end: new Date("2023-02-28"),
+            company_id: 11,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 50 },
+        update: {},
+        create: {
+            net_income: -15852141665,
+            liability: null,
+            asset: null,
+            interval: 2,
+            is_audited: false,
+            date_end: new Date("2022-02-28"),
+            company_id: 11,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 51 },
+        update: {},
+        create: {
+            net_income: 59655776493,
+            liability: 369201974729,
+            asset: 760075313472,
+            interval: 12,
+            is_audited: true,
+            date_end: new Date("2022-12-31"),
+            company_id: 11,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 52 },
+        update: {},
+        create: {
+            net_income: -34467724894,
+            liability: 575153846223,
+            asset: 634579577618,
+            interval: 12,
+            is_audited: true,
+            date_end: new Date("2022-12-31"),
+            company_id: 11,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 53 },
+        update: {},
+        create: {
+            net_income: -50474077573,
+            liability: 513898958962,
+            asset: 626857735418,
+            interval: 12,
+            is_audited: true,
+            date_end: new Date("2022-12-31"),
+            company_id: 11,
         },
     })
 }
