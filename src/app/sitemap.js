@@ -15,7 +15,6 @@ export default async function sitemap() {
 
     const posts = companies.map((company, index) => ({
         url: `${URL}/ipo/${company.ticker}`,
-        lastModified: company.updated_at,
         priority: 1,
     }));
 
