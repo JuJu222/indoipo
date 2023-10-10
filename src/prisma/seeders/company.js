@@ -371,6 +371,39 @@ async function seedCompanies(prisma) {
             subsector_id: 12,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 12 },
+        update: {},
+        create: {
+            name: 'PT Charlie Hospital Semarang Tbk',
+            description: 'PT Charlie Hospital Semarang Tbk, adalah sebuah entitas hukum yang beroperasi di Kabupaten Kendal, Jawa Tengah, Indonesia. Perseroan didirikan dan beroperasi sesuai dengan hukum dan peraturan Indonesia, terutama Undang-Undang Perseroan Terbatas. Saat ini, Perseroan berlokasi di Ngabean, Kelurahan Ngabean, Kecamatan Boja, Kabupaten Kendal, Jawa Tengah, dan memulai kegiatan komersialnya pada tahun 2019. Perseroan resmi terbentuk dengan nama PT Charlie Hospital Semarang pada tahun 2019, berdasarkan Akta Pendirian Nomor 35 tanggal 11 Februari 2019 yang disahkan oleh Menteri Hukum dan Hak Asasi Manusia Republik Indonesia pada tanggal 16 Februari 2019. Perseroan juga terdaftar dengan nomor Tanda Daftar Perusahaan No. AHU-0026304.AH.01.11.TAHUN pada tanggal yang sama dan telah diumumkan dalam Berita Negara pada tanggal 16 Desember 2022.',
+            ticker: 'RSCH',
+            img: 'https://juju222.sgp1.cdn.digitaloceanspaces.com/indoipo/img/RSCH.png',
+            address: 'Jl. Raya Ngabean Kav 1A, Kel. Ngabean, Kec. Boja Kab. Kendal, Jawa Tengah 51381',
+            bidang_usaha: 'Rumah Sakit Swasta',
+            website: 'https://charliehospital.co.id/',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=260&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=260&type=summary',
+            additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=260',
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/260/rsch-pt-charlie-hospital-semarang-tbk',
+            low_price: 105,
+            high_price: 125,
+            final_price: 115,
+            offered_shares: 530000000,
+            outstanding_shares: 2650000000,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            date_awal_start: new Date("2023-08-04"),
+            date_awal_end: new Date("2023-08-08"),
+            date_umum_start: new Date("2023-08-22"),
+            date_umum_end: new Date("2023-08-24"),
+            date_penjatahan: new Date("2023-08-24"),
+            date_distribusi: new Date("2023-08-25"),
+            date_ipo: new Date("2023-08-28"),
+            subsector_id: 13,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
