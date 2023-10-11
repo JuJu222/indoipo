@@ -70,7 +70,7 @@ function Search({companies}) {
                                         width={0}
                                         height={0}
                                         sizes="100vw"
-                                        alt='aaa'
+                                        alt={company.name}
                                         className='w-8 h-8 object-contain'
                                     />
                                     <span className='font-semibold'>{company.ticker}</span>

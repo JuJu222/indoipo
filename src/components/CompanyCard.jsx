@@ -166,7 +166,7 @@ function CompanyCard({company}) {
                     width={0}
                     height={0}
                     sizes="100vw"
-                    alt='aaa'
+                    alt={company.name}
                     className='h-20 w-auto mx-auto object-contain'
                 />
                 <div className="pt-4 flex flex-col gap-4">

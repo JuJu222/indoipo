@@ -222,7 +222,7 @@ export default async function Company({ params }) {
                                     width={0}
                                     height={0}
                                     sizes="100vw"
-                                    alt='aaa'
+                                    alt={company.name}
                                     className='w-60 md:w-full h-auto object-contain p-4'
                                 />
                                 {company.waran_numerator ? (

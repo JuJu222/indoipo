@@ -80,7 +80,7 @@ function AboutUs(props) {
                         width={0}
                         height={0}
                         sizes="100vw"
-                        alt='aaa'
+                        alt='Logo Indoipo'
                         className='hidden md:block w-full h-auto object-contain p-4'
                     />
                 </div>
