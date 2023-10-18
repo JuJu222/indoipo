@@ -404,6 +404,39 @@ async function seedCompanies(prisma) {
             subsector_id: 13,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 13 },
+        update: {},
+        create: {
+            name: 'PT Kian Santang Muliatama Tbk',
+            description: 'PT Kian Santang Muliatama Tbk, yang berkedudukan di Bekasi dan didirikan pada tanggal 28 November 2018, adalah perusahaan yang fokus pada penyediaan layanan penting untuk industri gas, mulai dari pasokan suku cadang hingga layanan rekayasa, pengadaan, dan konstruksi (EPC). Berbasis di Bekasi, Jawa Barat, KSM telah beroperasi sejak tahun 2018 di bawah manajemen individu yang berpengalaman di sektor minyak dan gas, terutama dalam infrastruktur gas. Perusahaan ini berkomitmen pada visi dan misi yang telah ditetapkan, yang mencerminkan aspirasi para pendiri. Kegiatan utama perusahaan dibagi menjadi dua segmen: penjualan produk, termasuk regulator, fitting transisi, dan kit konverter, di samping segmen jasa yang mencakup layanan konstruksi seperti pembangunan stasiun pengukuran dan regulasi gas, sektor regulator, dan layanan terkait lainnya. Saat ini, perusahaan aktif dalam perdagangan besar mesin, peralatan, dan perlengkapan lainnya, serta layanan instalasi mekanikal dan minyak dan gas.',
+            ticker: 'RGAS',
+            img: 'https://juju222.sgp1.cdn.digitaloceanspaces.com/indoipo/img/RGAS.png',
+            address: 'Jl. Wibawa Mukti II Perum Telkom Satwika Permai Blok A5 No. 8, RT. 009 RW. 009 Kel. Jatiluhur, Kec. Jatiasih, Bekasi, 17425',
+            bidang_usaha: 'Perdagangan Besar Mesin Peralatan & Perlengkapan Lainnya, Instalasi Mekanikal dan Instalasi Gas',
+            website: 'https://kianmulia.com/',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=272&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=272&type=summary',
+            additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=272',
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/272/rgas-pt-kian-santang-muliatama-tbk',
+            low_price: 115,
+            high_price: 122,
+            final_price: null,
+            offered_shares: 334200000,
+            outstanding_shares: 1459200000,
+            waran_numerator: 5,
+            waran_denominator: 3,
+            exercise_price: 210,
+            date_awal_start: new Date("2023-10-16"),
+            date_awal_end: new Date("2023-10-18"),
+            date_umum_start: new Date("2023-11-01"),
+            date_umum_end: new Date("2023-11-03"),
+            date_penjatahan: new Date("2023-11-03"),
+            date_distribusi: new Date("2023-11-06"),
+            date_ipo: new Date("2023-11-07"),
+            subsector_id: 14,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
