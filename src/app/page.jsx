@@ -93,11 +93,11 @@ export default async function Home() {
                            </HeroIcon>
                        </div>
                    </div>
-                   <Reveal>
+                   {/*<Reveal>*/}
                        <h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
                            Analisa IPO dengan Mudah
                        </h1>
-                   </Reveal>
+                   {/*</Reveal>*/}
                    <p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
                        Indoipo membantu anda dalam menyediakan metrik-metrik serta informasi keuangan dari perusahaan yang sedang IPO dalam bentuk yang sederhana.
                    </p>
@@ -137,13 +137,13 @@ export default async function Home() {
                 {/*    </svg>*/}
                 {/*</a>*/}
                 <span className="font-semibold text-xl text-gray-400 uppercase">IPO TERBARU</span>
-                <Reveal>
+                {/*<Reveal>*/}
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
                         {companies.map((company, index) => (
                             <CompanyCard key={index} company={company}></CompanyCard>
                         ))}
                     </div>
-                </Reveal>
+                {/*</Reveal>*/}
             </div>
         </section>
     )

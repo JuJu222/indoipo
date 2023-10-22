@@ -210,7 +210,7 @@ export default async function Company({ params }) {
 
     return (
         <>
-            <Reveal>
+            {/*<Reveal>*/}
                 <section className="bg-white dark:bg-gray-900">
                     <div className="md:py-8 py-4 px-4 mx-auto max-w-screen-xl lg:px-12">
                         <div className='flex md:space-x-10 flex-col md:flex-row'>
@@ -726,7 +726,7 @@ export default async function Company({ params }) {
                         </div>
                     </div>
                 </section>
-            </Reveal>
+            {/*</Reveal>*/}
         </>
     );
 }
