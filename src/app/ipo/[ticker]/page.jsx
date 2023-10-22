@@ -6,6 +6,7 @@ import Financials from "./Financials";
 import {toRp} from "../../../helpers/formatter";
 import { getCompany } from '@/lib/company'
 import Reveal from "../../../components/animations/Reveal";
+import IncomeChart from "./IncomeChart";
 
 export async function generateMetadata({ params }) {
     let company = await getCompany(params.ticker.toUpperCase())
@@ -719,6 +720,11 @@ export default async function Company({ params }) {
                                     </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                        </div>
+                        <div>
+                            <div className='w-1/2'>
+                                <IncomeChart></IncomeChart>
                             </div>
                         </div>
                         <div>
