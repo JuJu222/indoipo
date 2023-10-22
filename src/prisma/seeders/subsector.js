@@ -119,6 +119,14 @@ async function seedSubSectors(prisma) {
             sector_id: 8,
         },
     })
+    await prisma.subsector.upsert({
+        where: { id: 16 },
+        update: {},
+        create: {
+            name: 'IT Services & Consulting',
+            sector_id: 3,
+        },
+    })
 }
 
 module.exports = { seedSubSectors }
