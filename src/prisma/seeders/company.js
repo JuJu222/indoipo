@@ -437,6 +437,39 @@ async function seedCompanies(prisma) {
             subsector_id: 14,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 14 },
+        update: {},
+        create: {
+            name: 'PT Ikapharmindo Putramas Tbk ',
+            description: 'PT. Ikapharmindo Putramas, yang bermula sebagai apotik, berdiri sejak 18 Mei 1978 dengan pabrik utamanya di Kawasan Pulogadung seluas 11,700 m2. Saat ini, fasilitas produksinya telah berkembang termasuk produksi, laboratorium riset dan pengembangan (R&D), kontrol kualitas, pergudangan, dan kantor pusat. Fasilitas tersebut memenuhi standar GMP dari BPOM dan didukung oleh teknologi SAP untuk memastikan produk-produk farmasi dan perawatan personal berkualitas. Mereka juga membuka pabrik kedua di Jawa Barat pada 2016, khusus untuk produk perawatan bayi Baby Huki. Dengan visi menjadi perusahaan farmasi dan perawatan personal yang profesional, inovatif, dan berorientasi pada kesehatan, Perseroan akan memperluas fasilitas di Jawa Barat untuk pasar internasional, terutama produk perawatan rambut, tetap berfokus pada inovasi dan kualitas, serta menyediakan produk untuk berbagai generasi dengan portofolio yang berkembang.',
+            ticker: 'IKPM',
+            img: 'https://juju222.sgp1.cdn.digitaloceanspaces.com/indoipo/img/IKPM.png',
+            address: 'Kl. Pulogadung Raya No.29 Kawasan Industri Pulogadung Jakarta Timur, 13930 Indonesia',
+            bidang_usaha: 'Industri Farmasi, Personal Care',
+            website: 'https://www.ikapharmindo.com',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=274&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=274&type=summary',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/274/ikpm-pt-ikapharmindo-putramas-tbk',
+            low_price: 160,
+            high_price: 180,
+            final_price: null,
+            offered_shares: 336932500,
+            outstanding_shares: 1684662500,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            date_awal_start: new Date("2023-10-23"),
+            date_awal_end: new Date("2023-10-30"),
+            date_umum_start: new Date("2023-11-02"),
+            date_umum_end: new Date("2023-11-06"),
+            date_penjatahan: new Date("2023-11-08"),
+            date_distribusi: new Date("2023-11-09"),
+            date_ipo: new Date("2023-11-10"),
+            subsector_id: 15,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
