@@ -34,7 +34,7 @@ function Search({companies}) {
     useEffect(()=>{
         if (searchQuery !== '') {
             const getSearch = async () => {
-                const res = await fetch('http://localhost:3000/api/search?' + new URLSearchParams({
+                const res = await fetch('https://indoipo.com/api/search?' + new URLSearchParams({
                     query: searchQuery
                 }))
                     .then((response) => response.json())
