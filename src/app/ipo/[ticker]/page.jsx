@@ -11,7 +11,7 @@ import IncomeChart from "./IncomeChart";
 export async function generateMetadata({ params }) {
     let company = await getCompany(params.ticker.toUpperCase())
     return {
-        title: `(${params.ticker.toUpperCase()}) ${company.name} | Analisa IPO (PER, PBV & ROE) - Indoipo`,
+        title: `Analisa IPO (${params.ticker.toUpperCase()}) ${company.name} | Indoipo`,
         description: `${params.ticker.toUpperCase()} - ${company.name} merupakan perusahaan yang bergerak di bidang ${company.bidang_usaha}. Lihat PER, PBV, DER, ROE, dan metrik-metrik lainnya untuk membantu ada dalam menentukan investasi anda. IPO ditawarkan dengan harga mulai dari Rp ${company.low_price} hingga Rp ${company.high_price} per lot.`
     }
 }
@@ -211,7 +211,7 @@ export default async function Company({ params }) {
 
     return (
         <>
-            <Reveal>
+            {/*<Reveal>*/}
                 <section className="bg-white dark:bg-gray-900">
                     <div className="md:py-8 py-4 px-4 mx-auto max-w-screen-xl lg:px-12">
                         <div className='flex md:space-x-10 flex-col md:flex-row'>
@@ -240,7 +240,7 @@ export default async function Company({ params }) {
                             <div className='w-full md:w-2/3 py-8 md:p-0'>
                                 <div className='flex justify-between gap-4'>
                                     <div>
-                                        <h3 className="text-md mb-2 leading-none text-gray-900 dark:text-white">{company.ticker}</h3>
+                                        <h1 className="text-md mb-2 leading-none text-gray-900 dark:text-white">{company.ticker}</h1>
                                         <h1 className="text-2xl mb-2 font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">{company.name}</h1>
                                         <h4 className="text-sm mb-3 leading-none text-gray-900 dark:text-white">{company.subsector.name} - {company.subsector.sector.name}</h4>
                                         {company.final_price ? (
@@ -732,7 +732,7 @@ export default async function Company({ params }) {
                         </div>
                     </div>
                 </section>
-            </Reveal>
+            {/*</Reveal>*/}
         </>
     );
 }

@@ -45,7 +45,7 @@ function CompanyCard({company}) {
         statusClass = 'bg-secondary'
         statusName = 'IPO'
     } else {
-        statusClass = 'bg-secondary'
+        statusClass = 'bg-orange-500'
         statusName = 'Akan Datang'
     }
 

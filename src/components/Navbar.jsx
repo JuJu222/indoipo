@@ -8,10 +8,10 @@ export const revalidate = 60
 
 async function Navbar(props) {
     const companies = await prisma.company.findMany({
-        take: 8,
         orderBy: {
-            id: 'asc'
+            date_awal_start: 'desc'
         },
+        take: 8
     });
 
     if (!companies) {
