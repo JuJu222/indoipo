@@ -7,6 +7,7 @@ import {toRp} from "../../../helpers/formatter";
 import { getCompany } from '@/lib/company'
 import Reveal from "../../../components/animations/Reveal";
 import IncomeChart from "./IncomeChart";
+import CapitalChart from "./CapitalChart";
 
 export async function generateMetadata({ params }) {
     let company = await getCompany(params.ticker.toUpperCase())
@@ -545,8 +546,15 @@ export default async function Company({ params }) {
                             </ol>
                         </div>
                         <div className='pb-8'>
-                            <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
-                            <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
+                            <div className='flex space-x-10'>
+                                <div className='w-2/3'>
+                                    <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
+                                    <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
+                                </div>
+                                <div className='w-1/3 h-80 flex justify-center'>
+                                    <CapitalChart></CapitalChart>
+                                </div>
+                            </div>
                             <div className='flex justify-between gap-4 w-full overflow-x-auto'>
                                 {/*desktop*/}
                                 <table className='hidden md:block text-left mt-2 max-w-[50%] h-fit'>
@@ -722,10 +730,16 @@ export default async function Company({ params }) {
                                 </table>
                             </div>
                         </div>
-                        <div>
-                            <div className='w-1/2'>
-                                <IncomeChart></IncomeChart>
-                            </div>
+                        <div className='flex'>
+                            {groupedFinancials.map((groupedFinancial, index) => (
+                                index == groupedFinancials.length - 1 ? (
+                                   <></>
+                                ) : (
+                                    <div key={index} className='w-1/2'>
+                                        <IncomeChart groupedFinancial={groupedFinancial}></IncomeChart>
+                                    </div>
+                                )
+                            ))}
                         </div>
                         <div>
                             <Financials groupedFinancials={groupedFinancials} company={company}></Financials>
