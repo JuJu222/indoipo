@@ -22,8 +22,6 @@ function IncomeChart({ groupedFinancial }) {
         Legend
     );
 
-    console.log(groupedFinancial[0].interval)
-
     const options = {
         responsive: true,
         maintainAspectRatio : false,
