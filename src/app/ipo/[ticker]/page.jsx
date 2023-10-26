@@ -732,16 +732,19 @@ export default async function Company({ params }) {
                                 </table>
                             </div>
                         </div>
-                        <div className='flex space-x-10'>
-                            {groupedFinancials.map((groupedFinancial, index) => (
-                                index == groupedFinancials.length - 1 ? (
-                                   <></>
-                                ) : (
-                                    <div key={index} className='w-1/2 h-80'>
-                                        <IncomeChart groupedFinancial={groupedFinancial}></IncomeChart>
-                                    </div>
-                                )
-                            ))}
+                        <div className='pb-8'>
+                            <h2 className='text-lg font-semibold'>Laba Bersih Perusahaan</h2>
+                            <div className='flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0'>
+                                {groupedFinancials.map((groupedFinancial, index) => (
+                                    index == groupedFinancials.length - 1 ? (
+                                        <></>
+                                    ) : (
+                                        <div key={index} className='md:w-1/2'>
+                                            <IncomeChart groupedFinancial={groupedFinancial}></IncomeChart>
+                                        </div>
+                                    )
+                                ))}
+                            </div>
                         </div>
                         <div>
                             <Financials groupedFinancials={groupedFinancials} company={company}></Financials>
