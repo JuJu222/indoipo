@@ -546,15 +546,17 @@ export default async function Company({ params }) {
                             </ol>
                         </div>
                         <div className='pb-8'>
-                            <div className='flex space-x-10'>
-                                <div className='w-2/3'>
-                                    <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
-                                    <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
-                                </div>
-                                <div className='w-1/3 h-80 flex justify-center'>
-                                    <CapitalChart></CapitalChart>
-                                </div>
-                            </div>
+                            <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
+                            <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
+                            {/*<div className='flex space-x-10'>*/}
+                            {/*    <div className='w-2/3'>*/}
+                            {/*        <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>*/}
+                            {/*        <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>*/}
+                            {/*    </div>*/}
+                            {/*    <div className='w-1/3 h-80 flex justify-center'>*/}
+                            {/*        <CapitalChart></CapitalChart>*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
                             <div className='flex justify-between gap-4 w-full overflow-x-auto'>
                                 {/*desktop*/}
                                 <table className='hidden md:block text-left mt-2 max-w-[50%] h-fit'>
@@ -730,12 +732,12 @@ export default async function Company({ params }) {
                                 </table>
                             </div>
                         </div>
-                        <div className='flex'>
+                        <div className='flex space-x-10'>
                             {groupedFinancials.map((groupedFinancial, index) => (
                                 index == groupedFinancials.length - 1 ? (
                                    <></>
                                 ) : (
-                                    <div key={index} className='w-1/2'>
+                                    <div key={index} className='w-1/2 h-80'>
                                         <IncomeChart groupedFinancial={groupedFinancial}></IncomeChart>
                                     </div>
                                 )

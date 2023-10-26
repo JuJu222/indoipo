@@ -22,15 +22,17 @@ function IncomeChart({ groupedFinancial }) {
         Legend
     );
 
+    console.log(groupedFinancial[0].interval)
+
     const options = {
         responsive: true,
         plugins: {
             legend: {
-                position: 'top',
+                display: false
             },
             title: {
                 display: true,
-                text: 'Chart.js Bar Chart',
+                text: `${groupedFinancial[0].interval} Bulan`,
             },
         },
     };
@@ -41,20 +43,33 @@ function IncomeChart({ groupedFinancial }) {
         let date = new Date(financial['date_end']).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()
         return date;
     });
+    const dataset = groupedFinancial.map(function(financial) {
+        const net_income = financial.net_income
+        return net_income
+    });
 
     const data = {
         labels,
         datasets: [
             {
-                label: 'Dataset 1',
-                data: labels.map(() => [0, 1, 2, 3, 4, 5, 6]),
-                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                data: dataset,
+                backgroundColor: (ctx) => {
+                    if (ctx.raw > 0) {
+                        return 'rgb(104,185,132)';
+                    }
+
+                    if (ctx.raw < 0) {
+                        return 'rgb(234,69,69)';
+                    }
+
+                    return 'gray';
+                }
             },
         ],
     };
 
     return (
-        <Bar options={options} data={data} height={400} />
+        <Bar options={options} data={data} />
     );
 }
 
