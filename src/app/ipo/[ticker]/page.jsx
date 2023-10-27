@@ -8,6 +8,7 @@ import { getCompany } from '@/lib/company'
 import Reveal from "../../../components/animations/Reveal";
 import IncomeChart from "./IncomeChart";
 import CapitalChart from "./CapitalChart";
+import EquityChart from "./EquityChart";
 
 export async function generateMetadata({ params }) {
     let company = await getCompany(params.ticker.toUpperCase())
@@ -744,6 +745,12 @@ export default async function Company({ params }) {
                                         </div>
                                     )
                                 ))}
+                            </div>
+                        </div>
+                        <div className='pb-8'>
+                            <h2 className='text-lg font-semibold'>Neraca Perusahaan</h2>
+                            <div className='flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0'>
+                                <EquityChart groupedFinancials={groupedFinancials}></EquityChart>
                             </div>
                         </div>
                         <div>
