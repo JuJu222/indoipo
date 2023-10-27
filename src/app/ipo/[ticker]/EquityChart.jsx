@@ -3,6 +3,7 @@
 import React from 'react';
 import {BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Title, Tooltip,} from 'chart.js';
 import {Bar} from 'react-chartjs-2';
+import {toRp} from "../../../helpers/formatter";
 
 function IncomeChart({ groupedFinancials }) {
     ChartJS.register(
@@ -19,10 +20,18 @@ function IncomeChart({ groupedFinancials }) {
         maintainAspectRatio : false,
         plugins: {
             title: {
-                display: true,
-                text: `Periode ${groupedFinancials[0].interval} Bulan (Dalam Rp)`,
+                display: false,
             },
         },
+        scales: {
+            y: {
+                ticks: {
+                    callback: function(value, index, ticks) {
+                        return toRp(value);
+                    }
+                }
+            }
+        }
     };
 
     let financials = []
@@ -42,22 +51,7 @@ function IncomeChart({ groupedFinancials }) {
         return dateB - dateA;
     });
 
-    // console.log(financials)
-
-    // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
     let dateMYOnly = {month: 'short', year: 'numeric'};
-    // let equityDataset = []
-    // let labels = []
-    // for (const [index, groupedFinancial] of groupedFinancials.entries()) {
-    //     for (const [index2, financial] of groupedFinancial.entries()) {
-    //         if (financial.asset != null && financial.liability != null && financial.interval != 0) {
-    //             equityDataset.push(financial.equity)
-    //             labels.push(new Date(financial['date_end']).toLocaleDateString("id-ID", dateMYOnly).toUpperCase())
-    //         }
-    //     }
-    // }
-    // console.log(equityDataset)
-    // console.log(labels)
 
     const labels = financials.map(function(financial) {
         let date = new Date(financial['date_end']).toLocaleDateString("id-ID", dateMYOnly).toUpperCase()
@@ -74,13 +68,14 @@ function IncomeChart({ groupedFinancials }) {
         labels,
         datasets: [
             {
-                label: 'aaa',
+                label: 'Total Aset',
                 data: assetDataset,
                 backgroundColor: (ctx) => {
                     return 'rgb(104,185,132)';
                 }
             },
             {
+                label: 'Total Liabilitas',
                 data: liabilityDataset,
                 backgroundColor: (ctx) => {
                     return 'rgb(234,69,69)';

@@ -11,6 +11,7 @@ import {
     Legend,
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
+import {toRp} from "../../../helpers/formatter";
 
 function IncomeChart({ groupedFinancial }) {
     ChartJS.register(
@@ -34,6 +35,15 @@ function IncomeChart({ groupedFinancial }) {
                 text: `Periode ${groupedFinancial[0].interval} Bulan (Dalam Rp)`,
             },
         },
+        scales: {
+            y: {
+                ticks: {
+                    callback: function (value, index, ticks) {
+                        return toRp(value);
+                    }
+                }
+            }
+        }
     };
 
     // const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
