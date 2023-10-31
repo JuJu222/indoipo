@@ -5,6 +5,7 @@ const {seedUnderwriters} = require("./underwriter");
 const {seedCompanies} = require("./company");
 const {seedFinancials} = require("./financial");
 const {seedCompanyUnderwriter} = require("./companyUnderwriter");
+const {seedProceeds} = require("./proceed");
 const prisma = new PrismaClient()
 
 async function main() {
@@ -14,6 +15,7 @@ async function main() {
     await seedCompanies(prisma)
     await seedFinancials(prisma)
     await seedCompanyUnderwriter(prisma)
+    await seedProceeds(prisma)
 }
 
 main()

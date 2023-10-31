@@ -44,6 +44,7 @@ model Company {
   subsector                  Subsector?           @relation(fields: [subsector_id], references: [id])
   underwriters               CompanyUnderwriter[]
   financials                 Financial[]
+  proceeds                 Proceed[]
 
   @@map("companies")
 }
@@ -107,4 +108,15 @@ model Financial {
   company    Company? @relation(fields: [company_id], references: [id])
 
   @@map("financials")
+}
+
+model Proceed {
+  id         Int      @id @default(autoincrement())
+  use   String
+  company_id Int?
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  company    Company? @relation(fields: [company_id], references: [id])
+
+  @@map("proceeds")
 }

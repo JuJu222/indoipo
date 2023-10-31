@@ -323,6 +323,7 @@ async function seedCompanies(prisma) {
             e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/270/udng-pt-agro-bahari-nusantara-tbk',
             low_price: 90,
             high_price: 100,
+            final_price: 100,
             offered_shares: 500000000,
             outstanding_shares: 1750000000,
             waran_numerator: 5,

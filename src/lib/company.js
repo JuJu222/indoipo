@@ -21,7 +21,8 @@ export const getCompany = cache(async (ticker) => {
                 orderBy: {
                     date_end: 'desc'
                 }
-            }
+            },
+            proceeds: true
         }
     })
 });

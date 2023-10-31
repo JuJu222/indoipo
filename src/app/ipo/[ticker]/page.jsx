@@ -7,7 +7,6 @@ import {toRp} from "../../../helpers/formatter";
 import { getCompany } from '@/lib/company'
 import Reveal from "../../../components/animations/Reveal";
 import IncomeChart from "./IncomeChart";
-import CapitalChart from "./CapitalChart";
 import EquityChart from "./EquityChart";
 
 export async function generateMetadata({ params }) {
@@ -547,17 +546,20 @@ export default async function Company({ params }) {
                             </ol>
                         </div>
                         <div className='pb-8'>
-                            <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
-                            <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
-                            {/*<div className='flex space-x-10'>*/}
-                            {/*    <div className='w-2/3'>*/}
-                            {/*        <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>*/}
-                            {/*        <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>*/}
-                            {/*    </div>*/}
-                            {/*    <div className='w-1/3 h-80 flex justify-center'>*/}
-                            {/*        <CapitalChart></CapitalChart>*/}
-                            {/*    </div>*/}
-                            {/*</div>*/}
+                            <div className='flex space-x-10'>
+                                <div className='w-2/3'>
+                                    <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
+                                    <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
+                                </div>
+                                <div className='w-1/3'>
+                                    <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
+                                    {company.proceeds.map((proceed, index) => (
+                                            <p key={index}>
+                                                {proceed.use}
+                                            </p>
+                                    ))}
+                                </div>
+                            </div>
                             <div className='flex justify-between gap-4 w-full overflow-x-auto'>
                                 {/*desktop*/}
                                 <table className='hidden md:block text-left mt-2 max-w-[50%] h-fit'>
