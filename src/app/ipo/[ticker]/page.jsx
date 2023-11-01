@@ -12,7 +12,7 @@ import EquityChart from "./EquityChart";
 export async function generateMetadata({ params }) {
     let company = await getCompany(params.ticker.toUpperCase())
     return {
-        title: `Analisa IPO (${params.ticker.toUpperCase()}) ${company.name} | Indoipo`,
+        title: `(${params.ticker.toUpperCase()}) Analisa IPO ${company.name} | Indoipo`,
         description: `${params.ticker.toUpperCase()} - ${company.name} merupakan perusahaan yang bergerak di bidang ${company.bidang_usaha}. Lihat PER, PBV, DER, ROE, dan metrik-metrik lainnya untuk membantu ada dalam menentukan investasi anda. IPO ditawarkan dengan harga mulai dari Rp ${company.low_price} hingga Rp ${company.high_price} per lot.`
     }
 }
@@ -214,7 +214,7 @@ export default async function Company({ params }) {
         <>
             {/*<Reveal>*/}
                 <section className="bg-white dark:bg-gray-900">
-                    <div className="md:py-8 py-4 px-4 mx-auto max-w-screen-xl lg:px-12">
+                    <div className="md:py-6 py-4 px-4 mx-auto max-w-screen-xl lg:px-12">
                         <div className='flex md:space-x-10 flex-col md:flex-row'>
                             <div className='w-full md:w-1/3 flex flex-col items-center justify-center'>
                                 {/*<Image src={company.img} className='m-auto object-contain p-4'*/}
@@ -238,7 +238,7 @@ export default async function Company({ params }) {
                                     ''
                                 )}
                             </div>
-                            <div className='w-full md:w-2/3 py-8 md:p-0'>
+                            <div className='w-full md:w-2/3 py-6 md:p-0'>
                                 <div className='flex justify-between gap-4'>
                                     <div>
                                         <h1 className="text-md mb-2 leading-none text-gray-900 dark:text-white">{company.ticker}</h1>
@@ -420,7 +420,7 @@ export default async function Company({ params }) {
                                 </div>
                             </div>
                         </div>
-                        <div className='py-4 md:py-8'>
+                        <div className='py-4 md:py-6'>
                             {/*desktop*/}
                             <ol className="hidden md:flex items-start">
                                 <li className="w-full mb-6 sm:mb-0">
@@ -545,31 +545,43 @@ export default async function Company({ params }) {
                                 </li>
                             </ol>
                         </div>
-                        <div className='pb-8'>
-                            <div className='flex space-x-10'>
-                                <div className='w-2/3'>
+                        <div>
+                            {company.proceeds.length != 0 ? (
+                                <div className='md:flex md:space-x-10'>
+                                    <div className='md:w-3/5 pb-6'>
+                                        <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
+                                        <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
+                                    </div>
+                                    <div className='md:w-2/5 pb-6'>
+                                        <h2 className='text-lg font-semibold pb-2'>Rencana Penggunaan Dana</h2>
+                                        <table className=''>
+                                            <tbody>
+                                            {company.proceeds.map((proceed, index) => (
+                                                <tr key={index}>
+                                                    <td className='font-bold pb-4 pr-6 text-lg whitespace-nowrap'>{proceed.amount}</td>
+                                                    <td className='pb-4'>{proceed.use}</td>
+                                                </tr>
+                                            ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            ) : (
+                                <div className='pb-6'>
                                     <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
                                     <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
                                 </div>
-                                <div className='w-1/3'>
-                                    <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
-                                    {company.proceeds.map((proceed, index) => (
-                                            <p key={index}>
-                                                {proceed.use}
-                                            </p>
-                                    ))}
-                                </div>
-                            </div>
-                            <div className='flex justify-between gap-4 w-full overflow-x-auto'>
+                            )}
+                            <div className='flex justify-between gap-4 pb-6 w-full overflow-x-auto'>
                                 {/*desktop*/}
                                 <table className='hidden md:block text-left mt-2 max-w-[50%] h-fit'>
                                     <tbody className='align-top'>
                                     <tr>
-                                        <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        <th className='font-medium pr-2 w-1/2'>
                                             Jumlah Saham Ditawarkan
                                         </th>
-                                        <td className='pt-2 px-2'>:</td>
-                                        <td className='pt-2'>{company.offered_shares.toLocaleString('id-ID')} Lembar ({(company.offered_shares / company.outstanding_shares * 100).toFixed(2)}%)</td>
+                                        <td className='px-2'>:</td>
+                                        <td className=''>{company.offered_shares.toLocaleString('id-ID')} Lembar ({(company.offered_shares / company.outstanding_shares * 100).toFixed(2)}%)</td>
                                     </tr>
                                     <tr>
                                         <th className='font-medium pr-2 pt-2 w-1/2'>
@@ -612,11 +624,11 @@ export default async function Company({ params }) {
                                 <table className='hidden md:block text-left mt-2 max-w-[50%] h-fit'>
                                     <tbody className='align-top'>
                                     <tr>
-                                        <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        <th className='font-medium pr-2 w-1/2'>
                                             Total Saham Dicatatkan
                                         </th>
-                                        <td className='pt-2 px-2'>:</td>
-                                        <td className='pt-2'>{company.outstanding_shares.toLocaleString('id-ID')} Lembar</td>
+                                        <td className='px-2'>:</td>
+                                        <td className=''>{company.outstanding_shares.toLocaleString('id-ID')} Lembar</td>
                                     </tr>
                                     <tr>
                                         <th className='font-medium pr-2 pt-2 w-1/2'>
@@ -653,11 +665,11 @@ export default async function Company({ params }) {
                                 <table className='md:hidden block text-left mt-2 w-full h-fit'>
                                     <tbody className='align-top'>
                                     <tr>
-                                        <th className='font-medium pr-2 pt-2 w-1/2'>
+                                        <th className='font-medium pr-2 w-1/2'>
                                             Jumlah Saham Ditawarkan
                                         </th>
-                                        <td className='pt-2 px-2'>:</td>
-                                        <td className='pt-2'>{company.offered_shares.toLocaleString('id-ID')} Lembar ({(company.offered_shares / company.outstanding_shares * 100).toFixed(2)}%)</td>
+                                        <td className='px-2'>:</td>
+                                        <td className=''>{company.offered_shares.toLocaleString('id-ID')} Lembar ({(company.offered_shares / company.outstanding_shares * 100).toFixed(2)}%)</td>
                                     </tr>
                                     <tr>
                                         <th className='font-medium pr-2 pt-2 w-1/2'>
@@ -735,7 +747,7 @@ export default async function Company({ params }) {
                                 </table>
                             </div>
                         </div>
-                        <div className='pb-8'>
+                        <div className='pb-6'>
                             <h2 className='text-lg font-semibold'>Laba Bersih Perusahaan</h2>
                             <div className='flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0'>
                                 {groupedFinancials.map((groupedFinancial, index) => (
@@ -749,7 +761,7 @@ export default async function Company({ params }) {
                                 ))}
                             </div>
                         </div>
-                        <div className='pb-8'>
+                        <div className='pb-6'>
                             <h2 className='text-lg font-semibold'>Neraca Perusahaan</h2>
                             <div className='flex flex-col md:flex-row md:space-x-10 space-y-4 md:space-y-0'>
                                 <EquityChart groupedFinancials={groupedFinancials}></EquityChart>

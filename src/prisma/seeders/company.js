@@ -430,11 +430,11 @@ async function seedCompanies(prisma) {
             exercise_price: 210,
             date_awal_start: new Date("2023-10-16"),
             date_awal_end: new Date("2023-10-18"),
-            date_umum_start: new Date("2023-11-01"),
-            date_umum_end: new Date("2023-11-03"),
-            date_penjatahan: new Date("2023-11-03"),
-            date_distribusi: new Date("2023-11-06"),
-            date_ipo: new Date("2023-11-07"),
+            date_umum_start: new Date("2023-11-02"),
+            date_umum_end: new Date("2023-11-06"),
+            date_penjatahan: new Date("2023-11-06"),
+            date_distribusi: new Date("2023-11-07"),
+            date_ipo: new Date("2023-11-08"),
             subsector_id: 14,
         },
     })
@@ -501,7 +501,7 @@ async function seedCompanies(prisma) {
             date_penjatahan: new Date("2023-11-06"),
             date_distribusi: new Date("2023-11-07"),
             date_ipo: new Date("2023-11-08"),
-            subsector_id: 15,
+            subsector_id: 16,
         },
     })
 }

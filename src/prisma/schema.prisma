@@ -112,6 +112,7 @@ model Financial {
 
 model Proceed {
   id         Int      @id @default(autoincrement())
+  amount   String
   use   String
   company_id Int?
   created_at DateTime @default(now())
