@@ -33,7 +33,7 @@ function CompanyCard({company}) {
         statusClass = 'bg-yellow-400'
         statusName = 'Penawaran Awal'
     } else if (new Date(company.date_umum_start).toISOString().split("T")[0] <= currentDate && new Date(company.date_distribusi).toISOString().split("T")[0] > currentDate) {
-        statusClass = 'bg-green-600'
+        statusClass = 'bg-green-500'
         statusName = 'Penawaran Umum'
     } else if (new Date(company.date_distribusi).toISOString().split("T")[0] <= currentDate && new Date(company.date_penjatahan).toISOString().split("T")[0] > currentDate) {
         statusClass = 'bg-secondary'
