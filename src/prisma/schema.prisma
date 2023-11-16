@@ -18,7 +18,7 @@ model Company {
   website                    String
   bidang_usaha               String
   prospectus_url             String
-  prospectus_summary_url     String
+  prospectus_summary_url     String?
   additional_information_url String?
   e_ipo_url                  String
   low_price                  Float?
