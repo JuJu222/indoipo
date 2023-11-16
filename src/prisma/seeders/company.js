@@ -504,6 +504,39 @@ async function seedCompanies(prisma) {
             subsector_id: 16,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 16 },
+        update: {},
+        create: {
+            name: 'PT Janu Putra Sejahtera Tbk',
+            description: 'PT Janu Putra Sejahtera Tbk. ("Perseroan") bergerak dalam kegiatan peternakan ayam dan rumah potong ayam. Produk dan jasa yang ditawarkan oleh Perseroan meliputi DOC Parent Stock, DOC Ayam Broiler, Ayam Hidup, Karkas Ayam, Telur Komersil, dan Layanan Rumah Potong Ayam. Saat ini, Perseroan memiliki dua lokasi kandang breeding Parent Stock yang terletak di Ngawis dan Purbalingga, sementara peternakan Ayam Broiler berada di Klerong dan Sleman.',
+            ticker: 'AYAM',
+            img: 'https://juju222.sgp1.cdn.digitaloceanspaces.com/indoipo/img/AYAM.png',
+            address: 'Ruko Casa Grande No.35, Jl. Ringroad Utara, Maguwoharjo, Depok, Sleman, D.I Yogyakarta ',
+            bidang_usaha: 'Bergerak Dalam Bidang Usaha Peternakan Dan Rumah Potong Ayam ',
+            website: 'https://januputrasejahtera.com/',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=275&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=271&type=summary',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/275/ayam-pt-janu-putra-sejahtera-tbk',
+            low_price: 100,
+            high_price: 110,
+            final_price: null,
+            offered_shares: 800000000,
+            outstanding_shares: 4000000000,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            date_awal_start: new Date("2023-11-10"),
+            date_awal_end: new Date("2023-11-16"),
+            date_umum_start: new Date("2023-11-24"),
+            date_umum_end: new Date("2023-11-28"),
+            date_penjatahan: new Date("2023-11-28"),
+            date_distribusi: new Date("2023-11-29"),
+            date_ipo: new Date("2023-11-30"),
+            subsector_id: 11,
+        },
+    })
 }
 
 module.exports = { seedCompanies }

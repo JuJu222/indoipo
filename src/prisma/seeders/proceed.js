@@ -71,6 +71,42 @@ async function seedProceeds(prisma) {
             company_id: 13,
         },
     })
+    await prisma.proceed.upsert({
+        where: { id: 9 },
+        update: {},
+        create: {
+            amount: 'Rp 40,630 Juta',
+            use: 'Pembelian bidang tanah di Desa Ngawis, Kecamatan Karangmojo, Gunungkidul, dan Daerah Istimewa Yogyakarta',
+            company_id: 16,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 10 },
+        update: {},
+        create: {
+            amount: 'Rp 15,520 Juta',
+            use: 'Pembelian bidang tanah di Desa Tuksono, Kabupaten Kulonprogo, Daerah Istimewa Yogyakarta dan pembangunan fasilitas Hatchery baru',
+            company_id: 16,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 11 },
+        update: {},
+        create: {
+            amount: 'Rp 11,537 Juta',
+            use: 'Pelunasan seluruh utang usaha Perseroan kepada PT Janu Putra Abadi (“JPA”)',
+            company_id: 16,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 12 },
+        update: {},
+        create: {
+            amount: 'Sisa Dana',
+            use: 'Modal kerja Perseroan, termasuk namun tidak terbatas untuk pembelian Parent Stock Day-Old-Chicks dari JPA',
+            company_id: 16,
+        },
+    })
 }
 
 module.exports = { seedProceeds }
