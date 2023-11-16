@@ -517,7 +517,7 @@ async function seedCompanies(prisma) {
             website: 'https://januputrasejahtera.com/',
             prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=275&type=',
             prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=275',
-            additional_information_url: null,
+            additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=275',
             e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/275/ayam-pt-janu-putra-sejahtera-tbk',
             low_price: 100,
             high_price: 110,
