@@ -551,7 +551,7 @@ async function seedCompanies(prisma) {
             prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=276&type=',
             prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=276&type=summary',
             additional_information_url: null,
-            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/275/ayam-pt-janu-putra-sejahtera-tbk',
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/276/suri-pt-maja-agung-latexindo-tbk',
             low_price: 160,
             high_price: 170,
             final_price: null,
