@@ -76,7 +76,7 @@ async function seedProceeds(prisma) {
         update: {},
         create: {
             amount: 'Rp 40,630 Juta',
-            use: 'Pembelian bidang tanah di Desa Ngawis, Kecamatan Karangmojo, Gunungkidul, dan Daerah Istimewa Yogyakarta',
+            use: 'Pembelian bidang tanah di Desa Ngawis, Kecamatan Karangmojo, Gunungkidul, dan Daerah Istimewa Yogyakarta.',
             company_id: 16,
         },
     })
@@ -85,7 +85,7 @@ async function seedProceeds(prisma) {
         update: {},
         create: {
             amount: 'Rp 15,520 Juta',
-            use: 'Pembelian bidang tanah di Desa Tuksono, Kabupaten Kulonprogo, Daerah Istimewa Yogyakarta dan pembangunan fasilitas Hatchery baru',
+            use: 'Pembelian bidang tanah di Desa Tuksono, Kabupaten Kulonprogo, Daerah Istimewa Yogyakarta dan pembangunan fasilitas Hatchery baru.',
             company_id: 16,
         },
     })
@@ -94,7 +94,7 @@ async function seedProceeds(prisma) {
         update: {},
         create: {
             amount: 'Rp 11,537 Juta',
-            use: 'Pelunasan seluruh utang usaha Perseroan kepada PT Janu Putra Abadi (“JPA”)',
+            use: 'Pelunasan seluruh utang usaha Perseroan kepada PT Janu Putra Abadi (“JPA”).',
             company_id: 16,
         },
     })
@@ -103,8 +103,26 @@ async function seedProceeds(prisma) {
         update: {},
         create: {
             amount: 'Sisa Dana',
-            use: 'Modal kerja Perseroan, termasuk namun tidak terbatas untuk pembelian Parent Stock Day-Old-Chicks dari JPA',
+            use: 'Modal kerja Perseroan, termasuk namun tidak terbatas untuk pembelian Parent Stock Day-Old-Chicks dari JPA.',
             company_id: 16,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 13 },
+        update: {},
+        create: {
+            amount: '49.45% ',
+            use: 'Capital Expenditure (CAPEX) yang meliputi pengembangan bangunan, mesin produksi, dan lain-lain.',
+            company_id: 17,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 14 },
+        update: {},
+        create: {
+            amount: '50.55%',
+            use: 'Operational Expenditure (OPEX) yang meliputi penambahan daya listrik di area pabrik, biaya pemasaran, dan lain-lain.',
+            company_id: 17,
         },
     })
 }
