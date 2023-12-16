@@ -147,7 +147,7 @@ async function seedProceeds(prisma) {
         where: { id: 17 },
         update: {},
         create: {
-            amount: '100%',
+            amount: 'Seluruh Dana',
             use: 'Modal kerja Perseroan (biaya pokok konstruksi gedung & bangunan, infrastruktur Jalan, produksi aspal hot mix & produksi beton ready mix, gaji dan tunjangan).',
             company_id: 19,
         },
@@ -168,6 +168,15 @@ async function seedProceeds(prisma) {
             amount: '10%',
             use: 'Modal kerja Perseroan - dikategorikan sebagai Operating Expenditure (OPEX).',
             company_id: 20,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 20 },
+        update: {},
+        create: {
+            amount: 'Seluruh Dana',
+            use: 'Diterima oleh Para Pemegang Saham Penjual dan Perseroan tidak menerima dana hasil Penawaran Umum Perdana Saham.',
+            company_id: 21,
         },
     })
 }

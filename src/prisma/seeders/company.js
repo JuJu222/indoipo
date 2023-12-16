@@ -669,6 +669,39 @@ async function seedCompanies(prisma) {
             subsector_id: 18,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 21 },
+        update: {},
+        create: {
+            name: 'PT Adhi Kartiko Pratama Tbk',
+            description: 'PT Adhi Kartiko Pratama Tbk, didirikan pada 2008, adalah perusahaan pertambangan nikel yang fokus pada ekstraksi bijih nikel melalui proyek eksplorasi nikel laterit di Desa Lameruru, Konawe Utara, Sulawesi Tenggara, Indonesia. Dengan luas area konsesi 1.975 hektar, perusahaan sepenuhnya memiliki dan mengoperasikan tambangnya. Terletak dekat pantai dengan jarak 600 meter dari dermaga, perusahaan menekankan efisiensi operasional. Akses mudah dari Kendari dalam lima jam perjalanan memperkuat kemudahan operasional. Dengan fokus pada keberlanjutan, keselamatan, dan inovasi, perusahaan berkomitmen menyediakan bijih nikel berkualitas tinggi, dengan dampak positif pada masyarakat setempat. Dengan dedikasi terhadap standar keselamatan tinggi, perusahaan mengatributkan kesuksesannya pada kerja keras dan komitmen karyawan. Operasional sesuai dengan regulasi ketat, menciptakan lingkungan kerja aman, bermanfaat, dan inovatif, menjaga posisi perusahaan sebagai pemimpin industri.',
+            ticker: 'NICE',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/NICE.jpg',
+            address: 'Jalan Sorumba Nomor 80, Desa/Kelurahan Anaiwoi, Kec. Kadia, Kota Kendari, Provinsi Sulawesi Tenggara Indonesia - 93118',
+            bidang_usaha: 'Bergerak dalam Pertambangan Bijih Nikel',
+            website: 'https://www.akp.co.id',
+            prospectus_url: 'https://www.e-ipo.co.id/en/pipeline/get-propectus-file?id=281&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/en/pipeline/get-propectus-file?id=281&type=summary',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/en/ipo/281/nice-pt-adhi-kartiko-pratama-tbk',
+            low_price: 430,
+            high_price: 530,
+            final_price: null,
+            offered_shares: 1216404000,
+            outstanding_shares: 6082020000,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            date_awal_start: new Date("2023-12-15"),
+            date_awal_end: new Date("2023-12-21"),
+            date_umum_start: new Date("2024-01-03"),
+            date_umum_end: new Date("2024-01-05"),
+            date_penjatahan: new Date("2024-01-05"),
+            date_distribusi: new Date("2024-01-06"),
+            date_ipo: new Date("2024-01-09"),
+            subsector_id: 19,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
