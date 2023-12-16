@@ -570,6 +570,39 @@ async function seedCompanies(prisma) {
             subsector_id: 17,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 18 },
+        update: {},
+        create: {
+            name: 'PT Asri Karya Lestari Tbk',
+            description: 'PT Asri Karya Lestari, sebuah perusahaan kontraktor nasional di Indonesia, telah menorehkan pengalaman selama 15 tahun dalam proyek pembangunan, termasuk pekerjaan pondasi, erection, bekisting, dan konstruksi jalan. Dengan penerapan ilmu pengetahuan dan teknologi yang terus berkembang, perusahaan telah terlibat dalam berbagai proyek strategis nasional dan swasta. Untuk memperluas dampaknya dalam pembangunan nasional, PT Asri Karya Lestari mengembangkan sub-bisnis dengan mengakuisisi PT Bumi Prima Kontruksi, fokus pada persewaan alat berat dan konstruksi bangunan sipil, serta PT Manyar Perkasa Mandiri yang bergerak dalam industri batching plant. Dengan langkah ini, perusahaan dapat mengoptimalkan peluang bisnis dari hulu sampai ke hilir, menciptakan perputaran usaha yang lebih menyeluruh.',
+            ticker: 'ASLI',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/ASLI.png',
+            address: 'Ruko Sentra Niaga Kalimalang B2 No3 Jl. Jend. Ahmad Yani, Bekasi, Jawa Barat 17144',
+            bidang_usaha: 'General Contractor (Ppekerjaan Pondasi, Erection, Bekisting)',
+            website: 'https://www.asrikaryalestari.co.id/',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=277&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=277&type=summary',
+            additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=277',
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/277/asli-pt-asri-karya-lestari-tbk',
+            low_price: 100,
+            high_price: 130,
+            final_price: null,
+            offered_shares: 1250000000,
+            outstanding_shares: 6250000000,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            date_awal_start: new Date("2023-12-12"),
+            date_awal_end: new Date("2023-12-18"),
+            date_umum_start: new Date("2023-12-29"),
+            date_umum_end: new Date("2024-01-03"),
+            date_penjatahan: new Date("2024-01-03"),
+            date_distribusi: new Date("2024-01-04"),
+            date_ipo: new Date("2024-01-05"),
+            subsector_id: 8,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
