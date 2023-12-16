@@ -5,7 +5,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'juju222.sgp1.cdn.digitaloceanspaces.com',
+                hostname: 'juju.sgp1.cdn.digitaloceanspaces.com',
                 port: '',
                 pathname: '/indoipo/img/**',
             },
