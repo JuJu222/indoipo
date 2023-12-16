@@ -33,7 +33,7 @@ COPY . .
 # If using npm comment out above and use below instead
 RUN npx prisma generate
 RUN npx prisma migrate deploy
-RUN npx prisma db seed
+# RUN npx prisma db seed
 RUN yarn build
 
 # Production image, copy all the files and run next
