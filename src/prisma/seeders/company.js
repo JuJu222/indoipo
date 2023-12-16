@@ -603,6 +603,39 @@ async function seedCompanies(prisma) {
             subsector_id: 8,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 19 },
+        update: {},
+        create: {
+            name: 'PT Manggung Polahraya Tbk',
+            description: 'PT Manggung Polahraya Tbk, didirikan pada tahun 1992, awalnya berfokus pada Jasa Konstruksi dan Pengadaan. Namun, seiring berjalannya waktu, perusahaan ini berkembang menjadi pemain utama dalam Jasa Konstruksi Gedung, Pembangunan Infrastruktur Jalan, dan produksi Aspal Hot Mix serta Beton Ready Mix. Dengan pengalaman lebih dari 30 tahun, PT Manggung Polahraya Tbk telah berhasil menyelesaikan berbagai proyek strategis baik dari pemerintah, Badan Usaha Milik Negara/Daerah, maupun swasta. Pencapaian ini tidak hanya memberikan kepuasan kepada pelanggan tetapi juga memungkinkan perusahaan untuk bertahan dan berkembang. Selama perjalanannya, beberapa proyek penting seperti Rehabilitasi dan Rekonstruksi Bangunan Gedung BPKP Perwakilan Provinsi Sulawesi Tengah, Renovasi Menara Siger Bakauheni Lampung, dan Pembuatan Reservoir Tank Bandara Kualanamu telah berhasil diselesaikan. PT Manggung Polahraya Tbk juga memiliki pabrik beton untuk memproduksi berbagai mutu beton ready mix dan pabrik aspal (Aspal Mixing Plant/AMP) dengan jangkauan pemasaran yang meliputi beberapa Kotamadya/Kabupaten di sekitar Bandar Lampung.',
+            ticker: 'MANG',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/MANG.png',
+            address: 'Jl. Pondok Pinang Raya No.1, Kebayoran Lama, Jakarta Selatan, DKI Jakarta 12310',
+            bidang_usaha: 'Jasa Konstruksi Gedung, Pembangunan Infrastruktur Jalan, Produksi Aspal Hot Mix & Beton Ready Mix',
+            website: 'https://www.manggungpolahraya.co.id/',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=278&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=278&type=summary',
+            additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=278',
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/278/mang-pt-manggung-polahraya-tbk',
+            low_price: 90,
+            high_price: 110,
+            final_price: null,
+            offered_shares: 762500000,
+            outstanding_shares: 3812500000,
+            waran_numerator: 10,
+            waran_denominator: 3,
+            exercise_price: 125,
+            date_awal_start: new Date("2023-12-14"),
+            date_awal_end: new Date("2023-12-18"),
+            date_umum_start: new Date("2024-01-03"),
+            date_umum_end: new Date("2024-01-09"),
+            date_penjatahan: new Date("2024-01-09"),
+            date_distribusi: new Date("2024-01-10"),
+            date_ipo: new Date("2024-01-11"),
+            subsector_id: 8,
+        },
+    })
 }
 
 module.exports = { seedCompanies }

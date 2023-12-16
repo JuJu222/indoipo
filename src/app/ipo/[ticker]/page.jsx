@@ -225,7 +225,7 @@ export default async function Company({ params }) {
                                     height={0}
                                     sizes="100vw"
                                     alt={company.name}
-                                    className='w-60 md:w-full h-auto object-contain p-4'
+                                    className='w-60 md:w-full h-auto max-h-72 object-contain p-4'
                                 />
                                 {company.waran_numerator ? (
                                     <p className='bg-green-600 text-white px-4 py-1.5 rounded w-full text-center font-semibold'>

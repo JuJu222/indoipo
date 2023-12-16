@@ -395,6 +395,24 @@ async function seedCompanyUnderwriter(prisma) {
             type: 'penjamin_emisi_efek',
         },
     })
+    await prisma.companyUnderwriter.upsert({
+        where: { id: 44 },
+        update: {},
+        create: {
+            company_id: 19,
+            underwriter_id: 4,
+            type: 'partisipan_admin',
+        },
+    })
+    await prisma.companyUnderwriter.upsert({
+        where: { id: 45 },
+        update: {},
+        create: {
+            company_id: 19,
+            underwriter_id: 4,
+            type: 'penjamin_emisi_efek',
+        },
+    })
 }
 
 module.exports = { seedCompanyUnderwriter }
