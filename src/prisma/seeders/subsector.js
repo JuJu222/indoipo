@@ -107,7 +107,7 @@ async function seedSubSectors(prisma) {
         where: { id: 14 },
         update: {},
         create: {
-            name: 'Oil, Gas & Coal Equipment & Services',
+            name: 'Oil, Gas, and Coal Equipment and Services',
             sector_id: 9,
         },
     })
@@ -133,6 +133,14 @@ async function seedSubSectors(prisma) {
         create: {
             name: 'Healthcare Supplies & Distributions',
             sector_id: 8,
+        },
+    })
+    await prisma.subsector.upsert({
+        where: { id: 18 },
+        update: {},
+        create: {
+            name: 'Oil, Gas Storage, and Distribution',
+            sector_id: 9,
         },
     })
 }

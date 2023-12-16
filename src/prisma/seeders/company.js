@@ -636,6 +636,39 @@ async function seedCompanies(prisma) {
             subsector_id: 8,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 20 },
+        update: {},
+        create: {
+            name: 'PT Citra Nusantara Gemilang Tbk',
+            description: 'PT Citra Nusantara Gemilang, yang didirikan di Kabupaten Bekasi berdasarkan hukum negara Republik Indonesia pada tanggal 21 Desember 2005 dan mengalami perubahan melalui akta perubahan tanggal 11 September 2006, merupakan perusahaan yang diakui sebagai pelopor dalam pengembangan gas alam terkompresi (Compressed Natural Gas / CNG) di Indonesia. Fokus utamanya adalah perdagangan dan distribusi gas alam ke daerah-daerah yang belum terjangkau oleh jaringan pipa gas dengan tekanan gas yang stabil dan aman. Selain melayani sektor industri, transportasi, dan perumahan, perusahaan juga menyediakan jasa konsultasi terkait operasional dan perawatan peralatan gas alam. PT Citra Nusantara Gemilang merupakan induk dari beberapa anak perusahaan seperti PT Citra Nusantara Energi, PT CNG Hilir Raya, PT CNG Global, dan PT Cipta Rizqi Energi, yang masing-masing memiliki peran dalam distribusi, perdagangan, dan konstruksi gas alam. Dengan jaringan distribusi yang telah menjangkau berbagai daerah di Indonesia, perusahaan berencana untuk memperluas layanannya dengan mengembangkan bisnis perdagangan dan distribusi Liquefied Natural Gas (LNG) selain CNG.',
+            ticker: 'CGAS',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/CGAS.png',
+            address: 'Jl. Kalimalang No.126, Tegal Gede, Kelurahan Pasirsari, Kecamatan Cikarang Selatan, Kabupaten Bekasi, Provinsi Jawa Barat 17530 Indonesia',
+            bidang_usaha: 'Perdagangan & Distribusi Gas Alam',
+            website: 'https://cng.co.id/',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=280&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=280&type=summary',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/280/cgas-pt-citra-nusantara-gemilang-tbk',
+            low_price: 284,
+            high_price: 338,
+            final_price: null,
+            offered_shares: 531429000,
+            outstanding_shares: 1771429000,
+            waran_numerator: 2,
+            waran_denominator: 1,
+            exercise_price: 306,
+            date_awal_start: new Date("2023-12-14"),
+            date_awal_end: new Date("2023-12-19"),
+            date_umum_start: new Date("2024-01-02"),
+            date_umum_end: new Date("2024-01-04"),
+            date_penjatahan: new Date("2024-01-04"),
+            date_distribusi: new Date("2024-01-05"),
+            date_ipo: new Date("2024-01-08"),
+            subsector_id: 18,
+        },
+    })
 }
 
 module.exports = { seedCompanies }

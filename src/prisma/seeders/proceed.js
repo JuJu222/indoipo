@@ -148,8 +148,26 @@ async function seedProceeds(prisma) {
         update: {},
         create: {
             amount: '100%',
-            use: 'Modal kerja Perseroan (biaya pokok konstruksi gedung & bangunan, infrastruktur Jalan, produksi aspal hot mix & produksi beton ready mix, gaji dan tunjangan.',
+            use: 'Modal kerja Perseroan (biaya pokok konstruksi gedung & bangunan, infrastruktur Jalan, produksi aspal hot mix & produksi beton ready mix, gaji dan tunjangan).',
             company_id: 19,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 18 },
+        update: {},
+        create: {
+            amount: '90%',
+            use: 'Pembangunan LNG Station (Natural Gas) di Galian Field Tambun Zone 7 Regional 2 - dikategorikan sebagai Capital Expenditure (CAPEX)',
+            company_id: 20,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 19 },
+        update: {},
+        create: {
+            amount: '10%',
+            use: 'Modal kerja Perseroan - dikategorikan sebagai Operating Expenditure (OPEX).',
+            company_id: 20,
         },
     })
 }
