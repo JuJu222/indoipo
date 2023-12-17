@@ -702,6 +702,39 @@ async function seedCompanies(prisma) {
             subsector_id: 19,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 22 },
+        update: {},
+        create: {
+            name: 'PT Sinergi Multi Lestarindo Tbk',
+            description: 'PT Sinergi Multi Lestarindo, didirikan pada 2013, beroperasi di sektor perdagangan, pengangkutan darat, percetakan, perindustrian, jasa, pembangunan, bengkel, dan pertanian. Sebagai penyedia solusi satu atap untuk industri makanan & minuman, perawatan diri, dan bahan kimia industri di Indonesia, perusahaan berfokus pada perdagangan bahan kimia khusus untuk bahan baku makanan & minuman, bahan baku perawatan diri, dan bahan baku kimia industri. Mereka juga melakukan formulasi khusus, menyediakan produk berkualitas seperti oleoresin, ekstrak, flavor, dehydrated product, pengawet, pewarna makanan, anti-oksidan, pengemulsi, nutraceuticals, natural oil, filter UV, rheology modifier, asam lemak, texturizer, dan bahan fungsional lainnya. Produk mereka digunakan dalam berbagai industri termasuk pengolahan makanan, minuman, toiletries, kesehatan, suplemen, personal care, dan kosmetik. Pendapatan diperoleh melalui penjualan bahan kimia khusus dengan model distribusi yang mencakup R&D, tim penjualan berkompetensi, layanan pelanggan, dan dukungan teknis. Model perdagangan mereka melibatkan platform penjualan langsung melalui kanal seperti Instagram, YouTube, LinkedIn, atau situs web perusahaan, membedakan mereka dengan inovasi dan layanan teknis yang memperkuat posisi di pasar.',
+            ticker: 'SMLE',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/SMLE.png',
+            address: 'Business Park Kebon Jeruk Blok I 5-6, Jl. Raya Meruya Illir, Kav.88, Meruya Utara, Kembangan, Jakarta Barat 11620',
+            bidang_usaha: 'Perdagangan Bahan Kimia Khusus untuk Bahan Baku Makanan & Minuman, Perawatan Diri dan Kimia Industri',
+            website: 'https://www.ptsml.id',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=283&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=283&type=summary',
+            additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=283',
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/283/smle-pt-sinergi-multi-lestarindo-tbk',
+            low_price: 175,
+            high_price: 190,
+            final_price: null,
+            offered_shares: 465625000,
+            outstanding_shares: 2328125000,
+            waran_numerator: 2,
+            waran_denominator: 1,
+            exercise_price: 210,
+            date_awal_start: new Date("2023-12-15"),
+            date_awal_end: new Date("2023-12-22"),
+            date_umum_start: new Date("2024-01-02"),
+            date_umum_end: new Date("2024-01-08"),
+            date_penjatahan: new Date("2024-01-08"),
+            date_distribusi: new Date("2024-01-09"),
+            date_ipo: new Date("2024-01-10"),
+            subsector_id: 20,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
