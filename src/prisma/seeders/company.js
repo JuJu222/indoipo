@@ -735,6 +735,39 @@ async function seedCompanies(prisma) {
             subsector_id: 20,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 23 },
+        update: {},
+        create: {
+            name: 'PT Samcro Hyosung Adilestari Tbk',
+            description: 'PT Samcro Hyosung Adilestari beroperasi di sektor industri dan perdagangan, menghasilkan berbagai produk seperti perekat Hook dan Loop/Magic Tape atau Pita Pengait rekat dan webbing tape. Produk ini berfungsi sebagai pengganti kancing dan resleting, memberikan kemudahan dan kenyamanan dalam berbagai aplikasi produksi seperti manufaktur boneka, pakaian, alas kaki, peralatan olahraga, alat kesehatan, kemasan, konstruksi, aksesories, otomotif, dan alat tulis. Dengan sistem yang ramah lingkungan dan aman, perusahaan ini membantu mengurangi limbah di lokasi pabrik sambil meningkatkan efisiensi waktu pemasangan dan kebutuhan alat, sehingga proses manufaktur dapat dilakukan lebih cepat dan terjangkau.',
+            ticker: 'ACRO',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/ACRO.jpg',
+            address: 'Jl. Raya Serang KM 17,2 Desa Bojong Kecamatan Cikupa, Kabupaten Tangerang Banten, 15710 ',
+            bidang_usaha: 'Bergerak dalam industri dan perdagangan Hook dan Loop',
+            website: 'https://www.samcro.co.id',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=282&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=282&type=summary',
+            additional_information_url: 'https://www.e-ipo.co.id/id/pipeline/get-additional-info?id=282',
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/282/acro-pt-samcro-hyosung-adilestari-tbk',
+            low_price: 103,
+            high_price: 108,
+            final_price: null,
+            offered_shares: 693828000,
+            outstanding_shares: 3469138591,
+            waran_numerator: 3,
+            waran_denominator: 1,
+            exercise_price: 186,
+            date_awal_start: new Date("2023-12-15"),
+            date_awal_end: new Date("2023-12-22"),
+            date_umum_start: new Date("2024-01-02"),
+            date_umum_end: new Date("2024-01-08"),
+            date_penjatahan: new Date("2024-01-08"),
+            date_distribusi: new Date("2024-01-09"),
+            date_ipo: new Date("2024-01-10"),
+            subsector_id: 21,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
