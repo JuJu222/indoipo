@@ -768,6 +768,41 @@ async function seedCompanies(prisma) {
             subsector_id: 21,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 24 },
+        update: {},
+        create: {
+            name: 'PT Multi Spunindo Jaya Tbk',
+            description: 'PT Multi Spunindo Jaya Tbk berfokus pada kegiatan usaha utama di bidang Industri nonwoven secara business to business (B2B), memproduksi produk nonwoven Sheet yang digunakan sebagai bahan baku di berbagai sektor, mulai dari kesehatan (pembalut, popok, masker) hingga konstruksi dan agrikultur. Dengan standar tinggi bertaraf internasional, produk nonwoven yang dihasilkan dapat didistribusikan ke pasar nasional dan internasional. Perseroan memiliki laboratorium penelitian In-house Research and Development (R&D) dengan sistem Total Quality Management (TQM) untuk memenuhi permintaan spesifik pasar. Dengan lahan produksi seluas ±150.000 meter persegi, Perseroan dan Perusahaan Anak beroperasi dengan lebih dari 700 pekerja, menggunakan sistem rotasi 4 kelompok untuk menjaga lini produksi berjalan selama 24 jam non-stop. Saat ini, Perseroan memiliki 12 lini produksi, termasuk 9 lini produksi dengan teknologi Spunbond dan Spunmelt, 3 lini produksi dengan teknologi Meltblown, dan 1 lini produksi dengan teknologi Needlepunch.',
+            ticker: 'MSJA',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/MSJA.png',
+            address: 'Desa Jabaran, Kecamatan Balongbendo, Krian, Sidoarjo, Jawa Timur, Indonesia 61263 ',
+            bidang_usaha: 'Industri Nonwoven',
+            website: 'https://www.spunindo.com',
+            prospectus_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=284&type=',
+            prospectus_summary_url: 'https://www.e-ipo.co.id/id/pipeline/get-propectus-file?id=284&type=summary',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/284/msja-pt-multi-spunindo-jaya-tbk',
+            low_price: 250,
+            high_price: 350,
+            final_price: null,
+            offered_shares: 882352900,
+            outstanding_shares: 5882352900,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            kurs_usd: 15407,
+            kurs_date: new Date("2023-11-30"),
+            date_awal_start: new Date("2023-12-18"),
+            date_awal_end: new Date("2023-12-21"),
+            date_umum_start: new Date("2024-01-03"),
+            date_umum_end: new Date("2024-01-08"),
+            date_penjatahan: new Date("2024-01-08"),
+            date_distribusi: new Date("2024-01-09"),
+            date_ipo: new Date("2024-01-10"),
+            subsector_id: 22,
+        },
+    })
 }
 
 module.exports = { seedCompanies }

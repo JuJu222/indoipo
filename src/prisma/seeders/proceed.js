@@ -242,6 +242,33 @@ async function seedProceeds(prisma) {
             company_id: 23,
         },
     })
+    await prisma.proceed.upsert({
+        where: { id: 28 },
+        update: {},
+        create: {
+            amount: '40%',
+            use: 'Modal belanja untuk pengembangan perusahaan termasuk pembelian mesin SAP sheet dan gedung pabrik lini produksi SAP sheet.',
+            company_id: 24,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 29 },
+        update: {},
+        create: {
+            amount: '30%',
+            use: 'Modal kerja untuk untuk pembiayaan kebutuhan operasional seperti gaji karyawan, biaya marketing, dan lain-lain.',
+            company_id: 24,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 30 },
+        update: {},
+        create: {
+            amount: '30%',
+            use: 'Pembayaran seluruh dan sebagian pinjaman bank untuk fasilitas modal kerja.',
+            company_id: 24,
+        },
+    })
 }
 
 module.exports = { seedProceeds }
