@@ -269,6 +269,42 @@ async function seedProceeds(prisma) {
             company_id: 24,
         },
     })
+    await prisma.proceed.upsert({
+        where: { id: 31 },
+        update: {},
+        create: {
+            amount: '48.76%',
+            use: 'Peningkatan sarana hotel seperti pembelian perlengkapan kamar hotel, ruang meeting, dan lain-lain.',
+            company_id: 25,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 32 },
+        update: {},
+        create: {
+            amount: '4.13%',
+            use: 'Pembuatan 4 gerai restoran cepat saji beserta pembelian peralatan dan perabotan dengan nama The Flamexpress.',
+            company_id: 25,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 33 },
+        update: {},
+        create: {
+            amount: '3.36%',
+            use: 'Biaya sewa 4 lokasi gerai baru The Flamexpress selama jangka waktu 1 (satu) tahun.',
+            company_id: 25,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 34 },
+        update: {},
+        create: {
+            amount: 'Sisa Dana',
+            use: 'Modal kerja Perseroan (pembelian persediaan hotel, biaya listrik, dan lain-lain).',
+            company_id: 25,
+        },
+    })
 }
 
 module.exports = { seedProceeds }
