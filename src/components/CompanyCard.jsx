@@ -7,6 +7,9 @@ function CompanyCard({company}) {
     let statusClass = ''
     let statusName = ''
     let dateMYOnly = {month: 'short', year: 'numeric'};
+    let dateOption1 = {year: 'numeric', month: 'short', day: 'numeric'};
+    let dateOption2 = {month: 'short', day: 'numeric'};
+
 
     // switch (company.status.id) {
     //     case 1:
@@ -32,15 +35,15 @@ function CompanyCard({company}) {
     if (new Date(company.date_awal_start).toISOString().split("T")[0] <= currentDate && new Date(company.date_umum_start).toISOString().split("T")[0] > currentDate) {
         statusClass = 'bg-yellow-400'
         statusName = 'Penawaran Awal'
-    } else if (new Date(company.date_umum_start).toISOString().split("T")[0] <= currentDate && new Date(company.date_distribusi).toISOString().split("T")[0] > currentDate) {
+    } else if (new Date(company.date_umum_start).toISOString().split("T")[0] <= currentDate && new Date(company.date_penjatahan).toISOString().split("T")[0] > currentDate) {
         statusClass = 'bg-green-500'
         statusName = 'Penawaran Umum'
-    } else if (new Date(company.date_distribusi).toISOString().split("T")[0] <= currentDate && new Date(company.date_penjatahan).toISOString().split("T")[0] > currentDate) {
-        statusClass = 'bg-secondary'
-        statusName = 'Distribusi Saham'
-    } else if (new Date(company.date_penjatahan).toISOString().split("T")[0] <= currentDate && new Date(company.date_ipo).toISOString().split("T")[0] > currentDate) {
+    } else if (new Date(company.date_penjatahan).toISOString().split("T")[0] <= currentDate && new Date(company.date_distribusi).toISOString().split("T")[0] > currentDate) {
         statusClass = 'bg-secondary'
         statusName = 'Penjatahan Efek'
+    } else if (new Date(company.date_distribusi).toISOString().split("T")[0] <= currentDate && new Date(company.date_ipo).toISOString().split("T")[0] > currentDate) {
+        statusClass = 'bg-secondary'
+        statusName = 'Distribusi Saham'
     } else if (currentDate == new Date(company.date_ipo).toISOString().split("T")[0] || currentDate > new Date(company.date_ipo).toISOString().split("T")[0]) {
         statusClass = 'bg-secondary'
         statusName = 'IPO'
@@ -173,7 +176,38 @@ function CompanyCard({company}) {
                     <div className='flex flex-col items-center'>
                         <h5 className="text-xl font-bold tracking-tight text-gray-900 dark:text-white">{company.ticker}</h5>
                         <p className='text-black font-semibold pb-1 text-sm'>{company.name}</p>
-                        <p className='text-black pb-2 text-sm'>{company.subsector.name}</p>
+                        <p className='text-black pb-1 text-sm'>{company.subsector.name}</p>
+                        <p className='pb-2 text-gray-400 text-sm'>
+                            {
+                                statusName === 'Penawaran Awal' ? (
+                                    <>
+                                        {new Date(company.date_awal_start).toLocaleDateString("id-ID", dateOption2)} - {new Date(company.date_awal_end).toLocaleDateString("id-ID", dateOption1)}
+                                    </>
+                                ) : (
+                                    statusName === 'Penawaran Umum' ? (
+                                        <>
+                                            {new Date(company.date_umum_start).toLocaleDateString("id-ID", dateOption2)} - {new Date(company.date_umum_end).toLocaleDateString("id-ID", dateOption1)}
+                                        </>
+                                    ) : (
+                                        statusName === 'Penjatahan Efek' ? (
+                                            new Date(company.date_penjatahan).toLocaleDateString("id-ID", dateOption1)
+                                        ) : (
+                                            statusName === 'Distribusi Saham' ? (
+                                                new Date(company.date_distribusi).toLocaleDateString("id-ID", dateOption1)
+                                            ) : (
+                                                statusName === 'IPO' ? (
+                                                    new Date(company.date_ipo).toLocaleDateString("id-ID", dateOption1)
+                                                ) : (
+                                                    <>
+                                                        {new Date(company.date_awal_start).toLocaleDateString("id-ID", dateOption2)} - {new Date(company.date_awal_end).toLocaleDateString("id-ID", dateOption1)}
+                                                    </>
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            }
+                        </p>
                         {company.waran_numerator && (
                             <p className='text-white font-semibold px-3 py-1 rounded-full text-sm bg-primary w-fit text-sm'>Bonus Waran - {company.waran_numerator} : {company.waran_denominator}</p>
                         )}
