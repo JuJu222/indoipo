@@ -14,7 +14,7 @@ async function Navbar(props) {
         take: 8
     });
 
-    if (!companies) {
+    if (companies.length === 0) {
         return notFound()
     }
 

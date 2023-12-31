@@ -35,7 +35,7 @@ export default async function Home() {
         take: 8,
     });
 
-    if (!companies) {
+    if (companies.length === 0) {
         return notFound()
     }
 

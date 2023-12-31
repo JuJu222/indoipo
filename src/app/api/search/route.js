@@ -49,7 +49,7 @@ export async function GET(request) {
             },
         });
 
-        if (!companies) {
+        if (companies.length === 0) {
             return notFound()
         }
 

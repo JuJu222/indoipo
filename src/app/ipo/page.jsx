@@ -33,7 +33,7 @@ async function Companies(props) {
         }
     });
 
-    if (!companies) {
+    if (companies.length === 0) {
         return notFound()
     }
 
@@ -41,6 +41,7 @@ async function Companies(props) {
         <section className="bg-white dark:bg-gray-900">
             <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
                 <h1 className='text-center text-4xl font-bold'>Semua IPO</h1>
+                <h2 className='pt-2 pb-4 text-lg text-gray-500 text-center'>Lihat semua IPO yang sedang berlangsung dan juga yang telah berlalu.</h2>
                 {/*<Reveal>*/}
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8">
                         {companies.map((company, index) => (
