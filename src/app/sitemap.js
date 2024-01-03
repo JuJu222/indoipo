@@ -19,7 +19,20 @@ export default async function sitemap() {
         priority: 1,
     }));
 
-    const routes = ["", "/ipo", "/kontak", "/tentang-kami", "/syarat-ketentuan", "/kebijakan-privasi"].map((route) => ({
+    const routes = [
+        "",
+        "/ipo",
+        "/kontak",
+        "/tentang-kami",
+        "/syarat-ketentuan",
+        "/kebijakan-privasi",
+        "/ipo/periode/2024/1",
+        "/ipo/periode/2023/12",
+        "/ipo/periode/2023/11",
+        "/ipo/periode/2023/10",
+        "/ipo/periode/2023/9",
+        "/ipo/periode/2023/8",
+    ].map((route) => ({
         url: `${URL}${route}`,
         lastModified: new Date().toISOString(),
         priority: route === "" ? 0.8 : 0.5,

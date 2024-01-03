@@ -564,9 +564,9 @@ async function seedCompanies(prisma) {
             date_awal_end: new Date("2023-11-15"),
             date_umum_start: new Date("2023-12-01"),
             date_umum_end: new Date("2023-12-05"),
-            date_penjatahan: new Date("2023-12-06"),
-            date_distribusi: new Date("2023-12-07"),
-            date_ipo: new Date("2023-11-29"),
+            date_penjatahan: new Date("2023-12-05"),
+            date_distribusi: new Date("2023-12-06"),
+            date_ipo: new Date("2023-12-07"),
             subsector_id: 17,
         },
     })

@@ -21,10 +21,50 @@ async function Period(props) {
     const companies = await prisma.company.findMany({
         where: {
             financials: { some: {} },
-            date_awal_start: {
-                lte: lastDate,
-                gte: firstDate,
-            },
+            OR: [
+                {
+                    date_awal_start: {
+                        lte: lastDate,
+                        gte: firstDate,
+                    }
+                },
+                {
+                    date_awal_end: {
+                        lte: lastDate,
+                        gte: firstDate,
+                    }
+                },
+                {
+                    date_umum_start: {
+                        lte: lastDate,
+                        gte: firstDate,
+                    }
+                },
+                {
+                    date_umum_end: {
+                        lte: lastDate,
+                        gte: firstDate,
+                    }
+                },
+                {
+                    date_penjatahan: {
+                        lte: lastDate,
+                        gte: firstDate,
+                    }
+                },
+                {
+                    date_distribusi: {
+                        lte: lastDate,
+                        gte: firstDate,
+                    }
+                },
+                {
+                    date_ipo: {
+                        lte: lastDate,
+                        gte: firstDate,
+                    }
+                }
+            ]
         },
         orderBy: {
             date_awal_start: 'desc'
