@@ -5,15 +5,17 @@ import Reveal from "src/components/animations/Reveal";
 import CompanyCard from "src/components/CompanyCard";
 
 export async function generateMetadata({ params }) {
+    let firstDate = new Date(Date.UTC(params.year, parseInt(params.month) - 1, 1));
+
     return {
-        title: `IPO  | Indoipo - Analisa IPO dengan Mudah`,
-        description: `Dapatkan informasi yang mudah dimengerti mengenai IPO terbaru. Lihat PER, PBV, DER, ROE, dan metrik-metrik lainnya untuk membantu anda dalam menentukan investasi anda. Indoipo membantu anda dalam menyediakan metrik-metrik serta informasi keuangan dari perusahaan yang sedang IPO dalam bentuk yang sederhana.`
+        title: `IPO ${firstDate.toLocaleString('id-ID', { month: 'short' })} ${firstDate.getFullYear()} | Indoipo - Analisa IPO dengan Mudah`,
+        description: `Daftar perusahaan IPO selama periode ${firstDate.toLocaleString('id-ID', { month: 'long' })} ${firstDate.getFullYear()}. Lihat PER, PBV, DER, ROE, dan metrik-metrik lainnya untuk membantu anda dalam menentukan investasi anda. Indoipo membantu anda dalam menyediakan metrik-metrik serta informasi keuangan dari perusahaan yang sedang IPO dalam bentuk yang sederhana.`
     }
 }
 export const revalidate = 60
 
 async function Period(props) {
-    var firstDate = new Date(Date.UTC(props.params.year, parseInt(props.params.month) - 1, 1));
+    let firstDate = new Date(Date.UTC(props.params.year, parseInt(props.params.month) - 1, 1));
     var lastDate = new Date(Date.UTC(props.params.year, parseInt(props.params.month), 0));
 
     const companies = await prisma.company.findMany({
