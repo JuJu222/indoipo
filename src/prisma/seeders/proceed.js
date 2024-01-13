@@ -302,7 +302,7 @@ async function seedProceeds(prisma) {
         create: {
             amount: 'Seluruh Dana',
             use: 'Pembayaran (pemenuhan kontrak) atas pembelian nikel dan batubara dari supplier.',
-            company_id: 25,
+            company_id: 26,
         },
     })
 }
