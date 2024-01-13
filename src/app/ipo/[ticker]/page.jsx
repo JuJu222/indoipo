@@ -561,25 +561,25 @@ export default async function Company({ params }) {
                         </div>
                         <div>
                             {company.proceeds.length != 0 ? (
-                                <div className='md:flex md:space-x-10'>
-                                    <div className='md:w-3/5 pb-6'>
+                                <>
+                                    <div className='pb-6'>
                                         <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
                                         <p className='whitespace-pre-wrap'>{company.description.replace('\\n', '\n\n')}</p>
                                     </div>
-                                    <div className='md:w-2/5 pb-6'>
+                                    <div className='pb-6'>
                                         <h2 className='text-lg font-semibold pb-2'>Rencana Penggunaan Dana</h2>
                                         <table className=''>
                                             <tbody>
                                             {company.proceeds.map((proceed, index) => (
                                                 <tr key={index}>
-                                                    <td className='font-bold pb-4 pr-6 text-lg whitespace-nowrap'>{proceed.amount}</td>
-                                                    <td className='pb-4'>{proceed.use}</td>
+                                                    <td className={'font-bold px-6 text-lg whitespace-nowrap' + (index === company.proceeds.length - 1 ? '' : ' pb-4')}>{proceed.amount}</td>
+                                                    <td className={index === company.proceeds.length -1 ? '' : 'pb-4'}>{proceed.use}</td>
                                                 </tr>
                                             ))}
                                             </tbody>
                                         </table>
                                     </div>
-                                </div>
+                                </>
                             ) : (
                                 <div className='pb-6'>
                                     <h2 className='text-lg font-semibold pb-2'>Informasi Perusahaan</h2>
