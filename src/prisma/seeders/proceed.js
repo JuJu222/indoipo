@@ -300,6 +300,15 @@ async function seedProceeds(prisma) {
         where: { id: 34 },
         update: {},
         create: {
+            amount: 'Sisa Dana',
+            use: 'Modal kerja Perseroan (pembelian persediaan hotel, biaya listrik, dan lain-lain).',
+            company_id: 25,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 35 },
+        update: {},
+        create: {
             amount: 'Seluruh Dana',
             use: 'Pembayaran (pemenuhan kontrak) atas pembelian nikel dan batubara dari supplier.',
             company_id: 26,
