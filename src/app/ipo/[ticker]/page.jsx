@@ -572,7 +572,9 @@ export default async function Company({ params }) {
                                             <tbody>
                                             {company.proceeds.map((proceed, index) => (
                                                 <tr key={index}>
-                                                    <td className={'font-bold px-6 text-lg whitespace-nowrap' + (index === company.proceeds.length - 1 ? '' : ' pb-4')}>{proceed.amount}</td>
+                                                    <td><ul className={'list-disc pl-4' + (index === company.proceeds.length -1 ? '' : ' pb-4')}><li></li></ul>
+                                                    </td>
+                                                    <td className={'font-bold pr-6 pl-2 text-lg whitespace-nowrap' + (index === company.proceeds.length - 1 ? '' : ' pb-4')}>{proceed.amount}</td>
                                                     <td className={index === company.proceeds.length -1 ? '' : 'pb-4'}>{proceed.use}</td>
                                                 </tr>
                                             ))}

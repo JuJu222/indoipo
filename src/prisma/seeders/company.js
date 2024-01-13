@@ -873,6 +873,41 @@ async function seedCompanies(prisma) {
             subsector_id: 19,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 27 },
+        update: {},
+        create: {
+            name: 'PT Terang Dunia Internusa Tbk',
+            description: 'Sejak tahun 1991, PT Terang Dunia Internusa telah menjadi perusahaan manufaktur sepeda Indonesia yang mendistribusikan lebih dari 300 jenis sepeda, 20 model sepeda listrik, dan empat variasi motor listrik di bawah merek terkenal, United. Produk-produk United menawarkan beragam varian sepeda, meliputi sepeda gunung, sepeda jalan, BMX, sepeda lipat, serta sepeda touring dan anak-anak, dipasarkan melalui jaringan 600 dealer di seluruh Indonesia dan luar negeri. Semua produk kami memiliki harga yang kompetitif, berkualitas tinggi, terjamin, dan didukung oleh jaringan penjualan nasional yang handal serta layanan purna jual yang responsif. PT Terang Dunia Internusa memiliki pengalaman luas dalam membangun merek United, yang kini menduduki posisi utama di pasar sepeda. Perusahaan ini berkomitmen untuk terus beradaptasi dengan teknologi terkini guna memenuhi kebutuhan para pengendara sepeda dan tetap relevan dengan tren sepeda. Untuk mencapai hal ini, PT Terang Dunia Internusa berkomitmen pada inovasi sambil tetap menjaga kualitas dan relevansi produk mereka. Selanjutnya, PT Terang Dunia Internusa mendukung aspirasi global menuju masa depan berkelanjutan dengan mengembangkan sepeda listrik dan motor listrik yang ramah lingkungan sebagai alternatif untuk motor berbasis mesin pembakaran dalam (internal combustion engine/ICE). Upaya ini direalisasikan melalui peningkatan investasi dalam penelitian dan pengembangan, pemasaran, infrastruktur, dan implementasi strategi end-to-end.',
+            ticker: 'UNTD',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/UNTD.png',
+            address: 'Jl. Alam Sutera Boulevard No. kav. 12A, Pakulonan, Kec. Serpong utara, Kota Tangerang Selatan, Banten 15325',
+            bidang_usaha: 'Industri Sepeda dan Industri Sepeda Motor Roda Dua dan Tiga',
+            website: 'https://www.terangduniainternusa.com',
+            prospectus_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/UNTD-P.pdf',
+            prospectus_summary_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/UNTD-PR.pdf',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/287/untd-pt-terang-dunia-internusa-tbk',
+            low_price: 170,
+            high_price: 240,
+            final_price: null,
+            offered_shares: 1666666700,
+            outstanding_shares: 6666666700,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            kurs_usd: null,
+            kurs_date: null,
+            date_awal_start: new Date("2024-01-11"),
+            date_awal_end: new Date("2024-01-22"),
+            date_umum_start: new Date("2024-02-01"),
+            date_umum_end: new Date("2024-02-05"),
+            date_penjatahan: new Date("2024-02-05"),
+            date_distribusi: new Date("2024-02-06"),
+            date_ipo: new Date("2024-02-07"),
+            subsector_id: 24,
+        },
+    })
 }
 
 module.exports = { seedCompanies }

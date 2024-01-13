@@ -314,6 +314,15 @@ async function seedProceeds(prisma) {
             company_id: 26,
         },
     })
+    await prisma.proceed.upsert({
+        where: { id: 36 },
+        update: {},
+        create: {
+            amount: 'Seluruh Dana',
+            use: 'Modal kerja Perseroan (pembelian bahan baku sepeda motor listrik dan E-Moped seperti baterai, dinamo, dan lain-lain).',
+            company_id: 27,
+        },
+    })
 }
 
 module.exports = { seedProceeds }
