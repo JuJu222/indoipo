@@ -8,7 +8,7 @@ export async function generateMetadata({ params }) {
     let firstDate = new Date(Date.UTC(params.year, parseInt(params.month) - 1, 1));
 
     return {
-        title: `IPO ${firstDate.toLocaleString('id-ID', { month: 'short' })} ${firstDate.getFullYear()} | Indoipo - Analisa IPO dengan Mudah`,
+        title: `Daftar IPO ${firstDate.toLocaleString('id-ID', { month: 'long' })} ${firstDate.getFullYear()} | Indoipo - Analisa IPO dengan Mudah`,
         description: `Daftar perusahaan IPO selama periode ${firstDate.toLocaleString('id-ID', { month: 'long' })} ${firstDate.getFullYear()}. Lihat PER, PBV, DER, ROE, dan metrik-metrik lainnya untuk membantu anda dalam menentukan investasi anda. Indoipo membantu anda dalam menyediakan metrik-metrik serta informasi keuangan dari perusahaan yang sedang IPO dalam bentuk yang sederhana.`
     }
 }
