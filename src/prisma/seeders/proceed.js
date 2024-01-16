@@ -323,6 +323,33 @@ async function seedProceeds(prisma) {
             company_id: 27,
         },
     })
+    await prisma.proceed.upsert({
+        where: { id: 37 },
+        update: {},
+        create: {
+            amount: '50%',
+            use: 'Dialokasikan untuk entitas anak, yaitu TIP, dalam bentuk penyetoran modal, yang digunakan untuk akuisisi properti berupa tanah dan bangunan serta biaya operasional TIP seperti beban gaji, beban keamanan, dan lain-lain.',
+            company_id: 28,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 38 },
+        update: {},
+        create: {
+            amount: '40%',
+            use: 'Keperluan modal kerja Perseroan berupa pembelian persediaan produk digital seperti produk telekomunikasi dan voucher game (75%) serta pengembangan sistem IT (25%).',
+            company_id: 28,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 39 },
+        update: {},
+        create: {
+            amount: '10%',
+            use: 'Dialokasikan untuk entitas anak, yaitu TNN, dalam bentuk penyetoran modal, yang digunakan oleh TNN untuk keperluan modal kerja berupa pembelian persediaan produk retail TNN.',
+            company_id: 28,
+        },
+    })
 }
 
 module.exports = { seedProceeds }
