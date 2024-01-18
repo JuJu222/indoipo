@@ -2,7 +2,7 @@ import React from 'react';
 
 export const metadata = {
     title: 'Syarat & Ketentuan | Indoipo - Analisa IPO dengan Mudah',
-    description: 'Dapatkan informasi yang mudah dimengerti mengenai IPO terbaru. Lihat PER, PBV, DER, ROE, dan metrik-metrik lainnya untuk membantu ada dalam menentukan investasi anda. Indoipo membantu anda dalam menyediakan metrik-metrik serta informasi keuangan dari perusahaan yang sedang IPO dalam bentuk yang sederhana.'
+    description: 'Dapatkan informasi yang mudah dimengerti mengenai IPO terbaru. Lihat PER, PBV, DER, ROE, dan metrik-metrik lainnya untuk membantu ada dalam menentukan investasi anda. Indoipo membantu anda dalam menyediakan metrik-metrik serta laporan keuangan dari perusahaan yang sedang IPO dalam bentuk yang sederhana.'
 }
 
 function Penafian(props) {
@@ -26,16 +26,16 @@ function Penafian(props) {
                 <h2 className="text-xl font-semibold mb-2">Penafian</h2>
                 <p className="mb-4">
                     Informasi yang disediakan oleh situs ini hanya berlaku untuk tujuan informasional. Situs web ini
-                    menyediakan informasi keuangan mengenai perusahaan publik yang bersifat umum dan dapat diakses
+                    menyediakan laporan keuangan mengenai perusahaan publik yang bersifat umum dan dapat diakses
                     oleh publik. Informasi yang terdapat di situs ini tidak dapat dianggap sebagai saran investasi
                     atau rekomendasi pembelian atau penjualan saham.
 
                     Indoipo tidak dapat menjamin keakuratan, kelengkapan, atau ketersediaan informasi yang terdapat
-                    di situs ini. Informasi keuangan perusahaan dapat berubah dari waktu ke waktu, dan kami tidak
+                    di situs ini. Laporan keuangan perusahaan dapat berubah dari waktu ke waktu, dan kami tidak
                     bertanggung jawab atas setiap kerugian yang timbul sebagai akibat dari penggunaan informasi yang
                     terdapat di situs ini.
 
-                    Indoipo hanya bertindak sebagai penyedia platform yang memungkinkan akses ke informasi keuangan
+                    Indoipo hanya bertindak sebagai penyedia platform yang memungkinkan akses ke laporan keuangan
                     perusahaan publik yang tersedia secara publik. Kami tidak mengubah dan tidak memiliki hak atas
                     prospektus dan segala informasi perusahaan lainnya yang terdapat pada situs web ini. Kami tidak
                     menyimpan atau mengumpulkan data pribadi dari pengguna.

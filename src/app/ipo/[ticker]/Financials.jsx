@@ -11,7 +11,7 @@ function Financials({groupedFinancials, company}) {
     return (
         <>
             <div className={'flex gap-4 items-center' + (company.kurs_usd ? ' pb-2' : ' pb-4')}>
-                <h2 className='text-lg font-semibold'>Informasi Keuangan</h2>
+                <h2 className='text-lg font-semibold'>Laporan Keuangan</h2>
                 <div className="inline-flex roundclassName shadow-sm">
                     {groupedFinancials.map((groupedFinancial, index) => (
                         index == 0 ? (
@@ -36,7 +36,7 @@ function Financials({groupedFinancials, company}) {
                 </div>
             </div>
             {company.kurs_usd &&
-                <p className='text-sm pb-4'>Seluruh informasi keuangan dan metrik saham dihitung menggunakan kurs USD/IDR dengan nilai {toRp(company.kurs_usd)} per {new Date(company.kurs_date).toLocaleDateString("id-ID", dateOption1)}</p>
+                <p className='text-sm pb-4'>Seluruh laporan keuangan dan metrik saham dihitung menggunakan kurs USD/IDR dengan nilai {toRp(company.kurs_usd)} per {new Date(company.kurs_date).toLocaleDateString("id-ID", dateOption1)}</p>
             }
             {groupedFinancials.map((groupedFinancial, index) => (
                 groupedFinancial[0].interval == interval && (

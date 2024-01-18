@@ -978,6 +978,41 @@ async function seedCompanies(prisma) {
             subsector_id: 26,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 30 },
+        update: {},
+        create: {
+            name: 'PT Mitra Pedagang Indonesia Tbk',
+            description: 'PT Mitra Pedagang Indonesia Tbk, didirikan pada tahun 2019 di Kota Bangkalan, Madura, Indonesia, berperan sebagai penyedia solusi pembayaran dan transaksi digital untuk pelaku UMKM. Melalui platform "MPStore SuperApp UMKM," Perseroan menawarkan beragam produk dan layanan, termasuk Agregator Produk Digital, Layanan QRIS Merchant, Kasir Online Gratis, Street Banking/MINI ATM, E-commerce & E-grocery (Kulakan), Agen Logistik, Akses Permodalan (Kredit Usaha Rakyat), hingga Quick commerce mini web. Dengan fokus pada pengembangan bisnis UMKM, MPStore menyediakan solusi menyeluruh untuk produk, pembayaran, manajemen, dan pengiriman. Visi Perseroan adalah menjadikan MPStore sebagai aplikasi utama bagi pelaku UMKM dalam menjalankan bisnis sehari-hari, serta berperan dalam mendigitalisasi dan menskala-up UMKM di Indonesia.',
+            ticker: 'MPIX',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/MPIX.webp',
+            address: 'Ruko Khayangan Residence Blok RA-11, Lantai 2, Jalan Halim Perdana Kusuma, Bangkalan 69119, Jawa Timur',
+            bidang_usaha: 'Penyedia Platform Digital untuk UMKM, dan E-Commerce',
+            website: 'https://www.mpstore.co.id',
+            prospectus_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/MPIX-P.pdf',
+            prospectus_summary_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/MPIX-PR.pdf',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/290/mpix-pt-mitra-pedagang-indonesia-tbk',
+            low_price: 256,
+            high_price: 268,
+            // final_price: null,
+            offered_shares: 312500000,
+            outstanding_shares: 1562500000,
+            waran_numerator: 2,
+            waran_denominator: 1,
+            exercise_price: 850,
+            kurs_usd: null,
+            kurs_date: null,
+            date_awal_start: new Date("2024-01-17"),
+            date_awal_end: new Date("2024-01-24"),
+            date_umum_start: new Date("2024-01-31"),
+            date_umum_end: new Date("2024-02-02"),
+            date_penjatahan: new Date("2024-02-02"),
+            date_distribusi: new Date("2024-02-05"),
+            date_ipo: new Date("2024-02-06"),
+            subsector_id: 25,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
