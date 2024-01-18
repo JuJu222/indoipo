@@ -336,8 +336,8 @@ async function seedProceeds(prisma) {
         where: { id: 38 },
         update: {},
         create: {
-            amount: '40%',
-            use: 'Keperluan modal kerja Perseroan berupa pembelian persediaan produk digital seperti produk telekomunikasi dan voucher game (75%) serta pengembangan sistem IT (25%).',
+            amount: '10%',
+            use: 'Dialokasikan untuk entitas anak, yaitu TNN, dalam bentuk penyetoran modal, yang digunakan oleh TNN untuk keperluan modal kerja berupa pembelian persediaan produk retail TNN.',
             company_id: 28,
         },
     })
@@ -345,9 +345,36 @@ async function seedProceeds(prisma) {
         where: { id: 39 },
         update: {},
         create: {
-            amount: '10%',
-            use: 'Dialokasikan untuk entitas anak, yaitu TNN, dalam bentuk penyetoran modal, yang digunakan oleh TNN untuk keperluan modal kerja berupa pembelian persediaan produk retail TNN.',
+            amount: 'Sisa Dana',
+            use: 'Keperluan modal kerja Perseroan berupa pembelian persediaan produk digital seperti produk telekomunikasi dan voucher game (75%) serta pengembangan sistem IT (25%).',
             company_id: 28,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 40 },
+        update: {},
+        create: {
+            amount: '75%',
+            use: 'Memberikan pinjaman kepada anak perusahaan, MCT, untuk membantu pembayaran atau pelunasan sebagian utang MCT kepada OCP Asia Fund IV (SF 1) Pte. Limited dan OCP Asia Fund V (SF 1) Pte.',
+            company_id: 29,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 41 },
+        update: {},
+        create: {
+            amount: '20.64%',
+            use: 'Modal belanja (Capital Expenditure) untuk mendukung kegiatan utama Perseroan, khususnya pembelian tongkang sungai.',
+            company_id: 29,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 42 },
+        update: {},
+        create: {
+            amount: 'Sisa Dana',
+            use: 'Modal kerja (Operational Expenditure) untuk mendukung kegiatan operasional Perseroan, mencakup pembelian bahan bakar, pembayaran jasa operator kapal, jasa keamanan, operator alat berat, dan lainnya.',
+            company_id: 29,
         },
     })
 }

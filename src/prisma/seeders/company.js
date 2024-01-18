@@ -943,6 +943,41 @@ async function seedCompanies(prisma) {
             subsector_id: 25,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 29 },
+        update: {},
+        create: {
+            name: 'PT Ancara Logistics Indonesia Tbk',
+            description: 'PT Ancara Logistics Indonesia Tbk didirikan pada bulan Juli 2019 dan beroperasi di sektor jasa pengangkutan laut, transshipment, dan Intermediate Stockpile (ISP) untuk tambang batu bara. Dengan sistem logistik terintegrasi, Ancara Logistics memiliki saham mayoritas di PT Mahakam Coal Terminal (MCT), yang berfungsi sebagai ISP. Melalui kontrak Life of Mine (LoM) dengan PT Ade Putra Tanrajeng (APT) dan PT Guruh Putra Bersama (GPB), perusahaan memastikan pendapatan berkelanjutan hingga habisnya cadangan batu bara. Ancara Logistics memiliki armada besar termasuk kapal tunda dan tongkang, lokasi ISP strategis, teknologi pelacakan kapal online, dan fokus pada kesehatan, keselamatan, dan lingkungan memberikan keunggulan kompetitif. Visi Ancara Logistics adalah menjadi penyedia layanan terdepan dalam logistik dan jasa pertambangan, sedangkan misinya adalah menyediakan solusi unggul dengan memperhatikan keselamatan dan lingkungan. Keberlanjutan pertumbuhan nilai bagi pemegang saham dijaga dengan manajemen yang berpengalaman di industri pengangkutan laut dan komitmen terhadap Kesehatan, Keselamatan, dan Lingkungan.',
+            ticker: 'ALII',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/ALII.webp',
+            address: 'Bakrie Tower Lantai 15, Komplek Rasuna Epicentrum, Jalan H.R. Rasuna Said, Kelurahan Karet Kuningan, Kecamatan Setiabudi, Kota Administrasi Jakarta Selatan, 12940',
+            bidang_usaha: 'Jasa Pengangkutan Laut dan Transshipment, serta Intermediate Stockpile melalui Perusahaan Anak',
+            website: 'https://www.ancaralogistics.co.id',
+            prospectus_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/ALII-P.pdf',
+            prospectus_summary_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/ALII-PR.pdf',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/289/alii-pt-ancara-logistics-indonesia-tbk',
+            low_price: 268,
+            high_price: 278,
+            // final_price: null,
+            offered_shares: 3165160000,
+            outstanding_shares: 15825800000,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            kurs_usd: null,
+            kurs_date: null,
+            date_awal_start: new Date("2024-01-17"),
+            date_awal_end: new Date("2024-01-24"),
+            date_umum_start: new Date("2024-02-01"),
+            date_umum_end: new Date("2024-02-05"),
+            date_penjatahan: new Date("2024-02-05"),
+            date_distribusi: new Date("2024-02-06"),
+            date_ipo: new Date("2024-02-07"),
+            subsector_id: 26,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
