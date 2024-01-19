@@ -1048,6 +1048,41 @@ async function seedCompanies(prisma) {
             subsector_id: 14,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 32 },
+        update: {},
+        create: {
+            name: 'PT Harta Djaya Karya Tbk',
+            description: 'Pada awal pendirian, PT Harta Djaya Karya Tbk beroperasi di bidang pembangunan, termasuk sebagai pemborong pekerjaan bangunan, penyedia jasa konsultan desain interior, dan perdagangan furnitur pada tahun 2012. Dengan workshop di Sawangan, perusahaan secara bertahap memperkuat legalitas, sertifikasi keahlian, dan struktur modalnya. Kesempatan menjadi vendor di Instansi Pemerintah dan kemitraan dengan perusahaan swasta terkemuka, seperti Bank Mandiri, Trinusa Travelindo, Goodyear Indonesia, dan British School Jakarta, menjadi landasan bagi perkembangan pesatnya. Pada tahun 2021, PT Harta Djaya Karya Tbk terpilih sebagai kontraktor dalam Proyek Revitalisasi Taman Ismail Marzuki, dan pada tahun berikutnya, mendapatkan proyek interior untuk BUMN seperti Bank Mandiri dan Adhi Karya, serta proyek Moda Raya Terpadu (MRT) Jakarta. Dalam lebih dari 10 tahun beroperasi, PT Harta Djaya Karya Tbk telah menjadi perusahaan jasa desain yang terpercaya dengan rekam jejak klien bergengsi dan pencapaian nilai kontrak tertinggi dalam 3 tahun terakhir. Saat ini, perusahaan berfokus pada 3 segmen bisnis: konsultasi desain, pelaksanaan konstruksi interior, dan pabrikasi furnitur.',
+            ticker: 'MEJA',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/MEJA.webp',
+            address: 'Jl. Bintaro Raya No.8A, Kby. Lama Selatan, Kec. Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta. Kode Pos: 12240',
+            bidang_usaha: 'Konsultansi Desain, Pelaksana Konstruksi Interior, dan Pabrikasi Furnitur',
+            website: 'https://interra.co.id/',
+            prospectus_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/MEJA-P.pdf',
+            prospectus_summary_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/MEJA-PR.pdf',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/292/meja-pt-harta-djaya-karya-tbk',
+            low_price: 100,
+            high_price: 103,
+            // final_price: null,
+            offered_shares: 480000000,
+            outstanding_shares: 1917500000,
+            waran_numerator: 1,
+            waran_denominator: 1,
+            exercise_price: 125,
+            kurs_usd: null,
+            kurs_date: null,
+            date_awal_start: new Date("2024-01-18"),
+            date_awal_end: new Date("2024-01-24"),
+            date_umum_start: new Date("2024-01-31"),
+            date_umum_end: new Date("2024-02-05"),
+            date_penjatahan: new Date("2024-02-05"),
+            date_distribusi: new Date("2024-02-06"),
+            date_ipo: new Date("2024-02-07"),
+            subsector_id: 27,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
