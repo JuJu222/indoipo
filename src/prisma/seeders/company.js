@@ -1013,6 +1013,41 @@ async function seedCompanies(prisma) {
             subsector_id: 25,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 31 },
+        update: {},
+        create: {
+            name: 'PT Multikarya Asia Pasifik Raya Tbk',
+            description: 'Pada tahun 1998, Mud King didirikan di Amerika Serikat dan berfokus di wilayah Asia Pasifik (ASPAC) melalui PT Mud King Asia Pasifik Raya sejak 2002. Mereka menyediakan suku cadang dan jasa sewa alat berat untuk industri minyak dan gas di Indonesia. Mulai tahun 2005, ekspansi dilakukan ke penyewaan pompa melalui PT Petrodrill Manufaktur Indonesia, yang kemudian dilepas pada tahun 2023. PT Mudking Asia Pasifik Raya juga pionir dalam pekerjaan jasa sewa Water Transfer & Brine Pump untuk proyek Geotermal di Indonesia pada 2008. Pada tahun 2012, Perseroan berganti nama menjadi PT Multikarya Asia Pasifik Raya dan menjadi distributor tunggal produk Double Life Corp. USA di Indonesia. Ekspansi ke Reengineering & Refurbishment Mudpump dilakukan pada 2014. Dalam beberapa tahun terakhir, Perseroan berhasil mendapatkan kontrak proyek migas dari perusahaan terkemuka dan memperoleh hak keagenan baru untuk Pumpworks 610 (2020) dan brand WEG (2023). Kantor pusat Perseroan berada di Jakarta Selatan, dengan workshop di Jakarta, Sumatera Selatan, dan Jawa Barat, termasuk workshop utama di Citeurup yang diresmikan pada tahun 2023.',
+            ticker: 'MKAP',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/MKAP.webp',
+            address: 'Cibis Nine lt 16, JL TB Simatupang No 02, Jakarta Selatan, 12560, Indonesia',
+            bidang_usaha: 'Manufaktur, Jasa Perdagangan, Penyewaan, Perbaikan, Suku Cadang Pompa Industri Migas & Pertambangan',
+            website: 'https://www.mkapr.co.id/',
+            prospectus_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/MKAP-P.pdf',
+            prospectus_summary_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/MKAP-PR.pdf',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/291/mkap-pt-multikarya-asia-pasifik-raya-tbk',
+            low_price: 105,
+            high_price: 120,
+            // final_price: null,
+            offered_shares: 650000000,
+            outstanding_shares: 3250000000,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            kurs_usd: null,
+            kurs_date: null,
+            date_awal_start: new Date("2024-01-18"),
+            date_awal_end: new Date("2024-01-25"),
+            date_umum_start: new Date("2024-02-01"),
+            date_umum_end: new Date("2024-02-06"),
+            date_penjatahan: new Date("2024-02-06"),
+            date_distribusi: new Date("2024-02-07"),
+            date_ipo: new Date("2024-02-12"),
+            subsector_id: 14,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
