@@ -431,6 +431,51 @@ async function seedProceeds(prisma) {
             company_id: 32,
         },
     })
+    await prisma.proceed.upsert({
+        where: { id: 49 },
+        update: {},
+        create: {
+            amount: '49.2%',
+            use: 'Modal kerja guna mendukung strategi perkembangan Perseroan melalui berbagai inisiatif.',
+            company_id: 33,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 50 },
+        update: {},
+        create: {
+            amount: '18.5%',
+            use: 'Digunakan Perseroan untuk belanja modal.',
+            company_id: 33,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 51 },
+        update: {},
+        create: {
+            amount: '13.5%',
+            use: 'Pembelian gudang di Jalan Raya Cijayanti, Bogor dilakukan dari pihak afiliasi, yaitu Bpk. Hendrik Yong yang menjabat sebagai Komisaris Utama dan Pemegang Saham Pengendali Perseroan.',
+            company_id: 33,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 52 },
+        update: {},
+        create: {
+            amount: '10.8%',
+            use: 'Penyetoran modal kepada Perusahaan Anak, yaitu PT Tukang Bersih Indonesia (“PT TBI”).',
+            company_id: 33,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 53 },
+        update: {},
+        create: {
+            amount: '8%',
+            use: 'Penyetoran modal kepada Perusahaan Anak, yaitu PT Indocitra Pacific (“PT ICP”).',
+            company_id: 33,
+        },
+    })
 }
 
 module.exports = { seedProceeds }

@@ -1083,6 +1083,45 @@ async function seedCompanies(prisma) {
             subsector_id: 27,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 33 },
+        update: {},
+        create: {
+            name: 'PT Ecocare Indo Pasifik Tbk',
+            description: 'PT Ecocare Indo Pasifik, sebelumnya dikenal sebagai PT Indocare Pacific yang didirikan pada tahun 2007, beroperasi di bidang Hygiene Support Services dengan tujuan melindungi lingkungan hidup dari virus dan bakteri. Dengan tim berpengalaman lebih dari 30 tahun di industri tersebut, perusahaan ini fokus pada kebersihan, kehigienisan, dan kenyamanan dengan komitmen untuk menyediakan pelayanan terbaik dan produk inovatif berbahan alami.\n' +
+                '\n' +
+                'Pada tahun 2017, ecoCare memperluas portofolionya dengan mendirikan TukangBersih (PT Tukang Bersih Indonesia), dan pada tahun 2021, mereka memperkenalkan pestCare sebagai solusi penanganan hama. Pada tahun 2023, PT Indocare Pacific mengubah namanya menjadi PT Ecocare Indo Pasifik.\n' +
+                '\n' +
+                'Sebagai bagian dari ecoCare Group Company, ecoCare, TukangBersih, dan pestCare berkolaborasi untuk menyediakan one-stop-solution dalam proteksi lingkungan di Indonesia. Visi perusahaan adalah meningkatkan citra perusahaan lokal Indonesia agar setara, disegani, dan dapat bersaing dengan perusahaan internasional di bidang Facilities Support Services. Misi perusahaan mencakup menjadi solusi lengkap dan terpercaya di bidang tersebut, memberikan prioritas kepada kepuasaan pelanggan, mengembangkan dan menjaga kesejahteraan karyawan, serta mendukung program "think green" dengan konsep layanan ramah lingkungan.',
+            ticker: 'HYGN',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/HYGN.webp',
+            address: 'Gedung Infinia Park, Jl. Dr. Saharjo No. 45 Blok A No. 55, Manggarai, Tebet, Jakarta Selatan 12850',
+            bidang_usaha: 'Pengelolaan dan Penyewaan Alat-Alat Higienitas dan Sanitasi Ruangan',
+            website: 'https://interra.co.id/',
+            prospectus_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/HYGN-P.pdf',
+            prospectus_summary_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/HYGN-PR.pdf',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/294/hygn-pt-ecocare-indo-pasifik-tbk',
+            low_price: 135,
+            high_price: 145,
+            // final_price: null,
+            offered_shares: 525000000,
+            outstanding_shares: 2525000000,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            kurs_usd: null,
+            kurs_date: null,
+            date_awal_start: new Date("2024-01-19"),
+            date_awal_end: new Date("2024-01-24"),
+            date_umum_start: new Date("2024-02-01"),
+            date_umum_end: new Date("2024-02-05"),
+            date_penjatahan: new Date("2024-02-05"),
+            date_distribusi: new Date("2024-02-06"),
+            date_ipo: new Date("2024-02-07"),
+            subsector_id: 28,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
