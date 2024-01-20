@@ -503,6 +503,42 @@ async function seedProceeds(prisma) {
             company_id: 34,
         },
     })
+    await prisma.proceed.upsert({
+        where: { id: 57 },
+        update: {},
+        create: {
+            amount: '63.82%',
+            use: 'Operational expenditure di antaranya untuk pembelian bahan baku; dan biaya biaya pengembangan produk, marketing dan branding.',
+            company_id: 35,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 58 },
+        update: {},
+        create: {
+            amount: '22.54%',
+            use: 'Perseroan berencana merenovasi 23 outlet, gudang, dan kantor serta menerapkan sistem otomatisasi untuk meningkatkan kapasitas penyimpanan bahan baku. Renovasi akan fokus pada 19 outlet cabang dan 4 outlet kemitraan, termasuk 18 gerai dengan sewa yang akan diperpanjang. Prioritas renovasi diberikan pada gudang di Malang, mengingat pusat produksi masih berfokus di sana. Gudang di Jakarta, digunakan sebagai pusat distribusi, masih memadai dan tidak mendesak untuk direnovasi. Perlu dicatat bahwa belum ada perizinan atau persetujuan dari instansi berwenang terkait renovasi.',
+            company_id: 35,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 59 },
+        update: {},
+        create: {
+            amount: '10.16%',
+            use: 'Perpanjangan sewa terhadap 18 outlet lama sebagai bagian dari strategi ekspansi bisnis. Kesepakatan ini melibatkan pihak ketiga dan memiliki total nilai sewa sekitar Rp5,6 miliar.',
+            company_id: 35,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 60 },
+        update: {},
+        create: {
+            amount: '3.48%',
+            use: 'Pembelian mesin dan kendaraan operasional untuk menunjang proses distribusi produk dan bahan baku yang lebih optimal.',
+            company_id: 35,
+        },
+    })
 }
 
 module.exports = { seedProceeds }

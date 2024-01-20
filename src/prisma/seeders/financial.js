@@ -2164,6 +2164,71 @@ async function seedFinancials(prisma) {
             company_id: 34,
         },
     })
+    await prisma.financial.upsert({
+        where: { id: 167 },
+        update: {},
+        create: {
+            net_income: 8764077854,
+            liability: 14973043982,
+            asset: 77719719033,
+            interval: 7,
+            is_audited: true,
+            date_end: new Date("2023-07-31"),
+            company_id: 35,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 168 },
+        update: {},
+        create: {
+            net_income: 8602703702,
+            liability: null,
+            asset: null,
+            interval: 7,
+            is_audited: false,
+            date_end: new Date("2022-07-31"),
+            company_id: 35,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 169 },
+        update: {},
+        create: {
+            net_income: 14949684001,
+            liability: 15845663670,
+            asset: 69680790192,
+            interval: 12,
+            is_audited: true,
+            date_end: new Date("2022-12-31"),
+            company_id: 35,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 170 },
+        update: {},
+        create: {
+            net_income: 8741630436,
+            liability: 10386218603,
+            asset: 29156445486,
+            interval: 12,
+            is_audited: true,
+            date_end: new Date("2021-12-31"),
+            company_id: 35,
+        },
+    })
+    await prisma.financial.upsert({
+        where: { id: 171 },
+        update: {},
+        create: {
+            net_income: 4726267727,
+            liability: 5813155328,
+            asset: 15777002183,
+            interval: 12,
+            is_audited: true,
+            date_end: new Date("2020-12-31"),
+            company_id: 35,
+        },
+    })
 }
 
 module.exports = { seedFinancials }

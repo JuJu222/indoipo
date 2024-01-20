@@ -1157,6 +1157,41 @@ async function seedCompanies(prisma) {
             subsector_id: 29,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 35 },
+        update: {},
+        create: {
+            name: 'PT Bersama Mencapai Puncak Tbk',
+            description: 'PT Bersama Mencapai Puncak adalah perusahaan yang mengelola rumah makan dan terlibat dalam perdagangan bahan baku seperti makanan beku dan sembako. Perusahaan ini mengoperasikan langsung, melalui entitas anak, kemitraan rumah makan, serta perdagangan bahan baku. Dengan dua merek usaha makanan dan minuman, Ayam Goreng Nelongso (milik Perseroan) dan Geprek Kak Rose (milik Entitas Anak), perusahaan telah memiliki 64 outlet dan kemitraan yang tersebar di seluruh Indonesia. Ayam Goreng Nelongso, beroperasi sejak tahun 2013, menawarkan berbagai varian menu, sementara Geprek Kak Rose, berfokus pada penjualan ayam dan bebek, telah beroperasi sejak tahun 2017. Dengan cabang dan mitra yang dimulai di kota Malang, Jawa Timur, Perseroan kini memiliki jangkauan bisnis yang melibatkan Jabodebek, Jawa Barat, Jawa Tengah, dan Jawa Timur. Selain itu, perusahaan juga mengembangkan bisnis food supply untuk membantu masyarakat memulai bisnis dengan kemitraan, termasuk jual beli bahan baku segar seperti sembako, cabai, dan ayam. Total konsumen mencapai rata-rata 1,9 juta per tahun.',
+            ticker: 'BAIK',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/BAIK.webp',
+            address: 'Jl. Raya Regency Kav. 9 No. 5, Kabupaten Malang, Jawa Timur, 65153.',
+            bidang_usaha: 'Mengelola Rumah Makan, Kemitraan Rumah Makan, serta Perdagangan Bahan Baku',
+            website: 'https://ptbersamamencapaipuncak.com',
+            prospectus_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/BAIK-P.pdf',
+            prospectus_summary_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/BAIK-PR.pdf',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/295/baik-pt-bersama-mencapai-puncak-tbk',
+            low_price: 268,
+            high_price: 278,
+            // final_price: null,
+            offered_shares: 225000000,
+            outstanding_shares: 1125000000,
+            waran_numerator: 1,
+            waran_denominator: 1,
+            exercise_price: 400,
+            kurs_usd: null,
+            kurs_date: null,
+            date_awal_start: new Date("2024-01-19"),
+            date_awal_end: new Date("2024-01-24"),
+            date_umum_start: new Date("2024-02-02"),
+            date_umum_end: new Date("2024-02-12"),
+            date_penjatahan: new Date("2024-02-12"),
+            date_distribusi: new Date("2024-02-13"),
+            date_ipo: new Date("2024-02-15"),
+            subsector_id: 30,
+        },
+    })
 }
 
 module.exports = { seedCompanies }
