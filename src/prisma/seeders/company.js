@@ -1122,6 +1122,41 @@ async function seedCompanies(prisma) {
             subsector_id: 28,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 34 },
+        update: {},
+        create: {
+            name: 'PT Homeco Victoria Makmur Tbk',
+            description: 'PT Homeco Victoria Makmur Tbk, didirikan pada tahun 2012, merupakan pemimpin pasar di Indonesia yang menawarkan berbagai kategori produk. Fokus utama perusahaan adalah perdagangan besar peralatan dan perlengkapan rumah tangga, alat tulis, alat permainan anak-anak, dan tekstil. Selain itu, sebagai perusahaan holding, PT Homeco Victoria Makmur Tbk mengelola entitas anak, PT Trisinar Indopratama (“TSI”), yang bergerak di industri barang plastik dengan merk “Technoplast”. Dengan pengalaman bisnis TSI selama 24 tahun, produk-produk berkualitas tinggi menjadi bagian dari komitmen perusahaan. PT Homeco Victoria Makmur Tbk berkomitmen untuk menyediakan produk berkualitas melalui distribusi yang efisien, mencakup lebih dari 40.000 titik penjualan di seluruh Indonesia. Dengan fokus kuat pada kualitas, kepercayaan, dan layanan pelanggan yang luar biasa, perusahaan berlokasi di Jakarta Barat, Indonesia, dengan tujuan memperluas jaringan distribusinya untuk memberikan kenyamanan dan kebahagiaan kepada setiap keluarga di Indonesia.',
+            ticker: 'LIVE',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/LIVE.webp',
+            address: 'Jl. Kebon Jeruk Raya No. 1A-C, Kel. Kebon Jeruk Kec. Kebon Jeruk, Kota Adm. Jakarta Barat Provinsi DKI Jakarta, 11530, Indonesia',
+            bidang_usaha: 'Perdagangan Besar Peralatan dan Perlengkapan Rumah Tangga',
+            website: 'http://www.homeco.co.id',
+            prospectus_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/LIVE-P.pdf',
+            prospectus_summary_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/LIVE-PR.pdf',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/293/live-pt-homeco-victoria-makmur-tbk',
+            low_price: 136,
+            high_price: 181,
+            // final_price: null,
+            offered_shares: 808350000,
+            outstanding_shares: 4593005014,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            kurs_usd: null,
+            kurs_date: null,
+            date_awal_start: new Date("2024-01-19"),
+            date_awal_end: new Date("2024-01-24"),
+            date_umum_start: new Date("2024-02-02"),
+            date_umum_end: new Date("2024-02-06"),
+            date_penjatahan: new Date("2024-02-06"),
+            date_distribusi: new Date("2024-02-07"),
+            date_ipo: new Date("2024-02-12"),
+            subsector_id: 29,
+        },
+    })
 }
 
 module.exports = { seedCompanies }

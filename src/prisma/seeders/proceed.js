@@ -476,6 +476,33 @@ async function seedProceeds(prisma) {
             company_id: 33,
         },
     })
+    await prisma.proceed.upsert({
+        where: { id: 54 },
+        update: {},
+        create: {
+            amount: 'Rp 25 Miliar',
+            use: 'Melunasi sebagian utangnya kepada PT Bank Central Asia Tbk ("BCA") sejumlah Rp 25 miliar yang akan jatuh tempo.',
+            company_id: 34,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 55 },
+        update: {},
+        create: {
+            amount: 'Rp 25 Miliar',
+            use: 'Melunasi sebagian utang usaha Perseroan kepada Entitas Anak, PT Trisinar Indopratama ("TSI"). Selanjutnya, TSI akan menggunakan dana tersebut untuk melunasi sebagian utangnya kepada PT Bank Central Asia Tbk ("BCA") yang memiliki fasilitas dengan tingkat bunga tertinggi.',
+            company_id: 34,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 56 },
+        update: {},
+        create: {
+            amount: 'Sisa Dana',
+            use: 'Pengembangan usaha, terutama sebagai modal kerja. Penggunaan tersebut mencakup, namun tidak terbatas pada, pembelian persediaan (produk dengan Hak Atas Kekayaan Intelektual terdaftar atas nama Perseroan), persediaan bahan penunjang (digunakan untuk pengemasan produk), persediaan barang dagang (produk dari pihak ketiga untuk dijual kembali), pengiriman barang dagang, biaya pemasaran, dan biaya operasional lainnya (termasuk biaya umum dan administratif seperti gaji pegawai dan biaya pengangkutan persediaan).',
+            company_id: 34,
+        },
+    })
 }
 
 module.exports = { seedProceeds }
