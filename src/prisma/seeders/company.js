@@ -1192,6 +1192,41 @@ async function seedCompanies(prisma) {
             subsector_id: 30,
         },
     })
+    await prisma.company.upsert({
+        where: { id: 36 },
+        update: {},
+        create: {
+            name: 'PT Satu Visi Putra Tbk',
+            description: 'PT Satu Visi Putra Tbk, perusahaan yang bergerak dalam perdagangan besar, memiliki fokus utama pada Perdagangan Besar untuk Bahan Advertising dan Printing seperti Banner, Display, Tinta, dan PVC Board, meskipun dalam anggaran dasarnya juga mencakup perdagangan bahan kimia, produk lain, dan barang tekstil. Mereka mengadopsi sistem pencetakan digital untuk menghasilkan produk akhir berkualitas tinggi dengan biaya lebih terjangkau dibandingkan metode tradisional. Keuntungan lainnya meliputi siklus produksi yang lebih singkat. Dalam memenuhi kebutuhan bahan baku, perusahaan mengimpor produk dari pabrikan besar di China. PT Satu Visi Putra Tbk memiliki dan/atau menguasai sebanyak 11 gudang penyimpanan dengan luas total 9.354M² di Surabaya dan Bekasi, termasuk 5 gudang yang disewa di Surabaya. Sebagai bagian dari sarana logistik, perusahaan mengoperasikan tiga belas mobil truk untuk pengiriman produk ke distributor.',
+            ticker: 'VISI',
+            img: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/img/VISI.webp',
+            address: 'Jl. Greges Jaya II Blok B19 Kec. Asemrowo, Kel. Tambak Sarioso Kota Surabaya, Jawa Timur 60184',
+            bidang_usaha: 'Bahan Advertising dan Printing seperti Banner, Display, Tinta dan PVC Board',
+            website: 'https://satuvisiputra.com/id',
+            prospectus_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/VISI-P.pdf',
+            prospectus_summary_url: 'https://juju.sgp1.cdn.digitaloceanspaces.com/indoipo/file/VISI-PR.pdf',
+            additional_information_url: null,
+            e_ipo_url: 'https://www.e-ipo.co.id/id/ipo/296/visi-pt-satu-visi-putra-tbk',
+            low_price: 110,
+            high_price: 120,
+            // final_price: null,
+            offered_shares: 615000000,
+            outstanding_shares: 3075000000,
+            waran_numerator: null,
+            waran_denominator: null,
+            exercise_price: null,
+            kurs_usd: null,
+            kurs_date: null,
+            date_awal_start: new Date("2024-01-29"),
+            date_awal_end: new Date("2024-02-05"),
+            date_umum_start: new Date("2024-02-21"),
+            date_umum_end: new Date("2024-02-27"),
+            date_penjatahan: new Date("2024-02-27"),
+            date_distribusi: new Date("2024-02-28"),
+            date_ipo: new Date("2024-02-29"),
+            subsector_id: 31,
+        },
+    })
 }
 
 module.exports = { seedCompanies }

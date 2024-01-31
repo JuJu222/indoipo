@@ -539,6 +539,24 @@ async function seedProceeds(prisma) {
             company_id: 35,
         },
     })
+    await prisma.proceed.upsert({
+        where: { id: 61 },
+        update: {},
+        create: {
+            amount: '3.49%',
+            use: 'Pembelian armada transportasi, termasuk 1 unit HINO/RANGER FL 280 JW EURO 4 dan 3 unit HINO/DUTRO 136 HDX 6.8 EURO 4, dari pihak ketiga pada kuartal II 2024.',
+            company_id: 36,
+        },
+    })
+    await prisma.proceed.upsert({
+        where: { id: 62 },
+        update: {},
+        create: {
+            amount: 'Sisa Dana',
+            use: 'Modal kerja digunakan untuk membeli barang dagang berupa banner, mengingat peningkatan kebutuhan banner yang menjadi kontribusi terbesar dalam penjualan Perseroan.',
+            company_id: 36,
+        },
+    })
 }
 
 module.exports = { seedProceeds }

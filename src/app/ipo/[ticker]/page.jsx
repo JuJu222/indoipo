@@ -371,11 +371,11 @@ export default async function Company({ params }) {
                                     </div>
                                 </div>
                                 <div
-                                    className='grid grid-cols-3 rounded-md border bg-white shadow-sm w-full overflow-hidden'>
+                                    className='grid grid-cols-2 rounded-md border bg-white shadow-sm w-full overflow-hidden'>
                                     <a href={company.prospectus_url} target='_blank'
                                        className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-white hover:bg-primary_hover focus:relative flex gap-2 items-center justify-center bg-primary transition">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                             className="bi bi-file-earmark-arrow-down-fill" viewBox="0 0 16 16">
+                                             className="bi bi-file-earmark-arrow-down-fill min-w-[20px] min-h-[20px]" viewBox="0 0 16 16">
                                             <path
                                                 d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zm-1 4v3.793l1.146-1.147a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 .708-.708L7.5 11.293V7.5a.5.5 0 0 1 1 0z"/>
                                         </svg>
@@ -385,7 +385,7 @@ export default async function Company({ params }) {
                                         <a href={company.prospectus_summary_url} target='_blank'
                                            className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-primary_hover hover:bg-gray-50 focus:relative border-l border-r flex gap-2 items-center justify-center transition">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                                 className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
+                                                 className="bi bi-file-earmark-arrow-down min-w-[20px] min-h-[20px]" viewBox="0 0 16 16">
                                                 <path
                                                     d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
                                                 <path
@@ -406,31 +406,31 @@ export default async function Company({ params }) {
                                             Ringkasan Prospektus
                                         </div>
                                     )}
-                                    {company.additional_information_url ? (
-                                        <a href={company.additional_information_url} target='_blank'
-                                           className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-primary_hover hover:bg-gray-50 focus:relative flex gap-2 items-center justify-center transition">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                                 className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
-                                                <path
-                                                    d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
-                                            </svg>
-                                            Informasi Tambahan
-                                        </a>
-                                    ) : (
-                                        <div
-                                            className="inline-block px-4 py-2 text-sm font-medium text-gray-300 bg-gray-50 focus:relative flex gap-2 items-center justify-center transition">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
-                                                 className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">
-                                                <path
-                                                    d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>
-                                                <path
-                                                    d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
-                                            </svg>
-                                            Informasi Tambahan
-                                        </div>
-                                    )}
+                                    {/*{company.additional_information_url ? (*/}
+                                    {/*    <a href={company.additional_information_url} target='_blank'*/}
+                                    {/*       className="cursor-pointer inline-block px-4 py-2 text-sm font-medium text-primary_hover hover:bg-gray-50 focus:relative flex gap-2 items-center justify-center transition">*/}
+                                    {/*        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"*/}
+                                    {/*             className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">*/}
+                                    {/*            <path*/}
+                                    {/*                d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>*/}
+                                    {/*            <path*/}
+                                    {/*                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>*/}
+                                    {/*        </svg>*/}
+                                    {/*        Informasi Tambahan*/}
+                                    {/*    </a>*/}
+                                    {/*) : (*/}
+                                    {/*    <div*/}
+                                    {/*        className="inline-block px-4 py-2 text-sm font-medium text-gray-300 bg-gray-50 focus:relative flex gap-2 items-center justify-center transition">*/}
+                                    {/*        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"*/}
+                                    {/*             className="bi bi-file-earmark-arrow-down" viewBox="0 0 16 16">*/}
+                                    {/*            <path*/}
+                                    {/*                d="M8.5 6.5a.5.5 0 0 0-1 0v3.793L6.354 9.146a.5.5 0 1 0-.708.708l2 2a.5.5 0 0 0 .708 0l2-2a.5.5 0 0 0-.708-.708L8.5 10.293V6.5z"/>*/}
+                                    {/*            <path*/}
+                                    {/*                d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>*/}
+                                    {/*        </svg>*/}
+                                    {/*        Informasi Tambahan*/}
+                                    {/*    </div>*/}
+                                    {/*)}*/}
                                 </div>
                             </div>
                         </div>
@@ -558,6 +558,7 @@ export default async function Company({ params }) {
                                     </div>
                                 </li>
                             </ol>
+                            <p className='text-center text-gray-400 text-sm pt-2'>Jadwal yang tertera dapat mengalami perubahan sewaktu-waktu.</p>
                         </div>
                         <div>
                             {company.proceeds.length != 0 ? (
