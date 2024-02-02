@@ -2,7 +2,7 @@ import React from 'react';
 
 function Footer(props) {
     return (
-        <footer className="p-4 bg-white md:p-8 lg:p-10 dark:bg-gray-800">
+        <footer className="p-4 mb-20 bg-white md:p-8 lg:p-10 dark:bg-gray-800">
             <div className="mx-auto max-w-screen-xl text-center">
                 <a href="#"
                    className="flex justify-center items-center text-2xl font-semibold text-gray-900 dark:text-white">
@@ -17,13 +17,16 @@ function Footer(props) {
                         <a href="/kebijakan-privasi" className="mr-4 hover:underline md:mr-6 ">Kebijakan Privasi</a>
                     </li>
                     <li>
+                        <a href="/kebijakan-cookie" className="mr-4 hover:underline md:mr-6 ">Kebijakan Cookie</a>
+                    </li>
+                    <li>
                         <a href="/tentang-kami" className="mr-4 hover:underline md:mr-6 ">Tentang Kami</a>
                     </li>
                     <li>
                         <a href="/kontak" className="mr-4 hover:underline md:mr-6">Kontak</a>
                     </li>
                 </ul>
-                <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="/" className="hover:underline">Indoipo™</a>. All Rights Reserved.</span>
+                <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a href="/" className="hover:underline">Indoipo</a>. All Rights Reserved.</span>
             </div>
         </footer>
     );

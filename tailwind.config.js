@@ -14,6 +14,7 @@ module.exports = {
       primary: '#68B984',
       primary_hover: '#5ba274',
       secondary: '#3D5656',
+      secondary_hover: '#4f7070',
     },
     extend: {
       backgroundImage: {

@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Head from 'next/head'
 import Script from 'next/script'
+import Banner from "@/components/Banner";
 
 const quicksand = Quicksand({subsets: ['latin']})
 
@@ -30,13 +31,13 @@ export default function RootLayout({
                           gtag('config', 'G-FQQYZWNC68');
                         `}
             </Script>
-            <Script src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6258132678019384" />
             <body className={quicksand.className + ' bg-white'}>
                 <Navbar></Navbar>
                 <main>
                     {children}
                 </main>
                 <Footer></Footer>
+                <Banner></Banner>
             </body>
         </html>
     )

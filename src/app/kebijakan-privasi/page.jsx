@@ -24,9 +24,6 @@ function Penafian(props) {
                     informasi lain yang berkaitan dengan interaksi pengguna dengan website. Informasi ini digunakan
                     untuk menganalisis tren penggunaan dan membantu kami meningkatkan pengalaman pengguna di website
                     kami.</p>
-                <p className="mb-4">Anda dapat memilih untuk menonaktifkan cookies Google Analytics dengan
-                    mengonfigurasi pengaturan peramban (browser) Anda. Namun, perlu diingat bahwa menonaktifkan cookies dapat
-                    mempengaruhi fungsionalitas beberapa bagian dari website ini.</p>
                 <h2 className="text-xl font-semibold mb-2">Tidak Menyimpan Data Pribadi</h2>
                 <p className="mb-4">Kami ingin menekankan bahwa kami tidak menyimpan data pribadi seperti nama,
                     alamat email, atau informasi identifikasi pribadi lainnya dari pengguna website ini. Data yang
