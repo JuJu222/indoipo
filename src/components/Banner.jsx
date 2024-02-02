@@ -1,23 +1,21 @@
 'use client'
 
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 function Banner(props) {
-    const isBannerButtonPressed = localStorage.getItem("isBannerButtonPressed") || ""
+    const [isBannerButtonPressed, setisBannerButtonPressed] = useState("true")
 
-    document.cookie = 'ga-disable-G-FQQYZWNC68' + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
-    window['ga-disable-G-FQQYZWNC68'] = true;
-
-    if (document.cookie.indexOf('ga-disable-G-FQQYZWNC68' + '=true') > -1) {
+    useEffect(() => {
+        setisBannerButtonPressed(localStorage.getItem("isBannerButtonPressed") || "")
+        document.cookie = 'ga-disable-G-FQQYZWNC68' + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
         window['ga-disable-G-FQQYZWNC68'] = true;
-    }
 
-    const [showBanner, setShowBanner] = useState(() => {
-        return isBannerButtonPressed !== "true";
-    })
+        if (document.cookie.indexOf('ga-disable-G-FQQYZWNC68' + '=true') > -1) {
+            window['ga-disable-G-FQQYZWNC68'] = true;
+        }
+    }, []);
 
     function acceptButtonPressed() {
-        setShowBanner(false)
         localStorage.setItem("isBannerButtonPressed", "true")
         document.cookie = 'ga-disable-G-FQQYZWNC68' + '=false; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         window['ga-disable-G-FQQYZWNC68'] = false;
@@ -25,14 +23,13 @@ function Banner(props) {
     }
 
     function rejectButtonPressed() {
-        setShowBanner(false)
         localStorage.setItem("isBannerButtonPressed", "true")
         document.cookie = 'ga-disable-G-FQQYZWNC68' + '=true; expires=Thu, 31 Dec 2099 23:59:59 UTC; path=/';
         window['ga-disable-G-FQQYZWNC68'] = true;
         location.reload(true);
     }
 
-    if (showBanner) {
+    if (!isBannerButtonPressed) {
         return (
             <section className="fixed bottom-0 w-full bg-gray-50 shadow-lg">
                 <div className="container px-4 py-6 mx-auto lg:flex lg:items-center lg:gap-x-16">

@@ -26,6 +26,7 @@ export default async function sitemap() {
         "/tentang-kami",
         "/syarat-ketentuan",
         "/kebijakan-privasi",
+        "/kebijakan-cookie",
         "/ipo/periode/2024/2",
         "/ipo/periode/2024/1",
         "/ipo/periode/2023/12",
