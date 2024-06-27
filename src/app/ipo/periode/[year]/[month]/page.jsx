@@ -1,8 +1,7 @@
 import React from 'react';
 import prisma from "@/lib/prisma";
 import {notFound} from "next/navigation";
-import Reveal from "src/components/animations/Reveal";
-import CompanyCard from "src/components/CompanyCard";
+import CompanyCard from "/src/components/CompanyCard";
 
 export async function generateMetadata({ params }) {
     let firstDate = new Date(Date.UTC(params.year, parseInt(params.month) - 1, 1));
