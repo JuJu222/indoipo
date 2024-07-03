@@ -15,7 +15,7 @@ const nextConfig = {
         return [
             {
                 source: '/api/:path*',
-                destination: 'https://indoipo.com/:path*',
+                destination: 'https://indoipo.xyz/:path*',
             },
         ]
     },
