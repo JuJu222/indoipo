@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 
 export default async function sitemap() {
-    const URL = "https://indoipo.xyz";
+    const URL = "https://indoipo.com";
 
     const companies = await prisma.company.findMany({
         where: {

@@ -49,7 +49,7 @@ function Penafian(props) {
                 <h2 className="text-xl font-semibold mb-2">Hubungi Kami</h2>
                 <p className="mb-4">Jika Anda memiliki pertanyaan atau masalah mengenai syarat dan ketentuan ini,
                     silakan hubungi kami di alamat email berikut: <a className='underline'
-                                                                     href="mailto:info@contohwebsite.com">info@indoipo.xyz</a></p>
+                                                                     href="mailto:info@contohwebsite.com">info@indoipo.com</a></p>
             </div>
         </section>
     );

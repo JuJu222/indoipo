@@ -69,7 +69,7 @@ function AboutUs(props) {
                             </h4>
                             <p className="text-base text-body-color">
                                 <a className='underline'
-                                   href="mailto:info@contohwebsite.com">info@indoipo.xyz</a>
+                                   href="mailto:info@contohwebsite.com">info@indoipo.com</a>
                             </p>
                         </div>
                     </div>
