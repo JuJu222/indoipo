@@ -5,7 +5,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'japard-public.s3.ap-southeast-1.amazonaws.com',
+        hostname: 'd249xjcvkuj8xb.cloudfront.net',
         port: '',
         pathname: '/indoipo.com/img/**',
       },
